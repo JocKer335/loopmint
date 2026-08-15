@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 52" role="img" aria-label="Google Play">
+  <defs>
+    <linearGradient id="playA" x1="0" x2="1"><stop stop-color="#00A0FF"/><stop offset="1" stop-color="#00E070"/></linearGradient>
+    <linearGradient id="playB" x1="0" x2="1"><stop stop-color="#FFE000"/><stop offset="1" stop-color="#FF4F3D"/></linearGradient>
+  </defs>
+  <path d="M6 5v42l27-21L6 5Z" fill="url(#playA)"/>
+  <path d="M33 26 46 16c4-3 4-5 0-7L16 3l17 23Z" fill="#34A853"/>
+  <path d="M33 26 16 49l30-6c4-2 4-4 0-7L33 26Z" fill="url(#playB)"/>
+  <text x="62" y="35" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#2f4b50">Google Play</text>
+</svg>

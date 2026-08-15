@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 52" role="img" aria-label="App Store">
+  <rect x="2" y="2" width="48" height="48" rx="12" fill="#0d96f6"/>
+  <path d="M17 34h18M25 15l-9 19M27 15l9 19M19 30h14" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+  <text x="65" y="35" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#2f4b50">App Store</text>
+</svg>

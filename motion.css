@@ -1,0 +1,105 @@
+/* Shared motion and live states */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: loopmint-page-out 180ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: loopmint-page-in 360ms cubic-bezier(0.22, 0.8, 0.25, 1) both;
+}
+
+@keyframes loopmint-page-out {
+  to {
+    filter: saturate(0.84);
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes loopmint-page-in {
+  from {
+    filter: saturate(0.86);
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    filter: saturate(1);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loopmint-live-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(33, 201, 165, 0.54), 0 0 11px rgba(33, 201, 165, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(33, 201, 165, 0), 0 0 22px rgba(33, 201, 165, 0.78);
+  }
+}
+
+@keyframes loopmint-cta-glow {
+  0%, 72%, 100% {
+    box-shadow: 0 10px 24px rgba(7, 20, 36, 0.12), 0 0 0 rgba(33, 201, 165, 0);
+  }
+  84% {
+    box-shadow: 0 12px 28px rgba(7, 20, 36, 0.16), 0 0 24px rgba(33, 201, 165, 0.38);
+  }
+}
+
+@keyframes loopmint-route-glow {
+  0%, 100% {
+    box-shadow: 0 18px 48px rgba(7, 20, 36, 0.11), 0 0 20px rgba(33, 201, 165, 0.16);
+  }
+  50% {
+    box-shadow: 0 20px 52px rgba(7, 20, 36, 0.14), 0 0 38px rgba(33, 201, 165, 0.3);
+  }
+}
+
+.setup-live-status span,
+.trial-request-status span {
+  animation: loopmint-live-pulse 2.2s ease-in-out infinite;
+}
+
+.hero-primary-btn,
+.trial-route-cta,
+.setup-final-cta .shell > a,
+.guides-final-cta .button-primary {
+  animation: loopmint-cta-glow 4.8s ease-in-out infinite;
+}
+
+.resource-trial-link,
+.header-trial-btn {
+  transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.resource-trial-link:hover,
+.header-trial-btn:hover {
+  box-shadow: 0 0 22px rgba(255, 107, 20, 0.46);
+  transform: translateY(-1px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  .setup-live-status span,
+  .trial-request-status span,
+  .hero-primary-btn,
+  .trial-route-cta,
+  .setup-final-cta .shell > a,
+  .guides-final-cta .button-primary,
+  .setup-guide:target {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

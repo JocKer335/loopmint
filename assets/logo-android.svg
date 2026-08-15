@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 52" role="img" aria-label="Android">
+  <text x="2" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#202124">Android</text>
+  <g transform="translate(118 10)" fill="#3ddc84">
+    <path d="M8 12h28a4 4 0 0 1 4 4v16H4V16a4 4 0 0 1 4-4Z"/>
+    <circle cx="14" cy="22" r="2.5" fill="#073b2d"/>
+    <circle cx="30" cy="22" r="2.5" fill="#073b2d"/>
+    <path d="M12 9 7 2M32 9l5-7" stroke="#3ddc84" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

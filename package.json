@@ -1,0 +1,14 @@
+{
+  "name": "loopmint-playwright-workflow",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "python -m http.server 5500 --bind 127.0.0.1",
+    "audit:production": "node playwright-tools/audit-production.mjs",
+    "audit:site": "node playwright-tools/audit-simplified.mjs",
+    "audit:resources": "node playwright-tools/audit-resources.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.55.0"
+  }
+}
