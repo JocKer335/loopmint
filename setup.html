@@ -21,6 +21,19 @@
       s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init','2107341403150924');
       fbq('track','PageView');
+      window.trackLoopMintWhatsAppContact = function(destination) {
+        if (typeof fbq !== 'function') return;
+        fbq('track', 'Contact', {
+          content_name: 'WhatsApp',
+          contact_route: destination
+        });
+      };
+      document.addEventListener('click', function(event) {
+        const link = event.target.closest('a[href*="wa.me/"]');
+        if (!link) return;
+        const destination = link.href.includes('447907504571') ? 'support' : 'sales';
+        window.trackLoopMintWhatsAppContact(destination);
+      }, true);
     </script>
     <!-- End Meta Pixel Code -->
   </head>
