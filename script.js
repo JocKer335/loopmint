@@ -309,8 +309,11 @@ const sumTotalToday = document.getElementById("sum-total-today");
 const btnSubmitWhatsapp = document.getElementById("btn-submit-whatsapp");
 const btnInquireWhatsapp = document.getElementById("btn-inquire-whatsapp");
 let selectedPaymentMethod = document.querySelector(".payment-opt-card.active")?.dataset.pm || "Link (Stripe)";
-
 function navigateToWhatsApp(url) {
+  if (typeof window.trackLoopMintWhatsAppContact === "function") {
+    const destination = url.includes("447907504571") ? "support" : "sales";
+    window.trackLoopMintWhatsAppContact(destination);
+  }
   if (typeof window.__loopmintCaptureWhatsApp === "function") {
     window.__loopmintCaptureWhatsApp(url);
     return;
@@ -327,98 +330,97 @@ const currencyConfig = {
 };
 
 const planDataMap = {
-  "3 Months": { EUR: 40, USD: 45, period: { EUR: "/ 3 months", USD: "/ 3 mos" } },
-  "6 Months": { EUR: 65, USD: 75, period: { EUR: "/ 6 months", USD: "/ 6 mos" } },
-  "1 Year": { EUR: 90, USD: 99, period: { EUR: "/ year", USD: "/ yr" } },
-  "2 Years + 1 Free": { EUR: 180, USD: 199, period: { EUR: "/ 3 years", USD: "/ 3 yrs" } },
-  "2 Years + 1 Year Free": { EUR: 180, USD: 199, period: { EUR: "/ 3 years", USD: "/ 3 yrs" } },
-  "2 Yrs + 1 Free": { EUR: 180, USD: 199, period: { EUR: "/ 3 years", USD: "/ 3 yrs" } }
+  "1 Month": { EUR: 17, USD: 19, period: { EUR: "/ month", USD: "/ month" } },
+  "6 Months": { EUR: 45, USD: 50, period: { EUR: "/ 6 months", USD: "/ 6 mos" } },
+  "1 Year": { EUR: 75, USD: 82, period: { EUR: "/ year", USD: "/ yr" } },
+  "2 Years + 6 Months Free": { EUR: 130, USD: 143, period: { EUR: "/ 30 months", USD: "/ 30 mos" } },
+  "2 Yrs + 6 Mos Free": { EUR: 130, USD: 143, period: { EUR: "/ 30 months", USD: "/ 30 mos" } }
 };
 
 let currentPlan = {
   name: "6 Months",
-  price: 65,
+  price: 45,
   period: "6 mos"
 };
 let extraDevices = 0;
 const economizerMatrixData = {
   EUR: {
     chips: [
-      "€13.33 / month",
-      "€10.83 / mo · Save 19%",
-      "€7.50 / mo · Save 44% (€70/yr)",
-      "€5.00 / mo · Save 62% (€300 Saved!)"
+      "€17.00 / month",
+      "€7.50 / mo · Save 56%",
+      "€6.25 / mo · Save 63% (€129/yr)",
+      "€4.33 / mo · Save 75% (€380 Saved!)"
     ],
-    upfront: ["€40", "€65", "€90", "<strong>€180</strong>"],
+    upfront: ["€17", "€45", "€75", "<strong>€130</strong>"],
     monthly: [
-      '<span class="rate-tag rate-base">€13.33 / mo</span>',
-      '<span class="rate-tag rate-good">€10.83 / mo</span>',
-      '<span class="rate-tag rate-great">€7.50 / mo</span>',
-      '<span class="rate-tag rate-best">€5.00 / mo 🔥</span>'
+      '<span class="rate-tag rate-base">€17.00 / mo</span>',
+      '<span class="rate-tag rate-good">€7.50 / mo</span>',
+      '<span class="rate-tag rate-great">€6.25 / mo</span>',
+      '<span class="rate-tag rate-best">€4.33 / mo 🔥</span>'
     ],
-    daily: ["€0.44 / day", "€0.36 / day", "€0.25 / day", "<strong>€0.16 / day</strong>"],
+    daily: ["€0.57 / day", "€0.25 / day", "€0.21 / day", "<strong>€0.14 / day</strong>"],
     total3Yr: [
-      '€480 <span class="txt-red">(12 plan periods)</span>',
-      '€390 <span class="txt-red">(6 plan periods)</span>',
-      '€270 <span class="txt-amber">(3 plan periods)</span>',
-      '<strong>€180 <span class="txt-green">(Single Payment)</span></strong>'
+      '€510 <span class="txt-red">(30 plan periods)</span>',
+      '€225 <span class="txt-red">(5 plan periods)</span>',
+      '€187.50 <span class="txt-amber">(monthly equivalent)</span>',
+      '<strong>€130 <span class="txt-green">(Single Payment)</span></strong>'
     ],
     savings: [
       'Base Rate (€0)',
-      '<span class="save-badge">Save €90</span>',
-      '<span class="save-badge save-great">Save €210 (44% OFF)</span>',
-      '<span class="save-badge save-best">KEEP €300 CASH (62% OFF) 🔥</span>'
+      '<span class="save-badge">Save €285 (56% OFF)</span>',
+      '<span class="save-badge save-great">Save €322.50 (63% OFF)</span>',
+      '<span class="save-badge save-best">KEEP €380 CASH (75% OFF) 🔥</span>'
     ],
     keep: [
       'Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
-      'Everything in 3 Months</li><li>Lower €10.83/mo rate</li><li>Setup Refresh Help',
-      'Everything in 6 Months</li><li><strong>44% Discount Rate</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
-      '<strong>1 FULL YEAR FREE</strong> (€90 Value)</li><li><strong>Lowest €5.00/mo Rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 3 Years'
+      'Everything in 1 Month</li><li>Lower €7.50/mo rate</li><li>Setup Refresh Help',
+      'Everything in 6 Months</li><li><strong>63% Discount Rate</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
+      '<strong>6 MONTHS FREE</strong> (€45 Value)</li><li><strong>Lowest €4.33/mo Rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 30 Months'
     ],
     lose: [
-      'Lose <strong>€300 in savings</strong></li><li>Highest cost (€13.33/mo)</li><li>Must renew 4x per year</li><li>No Priority Queue status',
-      'Lose <strong>€210 in savings</strong></li><li>Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
-      'Lose <strong>€90 extra savings</strong> vs 3-Year plan</li><li>Requires yearly renewal',
+      'Lose <strong>€380 in savings</strong></li><li>Highest cost (€17.00/mo)</li><li>Must renew every month</li><li>No Priority Queue status',
+      'Lose <strong>€95 in long-run savings</strong></li><li>Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
+      'Lose <strong>€57.50 extra savings</strong> vs long-run plan</li><li>Requires yearly renewal',
       '<div class="zero-loss-badge">LONGEST PLAN • LOWEST MONTHLY RATE</div>'
     ]
   },
   USD: {
     chips: [
-      "$15.00 / month",
-      "$12.50 / mo · Save 17%",
-      "$8.25 / mo · Save 45% ($81/yr)",
-      "$5.52 / mo · Save 63% ($341 Saved!)"
+      "$19.00 / month",
+      "$8.33 / mo · Save 56%",
+      "$6.83 / mo · Save 64% ($146/yr)",
+      "$4.77 / mo · Save 75% ($427 Saved!)"
     ],
-    upfront: ["$45", "$75", "$99", "<strong>$199</strong>"],
+    upfront: ["$19", "$50", "$82", "<strong>$143</strong>"],
     monthly: [
-      '<span class="rate-tag rate-base">$15.00 / mo</span>',
-      '<span class="rate-tag rate-good">$12.50 / mo</span>',
-      '<span class="rate-tag rate-great">$8.25 / mo</span>',
-      '<span class="rate-tag rate-best">$5.52 / mo 🔥</span>'
+      '<span class="rate-tag rate-base">$19.00 / mo</span>',
+      '<span class="rate-tag rate-good">$8.33 / mo</span>',
+      '<span class="rate-tag rate-great">$6.83 / mo</span>',
+      '<span class="rate-tag rate-best">$4.77 / mo 🔥</span>'
     ],
-    daily: ["$0.50 / day", "$0.41 / day", "$0.27 / day", "<strong>$0.18 / day</strong>"],
+    daily: ["$0.63 / day", "$0.28 / day", "$0.22 / day", "<strong>$0.16 / day</strong>"],
     total3Yr: [
-      '$540 <span class="txt-red">(12 plan periods)</span>',
-      '$450 <span class="txt-red">(6 plan periods)</span>',
-      '$297 <span class="txt-amber">(3 plan periods)</span>',
-      '<strong>$199 <span class="txt-green">(Single Payment)</span></strong>'
+      '$570 <span class="txt-red">(30 plan periods)</span>',
+      '$250 <span class="txt-red">(5 plan periods)</span>',
+      '$205 <span class="txt-amber">(monthly equivalent)</span>',
+      '<strong>$143 <span class="txt-green">(Single Payment)</span></strong>'
     ],
     savings: [
       'Base Rate ($0)',
-      '<span class="save-badge">Save $90</span>',
-      '<span class="save-badge save-great">Save $243 (45% OFF)</span>',
-      '<span class="save-badge save-best">KEEP $341 CASH (63% OFF) 🔥</span>'
+      '<span class="save-badge">Save $320 (56% OFF)</span>',
+      '<span class="save-badge save-great">Save $365 (64% OFF)</span>',
+      '<span class="save-badge save-best">KEEP $427 CASH (75% OFF) 🔥</span>'
     ],
     keep: [
       'Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
-      'Everything in 3 Months</li><li>Lower $12.50/mo rate</li><li>Setup Refresh Help',
-      'Everything in 6 Months</li><li><strong>45% Discount Rate</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
-      '<strong>1 FULL YEAR FREE</strong> ($99 Value)</li><li><strong>Lowest $5.52/mo Rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 3 Years'
+      'Everything in 1 Month</li><li>Lower $8.33/mo rate</li><li>Setup Refresh Help',
+      'Everything in 6 Months</li><li><strong>64% Discount Rate</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
+      '<strong>6 MONTHS FREE</strong> ($50 Value)</li><li><strong>Lowest $4.77/mo Rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 30 Months'
     ],
     lose: [
-      'Lose <strong>$341 in savings</strong></li><li>Highest cost ($15.00/mo)</li><li>Must renew 4x per year</li><li>No Priority Queue status',
-      'Lose <strong>$251 in savings</strong></li><li>Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
-      'Lose <strong>$98 extra savings</strong> vs 3-Year plan</li><li>Requires yearly renewal',
+      'Lose <strong>$427 in savings</strong></li><li>Highest cost ($19.00/mo)</li><li>Must renew every month</li><li>No Priority Queue status',
+      'Lose <strong>$107 in long-run savings</strong></li><li>Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
+      'Lose <strong>$62 extra savings</strong> vs long-run plan</li><li>Requires yearly renewal',
       '<div class="zero-loss-badge">LONGEST PLAN • LOWEST MONTHLY RATE</div>'
     ]
   }
@@ -439,8 +441,8 @@ function setCurrency(curr) {
 
   // Update Page Pricing Cards & Breakdown Chips
   const priceCards = document.querySelectorAll(".price-card");
-  const pricesEUR = [40, 65, 90, 180];
-  const pricesUSD = [45, 75, 99, 199];
+  const pricesEUR = [17, 45, 75, 130];
+  const pricesUSD = [19, 50, 82, 143];
 
   priceCards.forEach((card, index) => {
     const amountEl = card.querySelector("strong");
@@ -489,7 +491,7 @@ function setCurrency(curr) {
     const planKey = card.dataset.plan;
     let data = planDataMap[planKey];
     if (!data && (planKey.toLowerCase().includes("2 year") || planKey.toLowerCase().includes("2 yr"))) {
-      data = planDataMap["2 Years + 1 Free"];
+      data = planDataMap["2 Years + 6 Months Free"];
     }
     const priceSpan = card.querySelector(".plan-opt-price");
     if (data && priceSpan) {
@@ -503,7 +505,7 @@ function setCurrency(curr) {
   // Update current active plan price
   let activeData = planDataMap[currentPlan.name];
   if (!activeData && (currentPlan.name.toLowerCase().includes("2 year") || currentPlan.name.toLowerCase().includes("2 yr"))) {
-    activeData = planDataMap["2 Years + 1 Free"];
+    activeData = planDataMap["2 Years + 6 Months Free"];
   }
   if (activeData) {
     currentPlan.price = activeData[curr];
@@ -519,7 +521,7 @@ document.querySelectorAll(".currency-toggle-btn").forEach((btn) => {
   });
 });
 
-function openCheckoutModal(planName = "6 Months", planPrice = "65") {
+function openCheckoutModal(planName = "6 Months", planPrice = "45") {
   if (!checkoutModal) return;
   closeTrialModal();
 
@@ -540,11 +542,11 @@ function openCheckoutModal(planName = "6 Months", planPrice = "65") {
       let cardPlan = card.dataset.plan.trim().toLowerCase();
       if (targetName.includes("1 year") && !targetName.includes("2 year") && !targetName.includes("free") && cardPlan.includes("1 year") && !cardPlan.includes("2 year") && !cardPlan.includes("free")) {
         matchedCard = card;
-      } else if (targetName.includes("3 month") && cardPlan.includes("3 month")) {
+      } else if (targetName.includes("1 month") && cardPlan.includes("1 month")) {
         matchedCard = card;
       } else if (targetName.includes("6 month") && cardPlan.includes("6 month")) {
         matchedCard = card;
-      } else if ((targetName.includes("2 year") || targetName.includes("free") || targetName.includes("long")) && (cardPlan.includes("2 year") || cardPlan.includes("free") || cardPlan.includes("3 yr"))) {
+      } else if ((targetName.includes("2 year") || targetName.includes("free") || targetName.includes("long")) && (cardPlan.includes("2 year") || cardPlan.includes("free") || cardPlan.includes("30 mo"))) {
         matchedCard = card;
       }
     });
@@ -584,7 +586,7 @@ function updateOrderSummary() {
   const formatAmount = (value) => Number.isInteger(value) ? String(value) : value.toFixed(2);
   const totalTVs = 1 + extraDevices; // main TV + extras
   const deviceAddOnPrice = extraDevices * currentPlan.price; // each extra TV = full plan price
-  const subtotal = currentPlan.price + deviceAddOnPrice; // e.g. €40 × 2 TVs = €80
+  const subtotal = currentPlan.price + deviceAddOnPrice; // plan price × number of TVs
   const hasDiscount = extraDevices >= 1; // 2+ TVs triggers 15% OFF
   let discountVal = 0;
   let total = subtotal;
@@ -623,7 +625,7 @@ function updateOrderSummary() {
 document.querySelectorAll(".price-card button").forEach((button) => {
   button.addEventListener("click", () => {
     const planName = button.dataset.plan || "1 Year";
-    const planPrice = button.dataset.price || "120";
+    const planPrice = button.dataset.price || "75";
     const selectedPlanEl = document.getElementById("selected-plan");
     if (selectedPlanEl) {
       selectedPlanEl.textContent = `Selected plan: ${planName} at ${planPrice}`;
@@ -755,7 +757,7 @@ btnSubmitWhatsapp?.addEventListener("click", () => {
 btnInquireWhatsapp?.addEventListener("click", () => {
   const planName = currentPlan ? currentPlan.name : "Subscription";
   const planPrice = currentPlan ? `${currencyConfig[currentCurrency].symbol}${currentPlan.price}` : "";
-  const inquireMsg = `Hello LoopMint Support! 🟢 I'm interested in the ${planName} plan (${planPrice}) and have a question before completing my order. Can you help me?`;
+  const inquireMsg = `Hello LoopMint Sales & Setup! 🟢 I'm interested in the ${planName} plan (${planPrice}) and have a question before completing my order. Can you help me?`;
   navigateToWhatsApp(`https://wa.me/447597648884?text=${encodeURIComponent(inquireMsg)}`);
 });
 
@@ -1325,7 +1327,7 @@ const guidesData = [
       { num: "03", title: "Nvidia Shield / Android TV Box", desc: "Recommended Apps: TiviMate, OTT Navigator, or Sparkle TV Player." },
       { num: "04", title: "Windows PC & Apple Mac", desc: "Recommended Apps: IPTV Smarters Desktop or VLC Media Player." }
     ],
-    tip: "📱 Pro Tip: WhatsApp support can send direct Downloader codes for instant 1-click install on Fire Stick!"
+    tip: "📱 Pro Tip: The Sales & Setup team can send the correct installation route for your Fire Stick model."
   }
 ];
 
