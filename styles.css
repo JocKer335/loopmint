@@ -8261,3 +8261,144 @@ body.theme-dim .white-section .supported-device-card p {
     margin-left: 0;
   }
 }
+
+/* Promotional pricing: preserve the former price beside the reduced price. */
+.original-price {
+  color: #ffc38f;
+  font-size: 1.12rem;
+  font-weight: 900;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  text-shadow: 0 0 10px rgba(255, 195, 143, 0.16);
+  white-space: nowrap;
+}
+
+.price-amount {
+  position: relative;
+  padding-top: 31px;
+}
+
+.price-amount .original-price {
+  position: absolute;
+  top: 5px;
+  left: 69px;
+}
+
+.price-amount::before {
+  content: "ORIGINAL";
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px 7px;
+  border: 1px solid rgba(249, 115, 22, 0.55);
+  border-radius: 999px;
+  background: rgba(249, 115, 22, 0.14);
+  color: #ffb06f;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+}
+
+.price-card .current-price {
+  font-size: 3.65rem;
+  text-shadow: 0 0 22px rgba(255, 255, 255, 0.09);
+}
+
+.price-period {
+  white-space: nowrap;
+}
+
+.plan-opt-price {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.plan-opt-price::before,
+#sum-plan-price::before {
+  content: "WAS";
+  padding: 2px 5px;
+  border-radius: 999px;
+  background: #fff0e4;
+  color: #c8580b;
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.plan-opt-original,
+.summary-original-price {
+  color: #bd631f;
+  font-size: 0.86rem;
+  font-weight: 850;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.original-price::after,
+.plan-opt-original::after,
+.summary-original-price::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: 1px;
+  border-radius: 999px;
+  background: #ff7417;
+  box-shadow: 0 0 2px rgba(255, 116, 23, 0.22);
+  transform: rotate(-18deg);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.original-price::after {
+  height: 1.25px;
+}
+
+.plan-opt-current,
+.summary-current-price {
+  color: #0da18f;
+  font-size: 0.98rem;
+  font-weight: 900;
+}
+
+#sum-plan-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+#sum-plan-price .summary-original-price {
+  color: #8494a5 !important;
+}
+
+#sum-plan-price .summary-current-price {
+  color: #0da18f !important;
+}
+
+@media (max-width: 560px) {
+  .price-amount {
+    gap: 6px;
+    padding-top: 29px;
+  }
+
+  .original-price {
+    font-size: 1.06rem;
+  }
+
+  .price-amount .original-price {
+    top: 5px;
+    left: 66px;
+  }
+
+  .price-card .current-price {
+    font-size: 3.55rem;
+  }
+}

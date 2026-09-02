@@ -59,6 +59,511 @@
   }
 }
 
+/* One continuous animated background from WATCH through the footer. */
+.lower-site-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #f7faf9;
+}
+
+.lower-site-shell::before {
+  content: "";
+  position: absolute;
+  inset: -180px -10vw;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform, background-position;
+}
+
+.lower-site-shell::before {
+  background:
+    radial-gradient(circle at 16% 18%, rgba(33, 201, 165, 0.13), transparent 23%),
+    radial-gradient(circle at 84% 66%, rgba(249, 115, 22, 0.1), transparent 22%);
+  background-size: 100% 1500px;
+  background-repeat: repeat-y;
+  animation: loopmint-continuous-glow 20s ease-in-out infinite alternate;
+}
+
+.lower-site-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.lower-site-shell > .continuous-orbit-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.continuous-orbit {
+  position: absolute;
+  top: var(--orbit-top);
+  left: 50%;
+  width: min(1240px, 94vw);
+  height: clamp(330px, 42vw, 610px);
+  border: 2px solid rgba(249, 115, 22, 0.25);
+  border-radius: 50%;
+  animation: loopmint-orbit-spin var(--orbit-speed, 12s) linear infinite;
+  animation-delay: var(--orbit-delay, 0s);
+  will-change: transform;
+}
+
+.continuous-orbit::before {
+  content: "";
+  position: absolute;
+  top: 5.5%;
+  left: 7%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f97316;
+  box-shadow: 0 0 16px #f97316, 0 0 38px rgba(249, 115, 22, 0.82);
+}
+
+.continuous-orbit.orbit-mint {
+  border-color: rgba(33, 201, 165, 0.28);
+  animation-name: loopmint-orbit-spin-reverse;
+}
+
+.continuous-orbit.orbit-mint::before {
+  inset: auto 7% 5.5% auto;
+  background: #21c9a5;
+  box-shadow: 0 0 16px #21c9a5, 0 0 38px rgba(33, 201, 165, 0.84);
+}
+
+.ambient-motion-surface {
+  position: relative;
+  overflow: visible;
+  background: transparent !important;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+.ambient-motion-surface::before,
+.ambient-motion-surface::after {
+  content: none;
+}
+
+.ambient-motion-surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes loopmint-orbit-spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes loopmint-orbit-spin-reverse {
+  from { transform: translateX(-50%) rotate(360deg); }
+  to { transform: translateX(-50%) rotate(0deg); }
+}
+
+@keyframes loopmint-continuous-glow {
+  from { opacity: 0.72; transform: translate3d(-3%, -30px, 0) scale(1); }
+  to { opacity: 1; transform: translate3d(3%, 45px, 0) scale(1.08); }
+}
+
+/* Keep the footer part of the same light surface instead of isolating it as a dark block. */
+.lower-site-shell .site-footer {
+  background: transparent !important;
+  color: #071424;
+  border-top-color: rgba(8, 19, 33, 0.1);
+}
+
+.lower-site-shell .site-footer .brand,
+.lower-site-shell .site-footer .brand-name,
+.lower-site-shell .footer-title {
+  color: #071424;
+}
+
+.lower-site-shell .footer-tagline,
+.lower-site-shell .footer-col-links li a,
+.lower-site-shell .footer-col-links li span,
+.lower-site-shell .footer-bottom-links a {
+  color: #566575;
+}
+
+.lower-site-shell .footer-trust-badges span {
+  color: #1f3443;
+  background: rgba(255, 255, 255, 0.62);
+  border-color: rgba(8, 19, 33, 0.12);
+}
+
+.lower-site-shell .footer-main-grid {
+  border-bottom-color: rgba(8, 19, 33, 0.1);
+}
+
+.lower-site-shell .footer-bottom-bar p,
+.lower-site-shell .footer-bottom-links span {
+  color: #718096;
+}
+
+body.theme-dim .lower-site-shell {
+  background: #071424;
+}
+
+body.theme-dim .lower-site-shell .site-footer,
+body.theme-dim .lower-site-shell .site-footer .brand,
+body.theme-dim .lower-site-shell .site-footer .brand-name,
+body.theme-dim .lower-site-shell .footer-title {
+  color: #ffffff;
+}
+
+body.theme-dim .lower-site-shell .footer-tagline,
+body.theme-dim .lower-site-shell .footer-col-links li a,
+body.theme-dim .lower-site-shell .footer-col-links li span,
+body.theme-dim .lower-site-shell .footer-bottom-links a {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+body.theme-dim .lower-site-shell .footer-trust-badges span {
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Complete bright/dim theme contract for the lower page and every dialog. */
+body.theme-bright {
+  color-scheme: light;
+  --lm-theme-bg: #f7faf9;
+  --lm-theme-ink: #071424;
+  --lm-theme-muted: #566575;
+  --lm-theme-card: #ffffff;
+  --lm-theme-soft: #f7faf9;
+  --lm-theme-line: rgba(8, 19, 33, 0.12);
+}
+
+body.theme-dim {
+  color-scheme: dark;
+  --lm-theme-bg: #071424;
+  --lm-theme-ink: #ffffff;
+  --lm-theme-muted: rgba(222, 235, 245, 0.76);
+  --lm-theme-card: #0d1f38;
+  --lm-theme-soft: #0a1a2d;
+  --lm-theme-line: rgba(255, 255, 255, 0.13);
+}
+
+body.theme-bright .lower-site-shell,
+body.theme-dim .lower-site-shell {
+  background: var(--lm-theme-bg);
+}
+
+body.theme-bright .lower-site-shell .ambient-motion-surface,
+body.theme-dim .lower-site-shell .ambient-motion-surface {
+  color: var(--lm-theme-ink);
+}
+
+body.theme-bright .lower-site-shell .kicker,
+body.theme-dim .lower-site-shell .kicker {
+  color: #f97316 !important;
+}
+
+body.theme-bright .marquee-section-heading span,
+body.theme-bright .marquee-section-heading p,
+body.theme-dim .marquee-section-heading span,
+body.theme-dim .marquee-section-heading p,
+body.theme-bright .section-title h2,
+body.theme-bright .section-title > p,
+body.theme-dim .section-title h2,
+body.theme-dim .section-title > p,
+body.theme-bright .trial-experience-copy h2,
+body.theme-bright .trial-experience-copy > p,
+body.theme-dim .trial-experience-copy h2,
+body.theme-dim .trial-experience-copy > p,
+body.theme-bright .devices-heading h2,
+body.theme-bright .devices-heading > p,
+body.theme-dim .devices-heading h2,
+body.theme-dim .devices-heading > p,
+body.theme-bright .setup-header-center h2,
+body.theme-bright .setup-header-center .setup-sub,
+body.theme-dim .setup-header-center h2,
+body.theme-dim .setup-header-center .setup-sub,
+body.theme-bright .reviews-header-center h2,
+body.theme-bright .reviews-header-center .reviews-sub,
+body.theme-dim .reviews-header-center h2,
+body.theme-dim .reviews-header-center .reviews-sub,
+body.theme-bright .pricing-header h2,
+body.theme-bright .pricing-header .pricing-sub,
+body.theme-dim .pricing-header h2,
+body.theme-dim .pricing-header .pricing-sub,
+body.theme-bright .faq-head-col h2,
+body.theme-bright .faq-head-col > p,
+body.theme-dim .faq-head-col h2,
+body.theme-dim .faq-head-col > p,
+body.theme-bright .guides-head-text h2,
+body.theme-bright .guides-head-text p,
+body.theme-dim .guides-head-text h2,
+body.theme-dim .guides-head-text p {
+  color: var(--lm-theme-ink) !important;
+}
+
+body.theme-bright .marquee-section-heading p,
+body.theme-dim .marquee-section-heading p,
+body.theme-bright .section-title > p,
+body.theme-dim .section-title > p,
+body.theme-bright .trial-experience-copy > p,
+body.theme-dim .trial-experience-copy > p,
+body.theme-bright .devices-heading > p,
+body.theme-dim .devices-heading > p,
+body.theme-bright .setup-header-center .setup-sub,
+body.theme-dim .setup-header-center .setup-sub,
+body.theme-bright .reviews-header-center .reviews-sub,
+body.theme-dim .reviews-header-center .reviews-sub,
+body.theme-bright .pricing-header .pricing-sub,
+body.theme-dim .pricing-header .pricing-sub,
+body.theme-bright .faq-head-col > p,
+body.theme-dim .faq-head-col > p,
+body.theme-bright .guides-head-text p,
+body.theme-dim .guides-head-text p {
+  color: var(--lm-theme-muted) !important;
+}
+
+body.theme-dim .supported-device-card,
+body.theme-dim .setup-card,
+body.theme-dim .feedback-grid article,
+body.theme-dim .faq-list details,
+body.theme-dim .guide-card {
+  background: var(--lm-theme-card) !important;
+  border-color: var(--lm-theme-line) !important;
+  color: var(--lm-theme-ink) !important;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22);
+}
+
+body.theme-dim .supported-device-card h3,
+body.theme-dim .setup-card h3,
+body.theme-dim .feedback-grid article h3,
+body.theme-dim .faq-list summary,
+body.theme-dim .guide-card h3 {
+  color: #ffffff !important;
+}
+
+body.theme-dim .supported-device-card p,
+body.theme-dim .setup-card p,
+body.theme-dim .feedback-grid article p,
+body.theme-dim .faq-list details p,
+body.theme-dim .guide-card p {
+  color: rgba(222, 235, 245, 0.74) !important;
+}
+
+body.theme-dim .chat-lines p,
+body.theme-dim .finder,
+body.theme-dim .setting-list,
+body.theme-dim .credential-preview {
+  background-color: rgba(255, 255, 255, 0.055) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.theme-dim .supported-device-card .device-visual {
+  background: #f8fafc !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.theme-bright .supported-device-card,
+body.theme-bright .setup-card,
+body.theme-bright .feedback-grid article,
+body.theme-bright .faq-list details,
+body.theme-bright .guide-card {
+  background: var(--lm-theme-card) !important;
+  border-color: var(--lm-theme-line) !important;
+  color: var(--lm-theme-ink) !important;
+}
+
+/* Bright-mode card internals: the base components were originally designed
+   for navy cards, so their child text needs an explicit light-card palette. */
+body.theme-bright .setup-card > h3,
+body.theme-bright .feedback-grid article h3 {
+  color: #0b1d31 !important;
+}
+
+body.theme-bright .feedback-grid article p,
+body.theme-bright .finder p {
+  color: #53677c !important;
+}
+
+body.theme-bright .chat-lines,
+body.theme-bright .finder,
+body.theme-bright .setting-list,
+body.theme-bright .credential-preview {
+  background: #f4f8fa !important;
+  border-color: rgba(12, 43, 66, 0.14) !important;
+}
+
+body.theme-bright .chat-lines p {
+  color: #344b61 !important;
+  background: #e8f0f4 !important;
+}
+
+body.theme-bright .chat-lines .user {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #0da18f, #059669) !important;
+}
+
+body.theme-bright .finder-buttons button {
+  color: #17324b !important;
+  background: #ffffff !important;
+  border-color: rgba(12, 43, 66, 0.18) !important;
+}
+
+body.theme-bright .finder-buttons button:hover {
+  background: #e8f3f2 !important;
+}
+
+body.theme-bright .finder-buttons button.active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #0da18f, #059669) !important;
+  border-color: #0da18f !important;
+}
+
+body.theme-bright .setting-list label,
+body.theme-bright .credential-preview em {
+  color: #17324b !important;
+}
+
+body.theme-bright .credential-preview b {
+  color: #66798c !important;
+}
+
+/* Checkout modal follows the selected theme; inner white controls stay readable. */
+body.theme-bright .checkout-modal-overlay,
+body.theme-bright .trial-modal-overlay,
+body.theme-bright .guide-modal-backdrop {
+  background: rgba(7, 20, 36, 0.52) !important;
+}
+
+body.theme-bright .checkout-modal-container {
+  background: #eaf6f6 !important;
+  border-color: rgba(255, 255, 255, 0.84) !important;
+  color: #0d1e33 !important;
+  box-shadow: 0 32px 100px rgba(7, 20, 36, 0.34) !important;
+}
+
+body.theme-bright .checkout-modal-header h2 {
+  color: #0d1e33 !important;
+}
+
+body.theme-bright .checkout-modal-header p {
+  color: #556b82 !important;
+}
+
+body.theme-bright .checkout-close-btn {
+  background: #ffffff !important;
+  color: #0d1e33 !important;
+  border-color: rgba(13, 161, 143, 0.24) !important;
+}
+
+body.theme-dim .checkout-modal-container {
+  background: #071424 !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: #ffffff !important;
+}
+
+body.theme-bright .checkout-form-card,
+body.theme-bright .checkout-summary-card,
+body.theme-dim .checkout-form-card,
+body.theme-dim .checkout-summary-card {
+  background: #ffffff !important;
+  color: #0d1e33 !important;
+  border-color: #dceee9 !important;
+}
+
+body.theme-bright .checkout-plan-bar,
+body.theme-dim .checkout-plan-bar {
+  background: #ffffff !important;
+  color: #0d1e33 !important;
+  border-color: #dceee9 !important;
+}
+
+body.theme-bright .checkout-plan-bar .section-label,
+body.theme-dim .checkout-plan-bar .section-label,
+body.theme-bright .checkout-plan-bar .plan-opt-card,
+body.theme-dim .checkout-plan-bar .plan-opt-card,
+body.theme-bright .checkout-plan-bar .plan-opt-card strong,
+body.theme-dim .checkout-plan-bar .plan-opt-card strong {
+  color: #0d1e33 !important;
+}
+
+body.theme-dim .checkout-modal-header h2,
+body.theme-dim .checkout-modal-header p {
+  color: #ffffff !important;
+}
+
+body.theme-dim .checkout-modal-header p {
+  color: rgba(222, 235, 245, 0.74) !important;
+}
+
+/* Free-trial modal is light in day mode and navy in night mode. */
+body.theme-bright .trial-modal-container .trial-card-box {
+  background: #ffffff !important;
+  border-color: rgba(8, 19, 33, 0.13) !important;
+  color: #071424 !important;
+  box-shadow: 0 26px 80px rgba(7, 20, 36, 0.28) !important;
+}
+
+body.theme-bright .trial-modal-container .trial-card-box h2,
+body.theme-bright .trial-modal-container .trial-card-box label {
+  color: #071424 !important;
+}
+
+body.theme-bright .trial-modal-container .trial-card-box p {
+  color: #566575 !important;
+}
+
+body.theme-bright .trial-close-btn {
+  background: #ffffff !important;
+  color: #071424 !important;
+  border-color: rgba(8, 19, 33, 0.14) !important;
+  box-shadow: 0 6px 20px rgba(7, 20, 36, 0.16) !important;
+}
+
+body.theme-dim .trial-modal-container .trial-card-box {
+  background: #0d1f38 !important;
+  color: #ffffff !important;
+}
+
+/* Setup-guide modal also switches surfaces and step-card contrast. */
+body.theme-bright .guide-modal-container {
+  background: #ffffff !important;
+  background-image: none !important;
+  border-color: rgba(13, 161, 143, 0.32) !important;
+  color: #071424 !important;
+  box-shadow: 0 28px 90px rgba(7, 20, 36, 0.3) !important;
+}
+
+body.theme-bright .guide-modal-header h2,
+body.theme-bright .g-step-content h4 {
+  color: #071424 !important;
+}
+
+body.theme-bright .guide-modal-header p,
+body.theme-bright .g-step-content p {
+  color: #566575 !important;
+}
+
+body.theme-bright .g-step-item {
+  background: #f7faf9 !important;
+  border-color: rgba(8, 19, 33, 0.11) !important;
+}
+
+body.theme-bright .guide-modal-close {
+  background: #f7faf9 !important;
+  color: #071424 !important;
+  border-color: rgba(8, 19, 33, 0.13) !important;
+}
+
+body.theme-dim .guide-modal-container {
+  background: linear-gradient(160deg, #0b1c30, #06111f) !important;
+  color: #ffffff !important;
+}
+
+body.theme-dim .g-step-item {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
 .setup-live-status span,
 .trial-request-status span {
   animation: loopmint-live-pulse 2.2s ease-in-out infinite;
@@ -95,6 +600,8 @@ html {
   .trial-route-cta,
   .setup-final-cta .shell > a,
   .guides-final-cta .button-primary,
+  .lower-site-shell::before,
+  .continuous-orbit,
   .setup-guide:target {
     animation: none !important;
   }

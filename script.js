@@ -330,11 +330,11 @@ const currencyConfig = {
 };
 
 const planDataMap = {
-  "1 Month": { EUR: 17, USD: 19, period: { EUR: "/ month", USD: "/ month" } },
-  "6 Months": { EUR: 45, USD: 50, period: { EUR: "/ 6 months", USD: "/ 6 mos" } },
-  "1 Year": { EUR: 75, USD: 82, period: { EUR: "/ year", USD: "/ yr" } },
-  "2 Years + 6 Months Free": { EUR: 130, USD: 143, period: { EUR: "/ 30 months", USD: "/ 30 mos" } },
-  "2 Yrs + 6 Mos Free": { EUR: 130, USD: 143, period: { EUR: "/ 30 months", USD: "/ 30 mos" } }
+  "1 Month": { EUR: 17, USD: 19, original: { EUR: 20, USD: 22 }, period: { EUR: "/ month", USD: "/ month" } },
+  "6 Months": { EUR: 45, USD: 50, original: { EUR: 65, USD: 75 }, period: { EUR: "/ 6 months", USD: "/ 6 mos" } },
+  "1 Year": { EUR: 75, USD: 82, original: { EUR: 90, USD: 99 }, period: { EUR: "/ year", USD: "/ yr" } },
+  "2 Years + 6 Months Free": { EUR: 130, USD: 143, original: { EUR: 180, USD: 199 }, period: { EUR: "/ 30 months", USD: "/ 30 mos" } },
+  "2 Yrs + 6 Mos Free": { EUR: 130, USD: 143, original: { EUR: 180, USD: 199 }, period: { EUR: "/ 30 months", USD: "/ 30 mos" } }
 };
 
 let currentPlan = {
@@ -443,13 +443,18 @@ function setCurrency(curr) {
   const priceCards = document.querySelectorAll(".price-card");
   const pricesEUR = [17, 45, 75, 130];
   const pricesUSD = [19, 50, 82, 143];
+  const originalPricesEUR = [20, 65, 90, 180];
+  const originalPricesUSD = [22, 75, 99, 199];
 
   priceCards.forEach((card, index) => {
-    const amountEl = card.querySelector("strong");
+    const amountEl = card.querySelector(".current-price");
+    const originalAmountEl = card.querySelector(".original-price");
     const buttonEl = card.querySelector("button");
     const chipEl = card.querySelector(".monthly-breakdown-chip");
     const val = curr === "USD" ? pricesUSD[index] : pricesEUR[index];
+    const originalVal = curr === "USD" ? originalPricesUSD[index] : originalPricesEUR[index];
     if (amountEl) amountEl.textContent = `${sym}${val}`;
+    if (originalAmountEl) originalAmountEl.textContent = `${sym}${originalVal}`;
     if (buttonEl) buttonEl.dataset.price = `${sym}${val}`;
     if (chipEl && economizerMatrixData[curr]) {
       chipEl.textContent = economizerMatrixData[curr].chips[index];
@@ -496,8 +501,9 @@ function setCurrency(curr) {
     const priceSpan = card.querySelector(".plan-opt-price");
     if (data && priceSpan) {
       const priceVal = data[curr];
+      const originalPriceVal = data.original[curr];
       const pStr = data.period[curr];
-      priceSpan.textContent = `${sym}${priceVal} ${pStr}`;
+      priceSpan.innerHTML = `<span class="plan-opt-original">${sym}${originalPriceVal}</span><span class="plan-opt-current">${sym}${priceVal} ${pStr}</span>`;
       card.dataset.price = priceVal;
     }
   });
@@ -608,7 +614,13 @@ function updateOrderSummary() {
   }
 
   if (sumPlanName) sumPlanName.textContent = currentPlan.name;
-  if (sumPlanPrice) sumPlanPrice.textContent = `${sym}${currentPlan.price}`;
+  if (sumPlanPrice) {
+    const selectedPlanData = planDataMap[currentPlan.name];
+    const originalPrice = selectedPlanData?.original?.[currentCurrency];
+    sumPlanPrice.innerHTML = originalPrice
+      ? `<span class="summary-original-price">${sym}${originalPrice}</span><span class="summary-current-price">${sym}${currentPlan.price}</span>`
+      : `<span class="summary-current-price">${sym}${currentPlan.price}</span>`;
+  }
   if (sumExtraDevices) {
     sumExtraDevices.textContent = extraDevices === 0
       ? "None added"
@@ -1359,6 +1371,7 @@ function openGuideModal(index) {
   }
 
   modal.style.display = "flex";
+  modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
@@ -1367,12 +1380,13 @@ function closeGuideModal() {
   const modal = document.getElementById("guide-modal");
   if (!modal) return;
   modal.style.display = "none";
+  modal.classList.remove("open");
   modal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
 
 // Bind Guide Cards Click
-document.querySelectorAll(".guides-grid .guide-card").forEach((card, idx) => {
+document.querySelectorAll(".guide-row .guide-card, .guides-grid .guide-card").forEach((card, idx) => {
   card.style.cursor = "pointer";
   card.addEventListener("click", () => {
     openGuideModal(idx);
