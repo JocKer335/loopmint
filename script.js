@@ -330,7 +330,7 @@ const currencyConfig = {
 };
 
 const planDataMap = {
-  "1 Month": { EUR: 17, USD: 19, original: { EUR: 20, USD: 22 }, period: { EUR: "/ month", USD: "/ month" } },
+  "1 Month": { EUR: 12, USD: 13, original: { EUR: 20, USD: 22 }, renewal: { EUR: 17, USD: 19 }, intro: true, period: { EUR: "first month", USD: "first month" } },
   "6 Months": { EUR: 45, USD: 50, original: { EUR: 65, USD: 75 }, period: { EUR: "/ 6 months", USD: "/ 6 mos" } },
   "1 Year": { EUR: 75, USD: 82, original: { EUR: 90, USD: 99 }, period: { EUR: "/ year", USD: "/ yr" } },
   "2 Years + 6 Months Free": { EUR: 130, USD: 143, original: { EUR: 180, USD: 199 }, period: { EUR: "/ 30 months", USD: "/ 30 mos" } },
@@ -346,39 +346,39 @@ let extraDevices = 0;
 const economizerMatrixData = {
   EUR: {
     chips: [
-      "€17.00 / month",
+      "New clients · then €17 / month",
       "€7.50 / mo · Save 56%",
       "€6.25 / mo · Save 63% (€129/yr)",
       "€4.33 / mo · Save 75% (€380 Saved!)"
     ],
-    upfront: ["€17", "€45", "€75", "<strong>€130</strong>"],
+    upfront: ['€12 <span class="txt-green">(first month)</span>', "€45", "€75", "<strong>€130</strong>"],
     monthly: [
-      '<span class="rate-tag rate-base">€17.00 / mo</span>',
+      '<span class="rate-tag rate-base">€12 first month</span>',
       '<span class="rate-tag rate-good">€7.50 / mo</span>',
       '<span class="rate-tag rate-great">€6.25 / mo</span>',
       '<span class="rate-tag rate-best">€4.33 / mo 🔥</span>'
     ],
-    daily: ["€0.57 / day", "€0.25 / day", "€0.21 / day", "<strong>€0.14 / day</strong>"],
+    daily: ['€0.40 / day <span class="txt-green">(first month)</span>', "€0.25 / day", "€0.21 / day", "<strong>€0.14 / day</strong>"],
     total3Yr: [
-      '€510 <span class="txt-red">(30 plan periods)</span>',
+      '€505 <span class="txt-red">(€12 intro + 29 × €17)</span>',
       '€225 <span class="txt-red">(5 plan periods)</span>',
       '€187.50 <span class="txt-amber">(monthly equivalent)</span>',
       '<strong>€130 <span class="txt-green">(Single Payment)</span></strong>'
     ],
     savings: [
-      'Base Rate (€0)',
-      '<span class="save-badge">Save €285 (56% OFF)</span>',
-      '<span class="save-badge save-great">Save €322.50 (63% OFF)</span>',
-      '<span class="save-badge save-best">KEEP €380 CASH (75% OFF) 🔥</span>'
+      '€12 intro, then €17/mo',
+      '<span class="save-badge">Save €280 (55% OFF)</span>',
+      '<span class="save-badge save-great">Save €317.50 (63% OFF)</span>',
+      '<span class="save-badge save-best">KEEP €375 CASH (74% OFF) 🔥</span>'
     ],
     keep: [
-      'Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
+      '<strong>€12 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
       'Everything in 1 Month</li><li>Lower €7.50/mo rate</li><li>Setup Refresh Help',
       'Everything in 6 Months</li><li><strong>63% Discount Rate</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
       '<strong>6 MONTHS FREE</strong> (€45 Value)</li><li><strong>Lowest €4.33/mo Rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 30 Months'
     ],
     lose: [
-      'Lose <strong>€380 in savings</strong></li><li>Highest cost (€17.00/mo)</li><li>Must renew every month</li><li>No Priority Queue status',
+      'Returns to €17/month after the introductory month</li><li>Must renew every month</li><li>No Priority Queue status',
       'Lose <strong>€95 in long-run savings</strong></li><li>Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
       'Lose <strong>€57.50 extra savings</strong> vs long-run plan</li><li>Requires yearly renewal',
       '<div class="zero-loss-badge">LONGEST PLAN • LOWEST MONTHLY RATE</div>'
@@ -386,39 +386,39 @@ const economizerMatrixData = {
   },
   USD: {
     chips: [
-      "$19.00 / month",
+      "New clients · then $19 / month",
       "$8.33 / mo · Save 56%",
       "$6.83 / mo · Save 64% ($146/yr)",
       "$4.77 / mo · Save 75% ($427 Saved!)"
     ],
-    upfront: ["$19", "$50", "$82", "<strong>$143</strong>"],
+    upfront: ['$13 <span class="txt-green">(first month)</span>', "$50", "$82", "<strong>$143</strong>"],
     monthly: [
-      '<span class="rate-tag rate-base">$19.00 / mo</span>',
+      '<span class="rate-tag rate-base">$13 first month</span>',
       '<span class="rate-tag rate-good">$8.33 / mo</span>',
       '<span class="rate-tag rate-great">$6.83 / mo</span>',
       '<span class="rate-tag rate-best">$4.77 / mo 🔥</span>'
     ],
-    daily: ["$0.63 / day", "$0.28 / day", "$0.22 / day", "<strong>$0.16 / day</strong>"],
+    daily: ['$0.43 / day <span class="txt-green">(first month)</span>', "$0.28 / day", "$0.22 / day", "<strong>$0.16 / day</strong>"],
     total3Yr: [
-      '$570 <span class="txt-red">(30 plan periods)</span>',
+      '$564 <span class="txt-red">($13 intro + 29 × $19)</span>',
       '$250 <span class="txt-red">(5 plan periods)</span>',
       '$205 <span class="txt-amber">(monthly equivalent)</span>',
       '<strong>$143 <span class="txt-green">(Single Payment)</span></strong>'
     ],
     savings: [
-      'Base Rate ($0)',
-      '<span class="save-badge">Save $320 (56% OFF)</span>',
-      '<span class="save-badge save-great">Save $365 (64% OFF)</span>',
-      '<span class="save-badge save-best">KEEP $427 CASH (75% OFF) 🔥</span>'
+      '$13 intro, then $19/mo',
+      '<span class="save-badge">Save $314 (56% OFF)</span>',
+      '<span class="save-badge save-great">Save $359 (64% OFF)</span>',
+      '<span class="save-badge save-best">KEEP $421 CASH (75% OFF) 🔥</span>'
     ],
     keep: [
-      'Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
+      '<strong>$13 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
       'Everything in 1 Month</li><li>Lower $8.33/mo rate</li><li>Setup Refresh Help',
       'Everything in 6 Months</li><li><strong>64% Discount Rate</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
       '<strong>6 MONTHS FREE</strong> ($50 Value)</li><li><strong>Lowest $4.77/mo Rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 30 Months'
     ],
     lose: [
-      'Lose <strong>$427 in savings</strong></li><li>Highest cost ($19.00/mo)</li><li>Must renew every month</li><li>No Priority Queue status',
+      'Returns to $19/month after the introductory month</li><li>Must renew every month</li><li>No Priority Queue status',
       'Lose <strong>$107 in long-run savings</strong></li><li>Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
       'Lose <strong>$62 extra savings</strong> vs long-run plan</li><li>Requires yearly renewal',
       '<div class="zero-loss-badge">LONGEST PLAN • LOWEST MONTHLY RATE</div>'
@@ -441,8 +441,8 @@ function setCurrency(curr) {
 
   // Update Page Pricing Cards & Breakdown Chips
   const priceCards = document.querySelectorAll(".price-card");
-  const pricesEUR = [17, 45, 75, 130];
-  const pricesUSD = [19, 50, 82, 143];
+  const pricesEUR = [12, 45, 75, 130];
+  const pricesUSD = [13, 50, 82, 143];
   const originalPricesEUR = [20, 65, 90, 180];
   const originalPricesUSD = [22, 75, 99, 199];
 
@@ -503,7 +503,11 @@ function setCurrency(curr) {
       const priceVal = data[curr];
       const originalPriceVal = data.original[curr];
       const pStr = data.period[curr];
-      priceSpan.innerHTML = `<span class="plan-opt-original">${sym}${originalPriceVal}</span><span class="plan-opt-current">${sym}${priceVal} ${pStr}</span>`;
+      const renewalNote = data.intro
+        ? `<small class="plan-opt-note">Then ${sym}${data.renewal[curr]}/month</small>`
+        : "";
+      priceSpan.classList.toggle("intro-price", Boolean(data.intro));
+      priceSpan.innerHTML = `<span class="plan-opt-original">${sym}${originalPriceVal}</span><span class="plan-opt-current">${sym}${priceVal} ${pStr}</span>${renewalNote}`;
       card.dataset.price = priceVal;
     }
   });
@@ -617,8 +621,12 @@ function updateOrderSummary() {
   if (sumPlanPrice) {
     const selectedPlanData = planDataMap[currentPlan.name];
     const originalPrice = selectedPlanData?.original?.[currentCurrency];
+    const renewalNote = selectedPlanData?.intro
+      ? `<small class="summary-offer-note">First month for new clients · then ${sym}${selectedPlanData.renewal[currentCurrency]}/month</small>`
+      : "";
+    sumPlanPrice.classList.toggle("intro-price", Boolean(selectedPlanData?.intro));
     sumPlanPrice.innerHTML = originalPrice
-      ? `<span class="summary-original-price">${sym}${originalPrice}</span><span class="summary-current-price">${sym}${currentPlan.price}</span>`
+      ? `<span class="summary-original-price">${sym}${originalPrice}</span><span class="summary-current-price">${sym}${currentPlan.price}</span>${renewalNote}`
       : `<span class="summary-current-price">${sym}${currentPlan.price}</span>`;
   }
   if (sumExtraDevices) {
@@ -747,6 +755,9 @@ btnSubmitWhatsapp?.addEventListener("click", () => {
   const fullName = `${firstName} ${lastName}`.trim() || "Customer";
   const priorityRequested = priorityToggleBtn?.classList.contains("active") ? "Yes, when available" : "No";
 
+  const introOfferLine = planDataMap[currentPlan.name]?.intro
+    ? `Offer: First month for new clients; then ${currencyConfig[currentCurrency].symbol}${planDataMap[currentPlan.name].renewal[currentCurrency]}/month\n`
+    : "";
   const message = `Hello LoopMint,\nI would like to place an order.\n\n` +
     `CUSTOMER DETAILS\n` +
     `Name: ${fullName}\n` +
@@ -754,7 +765,7 @@ btnSubmitWhatsapp?.addEventListener("click", () => {
     `WhatsApp: ${fullWhatsAppNumber}\n` +
     `Device: ${device}\n\n` +
     `ORDER DETAILS\n` +
-    `Plan: ${currentPlan.name}\n` +
+    `Plan: ${currentPlan.name}\n` + introOfferLine +
     `Screens: ${1 + extraDevices}\n` +
     `Total shown: ${totalStr}\n` +
     `Payment preference: ${selectedPaymentMethod}\n` +
@@ -769,7 +780,10 @@ btnSubmitWhatsapp?.addEventListener("click", () => {
 btnInquireWhatsapp?.addEventListener("click", () => {
   const planName = currentPlan ? currentPlan.name : "Subscription";
   const planPrice = currentPlan ? `${currencyConfig[currentCurrency].symbol}${currentPlan.price}` : "";
-  const inquireMsg = `Hello LoopMint Sales & Setup! 🟢 I'm interested in the ${planName} plan (${planPrice}) and have a question before completing my order. Can you help me?`;
+  const introText = planDataMap[planName]?.intro
+    ? ` first-month offer for new clients (${planPrice}, then ${currencyConfig[currentCurrency].symbol}${planDataMap[planName].renewal[currentCurrency]}/month)`
+    : ` plan (${planPrice})`;
+  const inquireMsg = `Hello LoopMint Sales & Setup! 🟢 I'm interested in the ${planName}${introText} and have a question before completing my order. Can you help me?`;
   navigateToWhatsApp(`https://wa.me/447597648884?text=${encodeURIComponent(inquireMsg)}`);
 });
 

@@ -8301,6 +8301,20 @@ body.theme-dim .white-section .supported-device-card p {
   letter-spacing: 0.07em;
 }
 
+.intro-price-card .price-amount::before {
+  content: "NORMAL";
+}
+
+.intro-price-card .price-tier {
+  color: #ffd2ad;
+}
+
+.intro-offer-chip {
+  color: #9ff4df;
+  border-color: rgba(45, 212, 191, 0.45);
+  background: rgba(13, 161, 143, 0.14);
+}
+
 .price-card .current-price {
   font-size: 3.65rem;
   text-shadow: 0 0 22px rgba(255, 255, 255, 0.09);
@@ -8314,6 +8328,24 @@ body.theme-dim .white-section .supported-device-card p {
   display: flex;
   align-items: baseline;
   gap: 7px;
+}
+
+.plan-opt-price.intro-price,
+#sum-plan-price.intro-price {
+  flex-wrap: wrap;
+}
+
+.plan-opt-note,
+.summary-offer-note {
+  flex-basis: 100%;
+  color: #557084;
+  font-size: 0.72rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.summary-offer-note {
+  text-align: right;
 }
 
 .plan-opt-price::before,

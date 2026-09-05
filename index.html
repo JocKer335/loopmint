@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260814-4" />
+    <link rel="stylesheet" href="styles.css?v=20260905-1" />
     <link rel="stylesheet" href="motion.css?v=20260902-5" />
 
     <!-- FAVICON & BRAND ICON -->
@@ -1242,12 +1242,12 @@
           <div class="price-grid">
 
             <!-- 1 Month -->
-            <article class="price-card">
+            <article class="price-card intro-price-card">
               <div class="price-card-top">
-                <span class="price-tier">STARTER</span>
+                <span class="price-tier">NEW CLIENT OFFER</span>
                 <h3>1 Month</h3>
-                <div class="price-amount"><span class="original-price">€20</span><strong class="current-price">€17</strong><span class="price-period">/ month</span></div>
-                <div class="monthly-breakdown-chip">€17.00 / month</div>
+                <div class="price-amount"><span class="original-price">€20</span><strong class="current-price">€12</strong><span class="price-period">/ first month</span></div>
+                <div class="monthly-breakdown-chip intro-offer-chip">New clients · then €17 / month</div>
               </div>
               <ul>
                 <li>1 Connection (1 Device)</li>
@@ -1257,7 +1257,7 @@
                 <li>Content guide categories</li>
                 <li>WhatsApp Support</li>
               </ul>
-              <button data-plan="1 Month" data-price="€17">Choose 1 month</button>
+              <button data-plan="1 Month" data-price="€12">Get your first month</button>
             </article>
 
             <!-- 6 Months -->
@@ -1325,7 +1325,7 @@
             <div class="economizer-header">
               <span class="economizer-badge">PLAN COMPARISON</span>
               <h3>Compare the plans over 30 months.</h3>
-              <p>See each upfront price, its effective monthly rate, and the cost difference against repeating the one-month plan.</p>
+              <p>See each upfront price, its effective monthly rate, and the cost difference against the one-month plan. The €12 introductory price is for new clients; later months return to the normal €17 rate.</p>
             </div>
 
             <div class="economizer-table-wrapper">
@@ -1333,7 +1333,7 @@
                 <thead>
                   <tr>
                     <th>Package Comparison</th>
-                    <th>1 Month <span class="sub-hdr">Starter</span></th>
+                    <th>1 Month <span class="sub-hdr">New Client Offer</span></th>
                     <th>6 Months <span class="sub-hdr">Flexible</span></th>
                     <th>1 Year <span class="sub-hdr">Best Value 🎁</span></th>
                     <th class="highlight-col">2 Yrs + 6 Mos Free <span class="sub-hdr">30 Months Total 🔥</span></th>
@@ -1342,43 +1342,44 @@
                 <tbody>
                   <tr id="eco-upfront-row">
                     <td><strong>Upfront Price</strong></td>
-                    <td>€17</td>
+                    <td>€12 <span class="txt-green">(first month)</span></td>
                     <td>€45</td>
                     <td>€75</td>
                     <td class="highlight-cell"><strong>€130</strong></td>
                   </tr>
                   <tr id="eco-monthly-row">
                     <td><strong>Effective Monthly Rate</strong></td>
-                    <td><span class="rate-tag rate-base">€17.00 / mo</span></td>
+                    <td><span class="rate-tag rate-base">€12 first month</span></td>
                     <td><span class="rate-tag rate-good">€7.50 / mo</span></td>
                     <td><span class="rate-tag rate-great">€6.25 / mo</span></td>
                     <td class="highlight-cell"><span class="rate-tag rate-best">€4.33 / mo 🔥</span></td>
                   </tr>
                   <tr id="eco-daily-row">
                     <td><strong>Daily Cost Breakdown</strong></td>
-                    <td>€0.57 / day</td>
+                    <td>€0.40 / day <span class="txt-green">(first month)</span></td>
                     <td>€0.25 / day</td>
                     <td>€0.21 / day</td>
                     <td class="highlight-cell"><strong>€0.14 / day</strong></td>
                   </tr>
                   <tr id="eco-total3yr-row">
                     <td><strong>30-Month Equivalent Cost</strong></td>
-                    <td>€510 <span class="txt-red">(30 plan periods)</span></td>
+                    <td>€505 <span class="txt-red">(€12 intro + 29 × €17)</span></td>
                     <td>€225 <span class="txt-red">(5 plan periods)</span></td>
                     <td>€187.50 <span class="txt-amber">(monthly equivalent)</span></td>
                     <td class="highlight-cell"><strong>€130 <span class="txt-green">(Single Payment)</span></strong></td>
                   </tr>
                   <tr id="eco-savings-row" class="row-savings">
                     <td><strong>Difference vs. 1-Month Plan</strong></td>
-                    <td>Base Rate (€0)</td>
-                    <td><span class="save-badge">Save €285 (56% OFF)</span></td>
-                    <td><span class="save-badge save-great">Save €322.50 (63% OFF)</span></td>
-                    <td class="highlight-cell"><span class="save-badge save-best">KEEP €380 CASH (75% OFF) 🔥</span></td>
+                    <td>€12 intro, then €17/mo</td>
+                    <td><span class="save-badge">Save €280 (55% OFF)</span></td>
+                    <td><span class="save-badge save-great">Save €317.50 (63% OFF)</span></td>
+                    <td class="highlight-cell"><span class="save-badge save-best">KEEP €375 CASH (74% OFF) 🔥</span></td>
                   </tr>
                   <tr id="eco-keep-row">
                     <td><strong>✅ What You Keep</strong></td>
                     <td>
                       <ul class="eco-list keep">
+                        <li><strong>€12 first month for new clients</strong></li>
                         <li>Live &amp; on-demand content</li>
                         <li>WhatsApp Activation</li>
                         <li>1 Active Connection</li>
@@ -1412,8 +1413,7 @@
                     <td><strong>Plan Trade-offs</strong></td>
                     <td>
                       <ul class="eco-list lose">
-                        <li>Lose <strong>€380 in savings</strong></li>
-                        <li>Highest cost (€17.00/mo)</li>
+                        <li>Returns to €17/month after the introductory month</li>
                         <li>Must renew every month</li>
                         <li>No Priority Queue status</li>
                       </ul>
@@ -1674,13 +1674,13 @@
         <div class="checkout-plan-bar">
           <label class="section-label">Select Subscription Plan</label>
           <div class="plan-selector-grid">
-            <button type="button" class="plan-opt-card" data-plan="1 Month" data-price="17" data-period="month">
+            <button type="button" class="plan-opt-card" data-plan="1 Month" data-price="12" data-period="first month">
               <div class="plan-card-top-row">
-                <span class="plan-opt-badge">STARTER</span>
+                <span class="plan-opt-badge">NEW CLIENT OFFER</span>
                 <span class="plan-check-icon">✓</span>
               </div>
               <strong>1 Month</strong>
-              <span class="plan-opt-price"><span class="plan-opt-original">€20</span><span class="plan-opt-current">€17 / month</span></span>
+              <span class="plan-opt-price intro-price"><span class="plan-opt-original">€20</span><span class="plan-opt-current">€12 first month</span><small class="plan-opt-note">Then €17/month</small></span>
             </button>
 
             <button type="button" class="plan-opt-card active" data-plan="6 Months" data-price="45" data-period="6 mos">
@@ -2003,6 +2003,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=20260902-1"></script>
+    <script src="script.js?v=20260905-2"></script>
   </body>
 </html>
