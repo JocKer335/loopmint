@@ -8415,6 +8415,47 @@ body.theme-dim .white-section .supported-device-card p {
   color: #0da18f !important;
 }
 
+/* Five-plan pricing layout and plans without an invented former price. */
+.pricing-section .shell {
+  width: min(1400px, calc(100% - 32px));
+}
+
+.price-grid,
+.plan-selector-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.no-original-price .price-amount::before,
+.no-original-price .plan-opt-price::before,
+#sum-plan-price.no-original-price::before {
+  content: none;
+}
+
+.economizer-table {
+  min-width: 920px !important;
+}
+
+@media (max-width: 1180px) {
+  .simplified-page .price-grid,
+  .plan-selector-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .simplified-page .price-grid,
+  .plan-selector-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .simplified-page .price-grid,
+  .plan-selector-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 @media (max-width: 560px) {
   .price-amount {
     gap: 6px;
