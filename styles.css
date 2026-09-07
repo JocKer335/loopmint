@@ -8376,29 +8376,23 @@ body.theme-dim .white-section .supported-device-card p {
   font-weight: 850;
   position: relative;
   display: inline-block;
-  text-decoration: none;
+  text-decoration-line: line-through;
+  text-decoration-color: #ff7417;
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
 }
 
 .original-price::after,
 .plan-opt-original::after,
 .summary-original-price::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: -3px;
-  width: calc(100% + 6px);
-  height: 1px;
-  border-radius: 999px;
-  background: #ff7417;
-  box-shadow: 0 0 2px rgba(255, 116, 23, 0.22);
-  transform: rotate(-18deg);
-  transform-origin: center;
-  pointer-events: none;
+  content: none;
 }
 
-.original-price::after {
-  height: 1.25px;
+.original-price {
+  text-decoration-line: line-through;
+  text-decoration-color: #ff7417;
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
 }
 
 .plan-opt-current,
