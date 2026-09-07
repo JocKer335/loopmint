@@ -330,11 +330,11 @@ const currencyConfig = {
 };
 
 const planDataMap = {
-  "1 Month": { EUR: 12, USD: 13, original: { EUR: 20, USD: 22 }, renewal: { EUR: 17, USD: 19 }, intro: true, period: { EUR: "first month", USD: "first month" } },
-  "6 Months": { EUR: 55, USD: 61, original: { EUR: 65, USD: 75 }, period: { EUR: "/ 6 months", USD: "/ 6 mos" } },
-  "1 Year": { EUR: 85, USD: 94, original: { EUR: 95, USD: 105 }, period: { EUR: "/ year", USD: "/ yr" } },
-  "2 Years": { EUR: 150, USD: 165, original: { EUR: 180, USD: 199 }, period: { EUR: "/ 2 years", USD: "/ 2 yrs" } },
-  "3 Years": { EUR: 220, USD: 242, original: { EUR: 250, USD: 275 }, period: { EUR: "/ 3 years", USD: "/ 3 yrs" } }
+  "1 Month": { EUR: 12, USD: 14, original: { EUR: 20, USD: 23 }, renewal: { EUR: 17, USD: 20 }, intro: true, period: { EUR: "first month", USD: "first month" } },
+  "6 Months": { EUR: 55, USD: 64, original: { EUR: 65, USD: 75 }, period: { EUR: "/ 6 months", USD: "/ 6 mos" } },
+  "1 Year": { EUR: 85, USD: 99, original: { EUR: 95, USD: 110 }, period: { EUR: "/ year", USD: "/ yr" } },
+  "2 Years": { EUR: 150, USD: 174, original: { EUR: 180, USD: 209 }, period: { EUR: "/ 2 years", USD: "/ 2 yrs" } },
+  "3 Years": { EUR: 220, USD: 255, original: { EUR: 250, USD: 290 }, period: { EUR: "/ 3 years", USD: "/ 3 yrs" } }
 };
 
 let currentPlan = {
@@ -347,10 +347,10 @@ const economizerMatrixData = {
   EUR: {
     chips: [
       "New clients · then €17 / month",
-      "€9.17 / mo · Save 46%",
-      "€7.08 / mo · Save 58% (€119/yr)",
-      "€6.25 / mo · Save 63% (€258 Saved!)",
-      "€6.11 / mo · Save 64% (€387 Saved!)"
+      "€9.17 / mo · Save 15%",
+      "€7.08 / mo · Save 11%",
+      "€6.25 / mo · Save 17%",
+      "€6.11 / month"
     ],
     upfront: ['€12 <span class="txt-green">(first month)</span>', "€55", "€85", "€150", "<strong>€220</strong>"],
     monthly: [
@@ -360,79 +360,79 @@ const economizerMatrixData = {
       '<span class="rate-tag rate-great">€6.25 / mo</span>',
       '<span class="rate-tag rate-best">€6.11 / mo 🔥</span>'
     ],
-    daily: ['€0.40 / day <span class="txt-green">(first month)</span>', "€0.31 / day", "€0.24 / day", "€0.21 / day", "<strong>€0.20 / day</strong>"],
+    daily: ['€0.40 / day <span class="txt-green">(first month)</span>', "€0.30 / day", "€0.23 / day", "€0.21 / day", "<strong>€0.20 / day</strong>"],
     total3Yr: [
-      '€607 <span class="txt-red">(€12 intro + 35 × €17)</span>',
-      '€330 <span class="txt-red">(6 plan periods)</span>',
-      '€255 <span class="txt-amber">(3 plan periods)</span>',
-      '€225 <span class="txt-amber">(monthly equivalent)</span>',
-      '<strong>€220 <span class="txt-green">(Single Payment)</span></strong>'
+      '1 month',
+      '6 months',
+      '12 months',
+      '24 months',
+      '<strong>36 months</strong>'
     ],
     savings: [
-      '€12 intro, then €17/mo',
-      '<span class="save-badge">Save €277 (46% OFF)</span>',
-      '<span class="save-badge save-great">Save €352 (58% OFF)</span>',
-      '<span class="save-badge save-great">Save €382 (63% OFF)</span>',
-      '<span class="save-badge save-best">KEEP €387 CASH (64% OFF) 🔥</span>'
+      '<span class="save-badge">Save €8</span>',
+      '<span class="save-badge">Save €10</span>',
+      '<span class="save-badge save-great">Save €10</span>',
+      '<span class="save-badge save-great">Save €30</span>',
+      '<span class="save-badge save-best">Longest fixed term</span>'
     ],
     keep: [
       '<strong>€12 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
       'Everything in 1 Month</li><li>Lower €9.17/mo rate</li><li>Setup Refresh Help',
-      'Everything in 6 Months</li><li><strong>58% Discount Rate</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
-      'Everything in 1 Year</li><li><strong>€6.25/mo long-run rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 24 Months',
-      'Everything in 2 Years</li><li><strong>Lowest €6.11/mo rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 36 Months'
+      'Everything in 6 Months</li><li><strong>€7.08 monthly equivalent</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
+      '<strong>24 total months</strong></li><li><strong>€6.25 monthly equivalent</strong></li><li>Priority support lane</li><li>Price set for 2 years',
+      '<strong>36 total months</strong></li><li><strong>€6.11 monthly equivalent</strong></li><li>VIP Priority Setup Lane</li><li>Price set for 3 years'
     ],
     lose: [
       'Returns to €17/month after the introductory month</li><li>Must renew every month</li><li>No Priority Queue status',
-      'Lose <strong>€57 in long-run savings</strong></li><li>Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
-      'Lose <strong>€35 extra savings</strong> vs 3 Years</li><li>Requires yearly renewal',
-      'Lose <strong>€5 extra savings</strong> vs 3 Years</li><li>Ends after 24 months',
+      'Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
+      'Requires yearly renewal',
+      'Two-year upfront commitment</li><li>Three-year plan has a slightly lower monthly equivalent',
       '<div class="zero-loss-badge">LONGEST PLAN • LOWEST MONTHLY RATE</div>'
     ]
   },
   USD: {
     chips: [
-      "New clients · then $19 / month",
-      "$10.17 / mo · Save 46%",
-      "$7.83 / mo · Save 59% ($134/yr)",
-      "$6.88 / mo · Save 64% ($291 Saved!)",
-      "$6.72 / mo · Save 65% ($442 Saved!)"
+      "New clients · then $20 / month",
+      "$10.67 / mo · Save 15%",
+      "$8.25 / mo · Save 10%",
+      "$7.25 / mo · Save 17%",
+      "$7.08 / month"
     ],
-    upfront: ['$13 <span class="txt-green">(first month)</span>', "$61", "$94", "$165", "<strong>$242</strong>"],
+    upfront: ['$14 <span class="txt-green">(first month)</span>', "$64", "$99", "$174", "<strong>$255</strong>"],
     monthly: [
-      '<span class="rate-tag rate-base">$13 first month</span>',
-      '<span class="rate-tag rate-good">$10.17 / mo</span>',
-      '<span class="rate-tag rate-great">$7.83 / mo</span>',
-      '<span class="rate-tag rate-great">$6.88 / mo</span>',
-      '<span class="rate-tag rate-best">$6.72 / mo 🔥</span>'
+      '<span class="rate-tag rate-base">$14 first month</span>',
+      '<span class="rate-tag rate-good">$10.67 / mo</span>',
+      '<span class="rate-tag rate-great">$8.25 / mo</span>',
+      '<span class="rate-tag rate-great">$7.25 / mo</span>',
+      '<span class="rate-tag rate-best">$7.08 / mo 🔥</span>'
     ],
-    daily: ['$0.43 / day <span class="txt-green">(first month)</span>', "$0.34 / day", "$0.26 / day", "$0.23 / day", "<strong>$0.22 / day</strong>"],
+    daily: ['$0.47 / day <span class="txt-green">(first month)</span>', "$0.36 / day", "$0.27 / day", "$0.24 / day", "<strong>$0.23 / day</strong>"],
     total3Yr: [
-      '$678 <span class="txt-red">($13 intro + 35 × $19)</span>',
-      '$366 <span class="txt-red">(6 plan periods)</span>',
-      '$282 <span class="txt-amber">(3 plan periods)</span>',
-      '$247.50 <span class="txt-amber">(monthly equivalent)</span>',
-      '<strong>$242 <span class="txt-green">(Single Payment)</span></strong>'
+      '1 month',
+      '6 months',
+      '12 months',
+      '24 months',
+      '<strong>36 months</strong>'
     ],
     savings: [
-      '$13 intro, then $19/mo',
-      '<span class="save-badge">Save $312 (46% OFF)</span>',
-      '<span class="save-badge save-great">Save $396 (58% OFF)</span>',
-      '<span class="save-badge save-great">Save $430.50 (63% OFF)</span>',
-      '<span class="save-badge save-best">KEEP $436 CASH (64% OFF) 🔥</span>'
+      '<span class="save-badge">Introductory offer</span>',
+      '<span class="save-badge">Six-month price</span>',
+      '<span class="save-badge save-great">Annual price</span>',
+      '<span class="save-badge save-great">Two-year price</span>',
+      '<span class="save-badge save-best">Longest fixed term</span>'
     ],
     keep: [
-      '<strong>$13 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
-      'Everything in 1 Month</li><li>Lower $10.17/mo rate</li><li>Setup Refresh Help',
-      'Everything in 6 Months</li><li><strong>58% Discount Rate</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
-      'Everything in 1 Year</li><li><strong>$6.88/mo long-run rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 24 Months',
-      'Everything in 2 Years</li><li><strong>Lowest $6.72/mo rate</strong></li><li>VIP Priority Setup Lane</li><li>Price Locked for 36 Months'
+      '<strong>$14 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
+      'Everything in 1 Month</li><li>Lower $10.67/mo rate</li><li>Setup Refresh Help',
+      'Everything in 6 Months</li><li><strong>$8.25 monthly equivalent</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
+      '<strong>24 total months</strong></li><li><strong>$7.25 monthly equivalent</strong></li><li>Priority support lane</li><li>Price set for 2 years',
+      '<strong>36 total months</strong></li><li><strong>$7.08 monthly equivalent</strong></li><li>VIP Priority Setup Lane</li><li>Price set for 3 years'
     ],
     lose: [
-      'Returns to $19/month after the introductory month</li><li>Must renew every month</li><li>No Priority Queue status',
-      'Lose <strong>$70 in long-run savings</strong></li><li>Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
-      'Lose <strong>$40 extra savings</strong> vs 3 Years</li><li>Requires yearly renewal',
-      'Lose <strong>$5.50 extra savings</strong> vs 3 Years</li><li>Ends after 24 months',
+      'Returns to $20/month after the introductory month</li><li>Must renew every month</li><li>No Priority Queue status',
+      'Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
+      'Requires yearly renewal',
+      'Two-year upfront commitment</li><li>Three-year plan has a slightly lower monthly equivalent',
       '<div class="zero-loss-badge">LONGEST PLAN • LOWEST MONTHLY RATE</div>'
     ]
   }
@@ -454,9 +454,9 @@ function setCurrency(curr) {
   // Update Page Pricing Cards & Breakdown Chips
   const priceCards = document.querySelectorAll(".price-card");
   const pricesEUR = [12, 55, 85, 150, 220];
-  const pricesUSD = [13, 61, 94, 165, 242];
+  const pricesUSD = [14, 64, 99, 174, 255];
   const originalPricesEUR = [20, 65, 95, 180, 250];
-  const originalPricesUSD = [22, 75, 105, 199, 275];
+  const originalPricesUSD = [23, 75, 110, 209, 290];
 
   priceCards.forEach((card, index) => {
     const amountEl = card.querySelector(".current-price");
@@ -466,7 +466,7 @@ function setCurrency(curr) {
     const val = curr === "USD" ? pricesUSD[index] : pricesEUR[index];
     const originalVal = curr === "USD" ? originalPricesUSD[index] : originalPricesEUR[index];
     if (amountEl) amountEl.textContent = `${sym}${val}`;
-    if (originalAmountEl) originalAmountEl.textContent = `${sym}${originalVal}`;
+    if (originalAmountEl && originalVal !== null) originalAmountEl.textContent = `${sym}${originalVal}`;
     if (buttonEl) buttonEl.dataset.price = `${sym}${val}`;
     if (chipEl && economizerMatrixData[curr]) {
       chipEl.textContent = economizerMatrixData[curr].chips[index];
@@ -481,7 +481,7 @@ function setCurrency(curr) {
       if (!row) return;
       const cells = row.querySelectorAll("td");
       // cells[0] is header column
-      for (let i = 0; i < dataArray.length; i++) {
+      for (let i = 0; i < 5; i++) {
         if (cells[i + 1]) {
           if (isList) {
             cells[i + 1].innerHTML = dataArray[i].includes("zero-loss-badge")
@@ -516,7 +516,6 @@ function setCurrency(curr) {
         ? `<small class="plan-opt-note">Then ${sym}${data.renewal[curr]}/month</small>`
         : "";
       priceSpan.classList.toggle("intro-price", Boolean(data.intro));
-      card.classList.toggle("no-original-price", !originalPriceVal);
       const originalMarkup = originalPriceVal
         ? `<span class="plan-opt-original">${sym}${originalPriceVal}</span>`
         : "";
@@ -541,7 +540,7 @@ document.querySelectorAll(".currency-toggle-btn").forEach((btn) => {
   });
 });
 
-function openCheckoutModal(planName = "6 Months", planPrice = "45") {
+function openCheckoutModal(planName = "6 Months", planPrice = "55") {
   if (!checkoutModal) return;
   closeTrialModal();
 
@@ -560,13 +559,15 @@ function openCheckoutModal(planName = "6 Months", planPrice = "45") {
   if (!matchedCard) {
     planOptCards.forEach((card) => {
       let cardPlan = card.dataset.plan.trim().toLowerCase();
-      if (targetName.includes("1 year") && !targetName.includes("2 year") && !targetName.includes("free") && cardPlan.includes("1 year") && !cardPlan.includes("2 year") && !cardPlan.includes("free")) {
+      if (targetName.includes("1 year") && cardPlan.includes("1 year")) {
         matchedCard = card;
       } else if (targetName.includes("1 month") && cardPlan.includes("1 month")) {
         matchedCard = card;
       } else if (targetName.includes("6 month") && cardPlan.includes("6 month")) {
         matchedCard = card;
-      } else if ((targetName.includes("2 year") || targetName.includes("free") || targetName.includes("long")) && (cardPlan.includes("2 year") || cardPlan.includes("free") || cardPlan.includes("30 mo"))) {
+      } else if (targetName.includes("2 year") && cardPlan.includes("2 year")) {
+        matchedCard = card;
+      } else if (targetName.includes("3 year") && cardPlan.includes("3 year")) {
         matchedCard = card;
       }
     });
@@ -632,10 +633,9 @@ function updateOrderSummary() {
     const selectedPlanData = planDataMap[currentPlan.name];
     const originalPrice = selectedPlanData?.original?.[currentCurrency];
     const renewalNote = selectedPlanData?.intro
-      ? `<small class="summary-offer-note">First month for new clients · then ${sym}${selectedPlanData.renewal[currentCurrency]}/month</small>`
+      ? `<small class="summary-offer-note">Then ${sym}${selectedPlanData.renewal[currentCurrency]}/month</small>`
       : "";
     sumPlanPrice.classList.toggle("intro-price", Boolean(selectedPlanData?.intro));
-    sumPlanPrice.classList.toggle("no-original-price", !originalPrice);
     sumPlanPrice.innerHTML = originalPrice
       ? `<span class="summary-original-price">${sym}${originalPrice}</span><span class="summary-current-price">${sym}${currentPlan.price}</span>${renewalNote}`
       : `<span class="summary-current-price">${sym}${currentPlan.price}</span>`;
@@ -1444,9 +1444,9 @@ document.addEventListener("click", (e) => {
   const targetEl = document.querySelector(targetId);
   if (targetEl) {
     e.preventDefault();
-    const navHeight = 90;
+    const navHeight = Math.max(96, siteHeader?.getBoundingClientRect().height || 0);
     const elementPosition = targetEl.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+    const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20;
 
     window.scrollTo({
       top: offsetPosition,
@@ -1461,20 +1461,22 @@ const navLinksArr = document.querySelectorAll(".nav-links a[href^='#']");
 
 function highlightNavOnScroll() {
   const scrollY = window.pageYOffset;
-  navSections.forEach((section) => {
-    const sectionHeight = section.offsetHeight;
-    const sectionTop = section.offsetTop - 120;
-    const sectionId = section.getAttribute("id");
+  const markerY = scrollY + Math.max(130, siteHeader?.getBoundingClientRect().height || 0);
+  let activeSectionId = "";
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      navLinksArr.forEach((link) => {
-        if (link.getAttribute("href") === "#" + sectionId) {
-          link.classList.add("active-nav");
-        } else {
-          link.classList.remove("active-nav");
-        }
-      });
+  navSections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    const sectionTop = rect.top + scrollY;
+    const sectionBottom = sectionTop + rect.height;
+
+    if (markerY >= sectionTop && markerY < sectionBottom) {
+      activeSectionId = section.id;
     }
+  });
+
+  navLinksArr.forEach((link) => {
+    link.classList.toggle("active-nav", link.getAttribute("href") === `#${activeSectionId}`);
   });
 }
 window.addEventListener("scroll", highlightNavOnScroll);
+window.addEventListener("load", highlightNavOnScroll);
