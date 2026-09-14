@@ -334,7 +334,7 @@ const planDataMap = {
   "6 Months": { EUR: 55, USD: 64, original: { EUR: 65, USD: 75 }, period: { EUR: "/ 6 months", USD: "/ 6 mos" } },
   "1 Year": { EUR: 85, USD: 99, original: { EUR: 95, USD: 110 }, period: { EUR: "/ year", USD: "/ yr" } },
   "2 Years": { EUR: 150, USD: 174, original: { EUR: 180, USD: 209 }, period: { EUR: "/ 2 years", USD: "/ 2 yrs" } },
-  "3 Years": { EUR: 220, USD: 255, original: { EUR: 250, USD: 290 }, period: { EUR: "/ 3 years", USD: "/ 3 yrs" } }
+  "3 Years": { EUR: 200, USD: 232, original: { EUR: 250, USD: 290 }, period: { EUR: "/ 3 years", USD: "/ 3 yrs" } }
 };
 
 let currentPlan = {
@@ -350,17 +350,17 @@ const economizerMatrixData = {
       "€9.17 / mo · Save 15%",
       "€7.08 / mo · Save 11%",
       "€6.25 / mo · Save 17%",
-      "€6.11 / month"
+      "€5.56 / mo · Save 20%"
     ],
-    upfront: ['€12 <span class="txt-green">(first month)</span>', "€55", "€85", "€150", "<strong>€220</strong>"],
+    upfront: ['€12 <span class="txt-green">(first month)</span>', "€55", "€85", "€150", "<strong>€200</strong>"],
     monthly: [
       '<span class="rate-tag rate-base">€12 first month</span>',
       '<span class="rate-tag rate-good">€9.17 / mo</span>',
       '<span class="rate-tag rate-great">€7.08 / mo</span>',
       '<span class="rate-tag rate-great">€6.25 / mo</span>',
-      '<span class="rate-tag rate-best">€6.11 / mo 🔥</span>'
+      '<span class="rate-tag rate-best">€5.56 / mo 🔥</span>'
     ],
-    daily: ['€0.40 / day <span class="txt-green">(first month)</span>', "€0.30 / day", "€0.23 / day", "€0.21 / day", "<strong>€0.20 / day</strong>"],
+    daily: ['€0.40 / day <span class="txt-green">(first month)</span>', "€0.30 / day", "€0.23 / day", "€0.21 / day", "<strong>€0.18 / day</strong>"],
     total3Yr: [
       '1 month',
       '6 months',
@@ -380,7 +380,7 @@ const economizerMatrixData = {
       'Everything in 1 Month</li><li>Lower €9.17/mo rate</li><li>Setup Refresh Help',
       'Everything in 6 Months</li><li><strong>€7.08 monthly equivalent</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
       '<strong>24 total months</strong></li><li><strong>€6.25 monthly equivalent</strong></li><li>Priority support lane</li><li>Price set for 2 years',
-      '<strong>36 total months</strong></li><li><strong>€6.11 monthly equivalent</strong></li><li>VIP Priority Setup Lane</li><li>Price set for 3 years'
+      '<strong>36 total months</strong></li><li><strong>€5.56 monthly equivalent</strong></li><li>VIP Priority Setup Lane</li><li>Price set for 3 years'
     ],
     lose: [
       'Returns to €17/month after the introductory month</li><li>Must renew every month</li><li>No Priority Queue status',
@@ -396,17 +396,17 @@ const economizerMatrixData = {
       "$10.67 / mo · Save 15%",
       "$8.25 / mo · Save 10%",
       "$7.25 / mo · Save 17%",
-      "$7.08 / month"
+      "$6.44 / mo · Save 20%"
     ],
-    upfront: ['$14 <span class="txt-green">(first month)</span>', "$64", "$99", "$174", "<strong>$255</strong>"],
+    upfront: ['$14 <span class="txt-green">(first month)</span>', "$64", "$99", "$174", "<strong>$232</strong>"],
     monthly: [
       '<span class="rate-tag rate-base">$14 first month</span>',
       '<span class="rate-tag rate-good">$10.67 / mo</span>',
       '<span class="rate-tag rate-great">$8.25 / mo</span>',
       '<span class="rate-tag rate-great">$7.25 / mo</span>',
-      '<span class="rate-tag rate-best">$7.08 / mo 🔥</span>'
+      '<span class="rate-tag rate-best">$6.44 / mo 🔥</span>'
     ],
-    daily: ['$0.47 / day <span class="txt-green">(first month)</span>', "$0.36 / day", "$0.27 / day", "$0.24 / day", "<strong>$0.23 / day</strong>"],
+    daily: ['$0.47 / day <span class="txt-green">(first month)</span>', "$0.36 / day", "$0.27 / day", "$0.24 / day", "<strong>$0.21 / day</strong>"],
     total3Yr: [
       '1 month',
       '6 months',
@@ -426,7 +426,7 @@ const economizerMatrixData = {
       'Everything in 1 Month</li><li>Lower $10.67/mo rate</li><li>Setup Refresh Help',
       'Everything in 6 Months</li><li><strong>$8.25 monthly equivalent</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
       '<strong>24 total months</strong></li><li><strong>$7.25 monthly equivalent</strong></li><li>Priority support lane</li><li>Price set for 2 years',
-      '<strong>36 total months</strong></li><li><strong>$7.08 monthly equivalent</strong></li><li>VIP Priority Setup Lane</li><li>Price set for 3 years'
+      '<strong>36 total months</strong></li><li><strong>$6.44 monthly equivalent</strong></li><li>VIP Priority Setup Lane</li><li>Price set for 3 years'
     ],
     lose: [
       'Returns to $20/month after the introductory month</li><li>Must renew every month</li><li>No Priority Queue status',
@@ -453,8 +453,8 @@ function setCurrency(curr) {
 
   // Update Page Pricing Cards & Breakdown Chips
   const priceCards = document.querySelectorAll(".price-card");
-  const pricesEUR = [12, 55, 85, 150, 220];
-  const pricesUSD = [14, 64, 99, 174, 255];
+  const pricesEUR = [12, 55, 85, 150, 200];
+  const pricesUSD = [14, 64, 99, 174, 232];
   const originalPricesEUR = [20, 65, 95, 180, 250];
   const originalPricesUSD = [23, 75, 110, 209, 290];
 
