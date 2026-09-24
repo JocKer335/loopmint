@@ -1,179 +1,8 @@
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector("[data-nav]");
-const cinema = document.querySelector(".scroll-cinema");
-const cinemaChapters = [...document.querySelectorAll(".cinema-chapter")];
-const cinemaProgress = document.querySelector(".cinema-progress span");
-const scrollFrame = document.getElementById("scroll-frame");
-const scrollFrameGhost = document.getElementById("scroll-frame-ghost");
-const frameBadge = document.getElementById("frame-badge");
-
-const frameFilms = [
-  { label: "Film 01", folder: "film-01", count: 96 },
-  { label: "Film 02", folder: "film-02", count: 96 },
-  { label: "Film 03", folder: "film-03", count: 96 },
-  { label: "Film 04", folder: "film-04", count: 144 },
-  { label: "Film 05", folder: "film-05", count: 120 }
-];
-const frameCache = new Set();
-let currentFrameSrc = "";
-
 requestAnimationFrame(() => {
   document.body.classList.add("is-ready");
 });
-
-const heroBackgroundVideo = document.querySelector(".hero-nature-video");
-if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  heroBackgroundVideo?.pause();
-}
-
-function createLogoMarquee(label, cards, direction = "left") {
-  const section = document.createElement("section");
-  section.className = "logo-marquee-block";
-
-  const viewport = document.createElement("div");
-  viewport.className = `logo-marquee-viewport marquee-${direction}`;
-  viewport.setAttribute("role", "region");
-  viewport.setAttribute("aria-label", label);
-
-  const track = document.createElement("div");
-  track.className = "logo-marquee-track";
-
-  const group = document.createElement("div");
-  group.className = "logo-marquee-group";
-  cards.forEach((card) => group.appendChild(card));
-
-  const clone = group.cloneNode(true);
-  clone.classList.add("is-clone");
-  clone.setAttribute("aria-hidden", "true");
-  clone.querySelectorAll("img").forEach((image) => image.setAttribute("alt", ""));
-
-  track.append(group, clone);
-  viewport.appendChild(track);
-  section.appendChild(viewport);
-  return section;
-}
-
-const contentBoard = document.querySelector("#content .content-board");
-if (contentBoard) {
-  const cards = [...contentBoard.querySelectorAll(":scope > .cat-card")];
-  const channelCards = cards.slice(0, 16);
-  const playerCards = cards.slice(16);
-
-  if (channelCards.length && playerCards.length) {
-    contentBoard.classList.add("is-marquee-board");
-    contentBoard.setAttribute("aria-label", "Channels, streaming services, and supported IPTV players");
-    contentBoard.replaceChildren();
-
-    const channelsHeader = document.createElement("div");
-    channelsHeader.className = "marquee-section-heading";
-    channelsHeader.innerHTML = "<span>Channels &amp; services</span><p>Live sport, television, films, and on-demand libraries.</p>";
-
-    const playersHeader = document.createElement("div");
-    playersHeader.className = "marquee-section-heading players-heading";
-    playersHeader.innerHTML = "<span>Supported players</span><p>Popular IPTV apps for televisions, sticks, boxes, phones, and computers.</p>";
-
-    contentBoard.append(
-      channelsHeader,
-      createLogoMarquee("Channels and services, first row", channelCards.slice(0, 8), "left"),
-      createLogoMarquee("Channels and services, second row", channelCards.slice(8), "right"),
-      playersHeader,
-      createLogoMarquee("Supported IPTV players", playerCards, "left")
-    );
-  }
-}
-
-const heroSection = document.querySelector(".hero");
-const channelStats = document.getElementById("stat-band");
-if (heroSection && channelStats) {
-  heroSection.insertAdjacentElement("afterend", channelStats);
-}
-
-let ticking = false;
-const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-const padFrame = (frame) => String(frame).padStart(3, "0");
-const frameSrc = (film, frame) => `assets/frames/${film.folder}/frame-${padFrame(frame)}.jpg`;
-
-function preloadFrame(src) {
-  if (frameCache.has(src)) return;
-  frameCache.add(src);
-  const image = new Image();
-  image.src = src;
-}
-
-if (cinema && !cinema.hidden) {
-  frameFilms.forEach((film) => {
-    for (let frame = 1; frame <= Math.min(10, film.count); frame += 1) {
-      preloadFrame(frameSrc(film, frame));
-    }
-  });
-}
-
-function setScrollFrame(filmIndex, frameNumber) {
-  const film = frameFilms[filmIndex];
-  const src = frameSrc(film, frameNumber);
-  if (!scrollFrame || src === currentFrameSrc) return;
-
-  if (scrollFrameGhost) {
-    scrollFrameGhost.src = currentFrameSrc || src;
-    scrollFrameGhost.style.opacity = currentFrameSrc ? "1" : "0";
-    window.setTimeout(() => {
-      scrollFrameGhost.style.opacity = "0";
-    }, 120);
-  }
-
-  scrollFrame.src = src;
-  currentFrameSrc = src;
-
-  if (frameBadge) {
-    frameBadge.textContent = `${film.label} / Frame ${padFrame(frameNumber)}`;
-  }
-
-  for (let offset = 1; offset <= 4; offset += 1) {
-    preloadFrame(frameSrc(film, clamp(frameNumber + offset, 1, film.count)));
-    preloadFrame(frameSrc(film, clamp(frameNumber - offset, 1, film.count)));
-  }
-}
-
-function updateScrollCinema() {
-  if (!cinema || !cinemaChapters.length) return;
-  const viewport = window.innerHeight || 1;
-  let activeIndex = 0;
-  let activeProgress = 0;
-
-  cinemaChapters.forEach((chapter, index) => {
-    const rect = chapter.getBoundingClientRect();
-    const progress = clamp((viewport - rect.top) / (viewport + rect.height), 0, 1);
-    if (rect.top <= viewport * 0.62 && rect.bottom >= viewport * 0.28) {
-      activeIndex = index;
-      activeProgress = progress;
-    }
-  });
-
-  const film = frameFilms[activeIndex];
-  const frameNumber = clamp(Math.round(activeProgress * (film.count - 1)) + 1, 1, film.count);
-  setScrollFrame(activeIndex, frameNumber);
-
-  if (cinemaProgress) {
-    cinemaProgress.style.width = `${Math.round(activeProgress * 100)}%`;
-  }
-}
-
-window.addEventListener("scroll", () => {
-  if (ticking) return;
-  ticking = true;
-  requestAnimationFrame(() => {
-    updateScrollCinema();
-    ticking = false;
-  });
-}, { passive: true });
-
-window.addEventListener("resize", updateScrollCinema);
-updateScrollCinema();
-window.addEventListener("mousemove", (event) => {
-  if (!cinema) return;
-  cinema.style.setProperty("--cursor-x", `${Math.round((event.clientX / window.innerWidth) * 100)}%`);
-  cinema.style.setProperty("--cursor-y", `${Math.round((event.clientY / window.innerHeight) * 100)}%`);
-}, { passive: true });
 
 navToggle?.addEventListener("click", () => {
   const open = navLinks.classList.toggle("open");
@@ -190,33 +19,33 @@ navLinks?.addEventListener("click", (event) => {
 const features = {
   sport: {
     label: "Live sport",
-    badge: "LIVE SPORT",
-    title: "Match-day shelf with backup categories, replay labels, and clear event grouping.",
-    tags: ["⚽ Football", "🥊 UFC", "🏎️ Formula 1", "🏀 Basketball", "🥊 Boxing", "⛳ Golf", "🎾 Tennis"]
+    badge: "SPORT OPTIONS",
+    title: "Browse the sport categories available in your trial and check the events you want to watch.",
+    tags: ["⚽ Football", "🏎️ Motorsport", "🏀 Basketball", "🥊 Combat sport", "⛳ Golf", "🎾 Tennis"]
   },
   films: {
     label: "Films and box sets",
-    badge: "CINEMA & VOD",
-    title: "Original poster-style shelves for film nights, series, documentaries, and 4K cinema lists.",
-    tags: ["🍿 4K Cinema", "🎬 New Releases", "📺 HBO & Netflix", "🎭 Drama Series", "💥 Action & Sci-Fi", "🏆 Award Winners"]
+    badge: "FILMS & SERIES",
+    title: "Browse films, series, and documentaries in a simple on-demand guide.",
+    tags: ["🍿 Film nights", "🎬 Recent additions", "📺 Series", "🎭 Drama", "💥 Action", "📚 Documentaries"]
   },
   channels: {
     label: "Regional channels",
-    badge: "GLOBAL CHANNELS",
-    title: "Language packs and regional groups make local and international TV browsing feel effortless.",
-    tags: ["🇮🇪 Irish Channels", "🇬🇧 UK Premier", "🇪🇺 European TV", "🇺🇸 USA Network", "🌐 Global Feeds", "📡 Local News"]
+    badge: "REGIONAL OPTIONS",
+    title: "Ask which language and regional categories are available where you live.",
+    tags: ["🌐 Languages", "📺 Local categories", "📰 News", "🧭 Regional groups", "🔎 Search", "💬 Ask support"]
   },
   kids: {
     label: "Kids and family",
-    badge: "FAMILY SAFE",
-    title: "Family categories sit behind a parental PIN code with custom subtitle preferences.",
-    tags: ["🧸 Cartoons", "🏰 Disney+", "🚀 Nickelodeon", "🦁 Family Movies", "🔒 PIN Lock", "💬 Subtitles"]
+    badge: "FAMILY VIEWING",
+    title: "Keep family viewing easy to find and check which controls your player supports.",
+    tags: ["🧸 Animation", "🎬 Family films", "📺 Kids' categories", "🔒 Player controls", "💬 Subtitles"]
   },
   catchup: {
     label: "Guide and catch-up",
-    badge: "EPG & REPLAY",
-    title: "A clean interactive guide preview shows 7-day replay labels, date filters, and instant zapping.",
-    tags: ["📅 7-Day Catchup", "📺 Live EPG Guide", "⏮️ Replay Matches", "⏱️ Time-Shift", "⚡ Fast Zapping", "🔍 Instant Search"]
+    badge: "GUIDE FEATURES",
+    title: "Use programme information and replay options where they are available.",
+    tags: ["📅 Programme guide", "🔍 Search", "⭐ Favourites", "⏮️ Replay where offered", "📱 Device controls"]
   }
 };
 
@@ -308,7 +137,7 @@ const sumDiscountStatus = document.getElementById("sum-discount-status");
 const sumTotalToday = document.getElementById("sum-total-today");
 const btnSubmitWhatsapp = document.getElementById("btn-submit-whatsapp");
 const btnInquireWhatsapp = document.getElementById("btn-inquire-whatsapp");
-let selectedPaymentMethod = document.querySelector(".payment-opt-card.active")?.dataset.pm || "Link (Stripe)";
+let selectedPaymentMethod = document.querySelector(".payment-opt-card.active")?.dataset.pm || "Card link";
 function navigateToWhatsApp(url) {
   if (typeof window.trackLoopMintWhatsAppContact === "function") {
     const destination = url.includes("447907504571") ? "support" : "sales";
@@ -378,13 +207,13 @@ const economizerMatrixData = {
     keep: [
       '<strong>€12 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
       'Everything in 1 Month</li><li>Lower €9.17/mo rate</li><li>Setup Refresh Help',
-      'Everything in 6 Months</li><li><strong>€7.08 monthly equivalent</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
-      '<strong>24 total months</strong></li><li><strong>€6.25 monthly equivalent</strong></li><li>Priority support lane</li><li>Price set for 2 years',
-      '<strong>36 total months</strong></li><li><strong>€5.56 monthly equivalent</strong></li><li>VIP Priority Setup Lane</li><li>Price set for 3 years'
+      'Everything in 6 Months</li><li><strong>€7.08 monthly equivalent</strong></li><li>Setup guidance</li><li>15% OFF Multi-Screen Perks',
+      '<strong>24 total months</strong></li><li><strong>€6.25 monthly equivalent</strong></li><li>Support for active plans</li><li>Price set for 2 years',
+      '<strong>36 total months</strong></li><li><strong>€5.56 monthly equivalent</strong></li><li>Setup guidance</li><li>Price set for 3 years'
     ],
     lose: [
-      'Returns to €17/month after the introductory month</li><li>Must renew every month</li><li>No Priority Queue status',
-      'Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
+      'Returns to €17/month after the introductory month</li><li>Must renew every month</li><li>Monthly renewal needed',
+      'Higher rate than 1 Year</li><li>Must renew twice per year</li><li>Shorter price commitment',
       'Requires yearly renewal',
       'Two-year upfront commitment</li><li>Three-year plan has a slightly lower monthly equivalent',
       '<div class="zero-loss-badge">LONGEST PLAN • LOWEST MONTHLY RATE</div>'
@@ -424,13 +253,13 @@ const economizerMatrixData = {
     keep: [
       '<strong>$14 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
       'Everything in 1 Month</li><li>Lower $10.67/mo rate</li><li>Setup Refresh Help',
-      'Everything in 6 Months</li><li><strong>$8.25 monthly equivalent</strong></li><li>Priority Setup Queue</li><li>15% OFF Multi-Screen Perks',
-      '<strong>24 total months</strong></li><li><strong>$7.25 monthly equivalent</strong></li><li>Priority support lane</li><li>Price set for 2 years',
-      '<strong>36 total months</strong></li><li><strong>$6.44 monthly equivalent</strong></li><li>VIP Priority Setup Lane</li><li>Price set for 3 years'
+      'Everything in 6 Months</li><li><strong>$8.25 monthly equivalent</strong></li><li>Setup guidance</li><li>15% OFF Multi-Screen Perks',
+      '<strong>24 total months</strong></li><li><strong>$7.25 monthly equivalent</strong></li><li>Support for active plans</li><li>Price set for 2 years',
+      '<strong>36 total months</strong></li><li><strong>$6.44 monthly equivalent</strong></li><li>Setup guidance</li><li>Price set for 3 years'
     ],
     lose: [
-      'Returns to $20/month after the introductory month</li><li>Must renew every month</li><li>No Priority Queue status',
-      'Higher rate than 1 Year</li><li>Must renew twice per year</li><li>No VIP setup priority',
+      'Returns to $20/month after the introductory month</li><li>Must renew every month</li><li>Monthly renewal needed',
+      'Higher rate than 1 Year</li><li>Must renew twice per year</li><li>Shorter price commitment',
       'Requires yearly renewal',
       'Two-year upfront commitment</li><li>Three-year plan has a slightly lower monthly equivalent',
       '<div class="zero-loss-badge">LONGEST PLAN • LOWEST MONTHLY RATE</div>'
@@ -702,10 +531,10 @@ priorityToggleBtn?.addEventListener("click", () => {
   const isActive = priorityToggleBtn.classList.contains("active");
   if (isActive) {
     priorityToggleBtn.classList.remove("active");
-    priorityToggleBtn.textContent = "Disabled";
+    priorityToggleBtn.textContent = "Not requested";
   } else {
     priorityToggleBtn.classList.add("active");
-    priorityToggleBtn.textContent = "Enabled (Free)";
+    priorityToggleBtn.textContent = "Requested";
   }
 });
 
@@ -780,7 +609,7 @@ btnSubmitWhatsapp?.addEventListener("click", () => {
     `Screens: ${1 + extraDevices}\n` +
     `Total shown: ${totalStr}\n` +
     `Payment preference: ${selectedPaymentMethod}\n` +
-    `Priority setup requested: ${priorityRequested}\n\n` +
+    `Setup help requested: ${priorityRequested}\n\n` +
     `Please confirm availability and send the next steps on WhatsApp.`;
 
   const encodedMsg = encodeURIComponent(message);
@@ -811,37 +640,6 @@ window.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && checkoutModal?.classList.contains("open")) {
     closeCheckoutModal();
   }
-});
-
-const recommendations = {
-  sport: ["Sport-first journey", "Lead with match nights, event grouping, backup categories, and fast setup."],
-  films: ["Film-night journey", "Lead with original shelves, subtitle preferences, 4K labels, and favourites."],
-  kids: ["Family-safe journey", "Lead with parental-code controls, simple device instructions, and support reassurance."],
-  global: ["Global-pack journey", "Lead with regional packs, language groups, international news, and travel-friendly device support."]
-};
-
-document.querySelectorAll(".rec-chips button").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".rec-chips button").forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-    const [title, body] = recommendations[button.dataset.rec];
-    document.getElementById("rec-output").innerHTML = `<b>${title}</b><p>${body}</p>`;
-  });
-});
-
-const regions = {
-  Europe: "Europe pack: English, French, Spanish, Portuguese, Italian, German, and Nordic category groups. Placeholder availability.",
-  Africa: "Africa pack: North African, West African, East African, and French-language groups. Placeholder availability.",
-  Americas: "Americas pack: US, Canadian, Latin American, Spanish-language, and Portuguese-language groups. Placeholder availability.",
-  Asia: "Asia pack: South Asian, Middle Eastern, East Asian, and global news groups. Placeholder availability."
-};
-
-document.querySelectorAll(".dot").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".dot").forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-    document.getElementById("coverage-result").textContent = regions[button.dataset.region];
-  });
 });
 
 const faqSearch = document.getElementById("faq-search");
@@ -1286,7 +1084,7 @@ document.addEventListener("click", () => {
   });
 });
 
-/* EXIT INTENT POPUP LOGIC (Disabled auto-popup on cursor leave) */
+/* EXIT INTENT POPUP LOGIC (Not requested auto-popup on cursor leave) */
 /*
 let exitIntentTriggered = false;
 document.addEventListener("mouseleave", (e) => {
@@ -1301,127 +1099,6 @@ document.addEventListener("mouseleave", (e) => {
 });
 */
 
-
-// -------------------------------------------------------------
-// INTERACTIVE SETUP GUIDES ENGINE
-// -------------------------------------------------------------
-const guidesData = [
-  {
-    tag: "SETUP GUIDE",
-    title: "Smart TV Setup in 3 Minutes",
-    sub: "Step-by-step instructions for LG WebOS, Samsung Tizen, and Sony Android / Google TVs.",
-    steps: [
-      { num: "01", title: "Download Recommended Player App", desc: "Open your Smart TV App Store (LG Content Store, Samsung Apps, or Google Play). Search for 'IBO Player Pro', 'IPTV Smarters Pro', or 'TiviMate' and install it." },
-      { num: "02", title: "Select 'Login with Xtream Codes API'", desc: "Launch the app on your TV and select 'Login with Xtream Codes' or 'Add Playlist'." },
-      { num: "03", title: "Enter Your WhatsApp Activation Credentials", desc: "Input your Server Portal URL, Username, and Password provided in your WhatsApp activation message." },
-      { num: "04", title: "Load Channels & Enjoy 4K Viewing", desc: "Click 'Add User'. Channels, EPG guide, and VOD movies will sync automatically within 10 seconds." }
-    ],
-    tip: "💡 Pro Tip: For Samsung/LG TVs, IBO Player Pro or IPTV Smarters Pro offer the fastest zapping speeds."
-  },
-  {
-    tag: "SPORT GUIDE",
-    title: "Match Night & 4K 60fps Setup",
-    sub: "Optimize your playback settings for 60fps live sports, PPV fight nights, and zero-buffering.",
-    steps: [
-      { num: "01", title: "Enable Hardware Acceleration (HW+)", desc: "Go to App Settings -> Playback -> Video Decoder. Switch from 'SW' (Software) to 'HW+' (Hardware Accelerated) for smooth 60fps playback." },
-      { num: "02", title: "Set Buffer Size to 5 Seconds", desc: "In Stream Buffer settings, select 'Normal / 5 Seconds'. This absorbs minor Wi-Fi jitter during heavy match broadcasts." },
-      { num: "03", title: "Save Main Sports Channels to Favorites", desc: "Long-press or press 'Yellow Button' on your remote over Premier League, UFC, and F1 channels to pin them to your Favorites list." },
-      { num: "04", title: "Use Backup Feeds for Peak Fixtures", desc: "If an official broadcast encounters server load, tap the 'Backup Feed 2' stream for uninterrupted 1080p60 viewing." }
-    ],
-    tip: "⚡ Pro Tip: Using an Ethernet cable instead of Wi-Fi guarantees zero lag during high-demand derby matches!"
-  },
-  {
-    tag: "FAMILY PROTECTION",
-    title: "Kids Mode & Parental Controls",
-    sub: "Protect adult categories and keep children's cartoons upfront with a 4-digit PIN.",
-    steps: [
-      { num: "01", title: "Open Parental Control Settings", desc: "Navigate to App Settings -> Parental Control / Security." },
-      { num: "02", title: "Set a Master 4-Digit Security PIN", desc: "Enter a private 4-digit PIN code (e.g., 1234) and confirm it." },
-      { num: "03", title: "Lock Specific Category Groups", desc: "Toggle 'Lock Adult', 'Lock Midnight', and any mature movie folders." },
-      { num: "04", title: "Pin Kids & Animation to Top Home Shelf", desc: "Go to Channel Groups -> Kids -> Pin to Home Shelf so children can browse cartoons safely with one click." }
-    ],
-    tip: "🔒 Pro Tip: You can also lock settings changes behind the PIN so kids cannot modify app preferences."
-  },
-  {
-    tag: "ACCOUNT PORTAL",
-    title: "Plan Invoices & Renewal Portal Guide",
-    sub: "Track active days, download PDF invoices, and manage extra screen add-ons with zero hidden fees.",
-    steps: [
-      { num: "01", title: "Access Customer Portal", desc: "Visit your member link at loopmint.tv/portal on any phone or laptop browser." },
-      { num: "02", title: "Enter Registered WhatsApp Phone Number", desc: "Type your registered phone number to receive a 1-click WhatsApp security login code." },
-      { num: "03", title: "View Active Days & Subscriptions", desc: "Check exact expiration dates, active device connections, and download official PDF tax invoices." },
-      { num: "04", title: "Renew or Add Extra TV Screens with 15% OFF", desc: "Select 'Renew Plan' or 'Add Extra TV' anytime before expiration to automatically apply your 15% multi-screen discount." }
-    ],
-    tip: "💳 Pro Tip: All renewals are manual. We NEVER charge your card automatically."
-  },
-  {
-    tag: "DEVICE COMPATIBILITY",
-    title: "Selecting the Best App Player for Your Device",
-    sub: "Recommended top-rated player apps for Fire Stick, Apple TV, Shield TV, Windows, and Android.",
-    steps: [
-      { num: "01", title: "Amazon Fire Stick / Fire TV", desc: "Recommended Apps: TiviMate Premium (Best EPG & zapping), XCIPTV, or Downloader App Method." },
-      { num: "02", title: "Apple TV / iPhone / iPad", desc: "Recommended Apps: IPTVX, Smarters Pro Lite, or GSE Smart IPTV." },
-      { num: "03", title: "Nvidia Shield / Android TV Box", desc: "Recommended Apps: TiviMate, OTT Navigator, or Sparkle TV Player." },
-      { num: "04", title: "Windows PC & Apple Mac", desc: "Recommended Apps: IPTV Smarters Desktop or VLC Media Player." }
-    ],
-    tip: "📱 Pro Tip: The Sales & Setup team can send the correct installation route for your Fire Stick model."
-  }
-];
-
-function openGuideModal(index) {
-  const guide = guidesData[index] || guidesData[0];
-  const modal = document.getElementById("guide-modal");
-  if (!modal) return;
-
-  document.getElementById("gm-tag").textContent = guide.tag;
-  document.getElementById("gm-title").textContent = guide.title;
-  document.getElementById("gm-sub").textContent = guide.sub;
-
-  const stepsContainer = document.getElementById("gm-steps-container");
-  if (stepsContainer) {
-    stepsContainer.innerHTML = guide.steps.map((st) => `
-      <div class="g-step-item">
-        <span class="g-step-num">${st.num}</span>
-        <div class="g-step-content">
-          <h4>${st.title}</h4>
-          <p>${st.desc}</p>
-        </div>
-      </div>
-    `).join("");
-  }
-
-  const tipBox = document.getElementById("gm-tip-box");
-  if (tipBox) {
-    tipBox.textContent = guide.tip;
-  }
-
-  modal.style.display = "flex";
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-}
-
-function closeGuideModal() {
-  const modal = document.getElementById("guide-modal");
-  if (!modal) return;
-  modal.style.display = "none";
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
-
-// Bind Guide Cards Click
-document.querySelectorAll(".guide-row .guide-card, .guides-grid .guide-card").forEach((card, idx) => {
-  card.style.cursor = "pointer";
-  card.addEventListener("click", () => {
-    openGuideModal(idx);
-  });
-});
-
-document.getElementById("btn-close-guide-modal")?.addEventListener("click", closeGuideModal);
-document.getElementById("guide-modal")?.addEventListener("click", (e) => {
-  if (e.target.id === "guide-modal") closeGuideModal();
-});
 
 // -------------------------------------------------------------
 // GLOBAL ANCHOR & CTA BUTTON NAVIGATION HANDLER

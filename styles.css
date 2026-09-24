@@ -287,6 +287,52 @@ img { max-width: 100%; display: block; }
   animation: none;
   z-index: 0;
 }
+
+/* Original sport, film and series scenes crossfade behind the stationary copy. */
+.simplified-page .hero-scene-stack {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  background: #071424;
+}
+.simplified-page .hero-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% center;
+  opacity: 0;
+  transform-origin: 68% center;
+  animation: heroSceneCycle 24s linear infinite, heroSceneDrift 12s ease-in-out infinite alternate;
+}
+.simplified-page .hero-football-image { opacity: 1; }
+.simplified-page .hero-films-image { animation-delay: -16s, 0s; }
+.simplified-page .hero-series-image { animation-delay: -8s, 0s; }
+
+@keyframes heroSceneCycle {
+  0%, 28% { opacity: 1; }
+  34%, 94% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes heroSceneDrift {
+  from { transform: scale(1.035) translateX(0); }
+  to { transform: scale(1.11) translateX(-1.4%); }
+}
+
+@media (max-width: 720px) {
+  .simplified-page .hero-scene {
+    object-position: 82% center;
+    transform-origin: 82% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .simplified-page .hero-scene { animation: none; transform: none; opacity: 0; }
+  .simplified-page .hero-football-image { opacity: 1; }
+}
 .hero-sky {
   position: absolute;
   inset: 0;
@@ -926,23 +972,6 @@ body.theme-night .content-cloud .kicker {
   text-transform: uppercase;
   flex-shrink: 0;
 }
-
-.brand-pl { background: linear-gradient(135deg, #38003c, #00ff87); color: #ffffff; }
-.brand-netflix { background: #e50914; color: #ffffff; font-size: 1.1rem; }
-.brand-apple { background: #111111; color: #ffffff; border: 1px solid rgba(255,255,255,0.2); }
-.brand-dazn { background: #000000; color: #ffffff; font-size: 0.72rem; font-weight: 900; border: 1px solid rgba(255,255,255,0.2); }
-.brand-virgin { background: #e10600; color: #ffffff; font-size: 1.1rem; }
-.brand-rte { background: #0076a3; color: #ffffff; font-size: 0.75rem; }
-.brand-sky { background: linear-gradient(135deg, #002554, #d30000); color: #ffffff; font-size: 0.78rem; }
-.brand-c4 { background: #00b094; color: #ffffff; font-size: 1.1rem; }
-.brand-gaa { background: #00875a; color: #ffffff; font-size: 0.75rem; }
-.brand-hbo { background: #592582; color: #ffffff; font-size: 0.75rem; }
-.brand-fubo { background: #f36c21; color: #ffffff; font-size: 0.75rem; }
-.brand-bbc { background: #bb1919; color: #ffffff; font-size: 0.75rem; }
-.brand-yt { background: #ff0000; color: #ffffff; font-size: 0.9rem; }
-.brand-itv { background: #003057; color: #ffffff; font-size: 0.75rem; }
-.brand-plex { background: #e5a00d; color: #000000; font-size: 0.72rem; font-weight: 900; }
-.brand-disney { background: #113ccf; color: #ffffff; font-size: 0.75rem; }
 
 .cat-info b {
   display: block;
@@ -3923,7 +3952,7 @@ body.theme-night .smart-section .map-note {
   }
 }
 
-/* Separate channels/services from supported IPTV players. */
+/* Legacy marquee styles retained for layout compatibility. */
 .simplified-page .content-board.is-marquee-board {
   display: block !important;
   width: 100% !important;
@@ -8260,6 +8289,42 @@ body.theme-dim .white-section .supported-device-card p {
   .resource-footer a {
     margin-left: 0;
   }
+}
+
+/* Brand-free content overview. */
+.content-cloud .content-note {
+  max-width: 760px;
+  margin: 12px auto 30px;
+  color: rgba(233, 243, 251, .78);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.simplified-page .content-board.clean-content-board {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+}
+
+.clean-content-card {
+  min-height: 190px;
+  padding: 26px;
+  border: 1px solid rgba(180, 213, 230, .23);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(13, 36, 57, .96), rgba(6, 19, 34, .96));
+  box-shadow: 0 14px 32px rgba(0, 0, 0, .22);
+}
+
+.clean-content-card > span { font-size: 31px; }
+.clean-content-card h3 { margin: 16px 0 8px; color: #fff; font-size: 22px; }
+.clean-content-card p { margin: 0; color: rgba(232, 242, 250, .76); line-height: 1.55; }
+
+@media (max-width: 850px) {
+  .simplified-page .content-board.clean-content-board { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+@media (max-width: 560px) {
+  .simplified-page .content-board.clean-content-board { grid-template-columns: 1fr !important; }
+  .clean-content-card { min-height: 0; }
 }
 
 /* Promotional pricing: preserve the former price beside the reduced price. */

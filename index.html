@@ -1,23 +1,29 @@
 <!doctype html>
-<html lang="en-IE">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta
       name="description"
-      content="LoopMint offers live TV, sport, films, and series with a free 24-hour trial, device setup guides, transparent plans, and WhatsApp support."
+      content="Explore LoopMint viewing options on compatible screens. Request a free 24-hour trial, compare clear plans, and get personal setup help."
     />
+    <link rel="canonical" href="https://loopmint.net/" />
     <!-- Social share preview -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="LoopMint | Live TV, Sport, Films &amp; Series" />
-    <meta property="og:description" content="Explore LoopMint on popular devices with a free 24-hour trial, clear plans, and WhatsApp-guided setup." />
-    <meta property="og:image" content="assets/loopmint-tree-landscape.png" />
+    <meta property="og:site_name" content="LoopMint" />
+    <meta property="og:url" content="https://loopmint.net/" />
+    <meta property="og:title" content="Live TV &amp; On-Demand Viewing | LoopMint" />
+    <meta property="og:description" content="Explore viewing options on your own screen with a free trial, clear plans, and personal setup help." />
+    <meta property="og:image" content="https://loopmint.net/assets/loopmint-football-hero.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="LoopMint | Live TV, Sport, Films &amp; Series" />
-    <meta name="twitter:description" content="Explore LoopMint on popular devices with a free 24-hour trial, clear plans, and WhatsApp-guided setup." />
-    <meta name="twitter:image" content="assets/loopmint-tree-landscape.png" />
-    <title>LoopMint</title>
+    <meta name="twitter:title" content="Live TV &amp; On-Demand Viewing | LoopMint" />
+    <meta name="twitter:description" content="Explore viewing options on your own screen with a free trial, clear plans, and personal setup help." />
+    <meta name="twitter:image" content="https://loopmint.net/assets/loopmint-football-hero.png" />
+    <title>Live TV &amp; On-Demand Viewing | LoopMint</title>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://loopmint.net/#organization","name":"LoopMint","url":"https://loopmint.net/","logo":"https://loopmint.net/assets/loopmint-mark-transparent.png"},{"@type":"WebSite","@id":"https://loopmint.net/#website","name":"LoopMint","url":"https://loopmint.net/","publisher":{"@id":"https://loopmint.net/#organization"},"inLanguage":"en"}]}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -66,13 +72,13 @@
       <div class="top-ribbon" aria-label="Service highlights">
         <div class="ribbon-track">
           <span>Free trial before checkout</span>
-          <span>Watch tonight on the screen you own</span>
+          <span>View on the screen you own</span>
           <span>Sport, films, series, kids, news</span>
           <span>WhatsApp-guided activation</span>
-          <span>4K available where supported</span>
+          <span>Device-specific setup guidance</span>
           <span>Works on popular devices</span>
           <span>Free trial before checkout</span>
-          <span>Watch tonight on the screen you own</span>
+          <span>View on the screen you own</span>
           <span>Sport, films, series, kids, news</span>
           <span>WhatsApp-guided activation</span>
         </div>
@@ -105,17 +111,18 @@
 
     <main id="main">
       <section class="hero" id="top">
-        <video class="hero-nature hero-nature-video" autoplay muted loop playsinline preload="metadata" poster="assets/loopmint-irish-hero-poster.jpg" aria-hidden="true" disablepictureinpicture>
-          <source src="assets/loopmint-irish-hero-mobile.mp4" type="video/mp4" media="(max-width: 720px)" />
-          <source src="assets/loopmint-irish-hero-desktop.mp4" type="video/mp4" />
-        </video>
+        <div class="hero-scene-stack" aria-hidden="true">
+          <img class="hero-scene hero-football-image" src="assets/loopmint-football-hero.webp" alt="" fetchpriority="high" decoding="async" />
+          <img class="hero-scene hero-films-image" src="assets/loopmint-films-hero.webp" alt="" decoding="async" />
+          <img class="hero-scene hero-series-image" src="assets/loopmint-series-hero.webp" alt="" decoding="async" />
+        </div>
         <div class="hero-sky" aria-hidden="true"></div>
         <div class="shell hero-grid">
           <div class="hero-copy">
             <h1>Live TV, Sport, Films &amp; Series.<br />Powered by LoopMint.</h1>
             <div class="hero-card">
               <p>
-                Explore live channels and on-demand entertainment on your TV, Fire Stick, box, phone, or computer. Request a free 24-hour trial before choosing a plan. Availability and quality vary by content, device, and connection.
+                Explore live and on-demand viewing on a compatible TV, streaming device, phone, or computer. Request a free 24-hour trial before choosing a plan. Available content and picture quality vary by location, device, and connection.
               </p>
             </div>
             <div class="hero-actions-row">
@@ -124,7 +131,7 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
               <a class="hero-secondary-btn" href="#pricing">
-                <span class="pay-tag">PAY ONCE</span>
+                <span class="pay-tag">PLANS</span>
                 <span>View Plans</span>
               </a>
             </div>
@@ -132,79 +139,29 @@
               <span><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Free 24h Trial</span>
               <span><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> WhatsApp 1-on-1 Setup</span>
               <span><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> No Card Needed to Request</span>
-              <span><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> HD &amp; 4K Where Available</span>
+              <span><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Help for compatible devices</span>
             </div>
           </div>
           <div class="offer-banner hero-video" aria-label="LoopMint launch offer banner">
             <div class="offer-orbit" aria-hidden="true"></div>
             <div class="offer-glow" aria-hidden="true"></div>
-            <p class="kicker orange">Tonight's setup</p>
-            <h2>Trial first. Watch tonight. Pay only when it works for you.</h2>
-            <p>Send your device, get the right route, and let the LoopMint Sales &amp; Setup team connect the guide while you stay on WhatsApp.</p>
+            <p class="kicker orange">Try it on your screen</p>
+            <h2>Start with a trial. Choose a plan when you are ready.</h2>
+            <p>Tell us which device you use. Our Sales &amp; Setup team will guide you through the matching setup route on WhatsApp.</p>
             <div class="offer-stats" aria-label="LoopMint offer highlights">
               <span><b>24 hr</b> free trial route</span>
-              <span><b>5 min</b> setup target</span>
-              <span><b>HD/4K</b> where available</span>
+              <span><b>Device</b> setup guidance</span>
+              <span><b>Clear</b> plan choices</span>
             </div>
             <div class="offer-flow" aria-label="LoopMint setup steps">
               <span>1. Request trial</span>
               <span>2. Send device</span>
-              <span>3. We activate</span>
-              <span>4. You watch</span>
+              <span>3. Follow setup</span>
+              <span>4. Test your screen</span>
             </div>
           </div>
         </div>
       </section>
-
-      <section class="scroll-cinema" id="scroll-cinema" aria-label="Scroll controlled video journey" hidden>
-        <div class="cinema-sticky">
-          <img class="scroll-frame active" id="scroll-frame" src="assets/frames/film-01/frame-001.jpg" alt="" />
-          <img class="scroll-frame ghost" id="scroll-frame-ghost" src="assets/frames/film-01/frame-001.jpg" alt="" />
-          <div class="cinema-vignette" aria-hidden="true"></div>
-          <div class="frame-badge" id="frame-badge">Film 01 / Frame 001</div>
-          <div class="cinema-progress" aria-hidden="true"><span></span></div>
-        </div>
-        <article class="cinema-chapter" data-video="0">
-          <div class="cinema-copy">
-            <div class="cinema-kicker-pill"><span class="kicker-icon">★</span> FREE TRIAL ACCESS</div>
-            <h2>Start with a trial before you pay.</h2>
-            <p>Try LoopMint on your screen first. Zero credit card required, zero pressure, and complete peace of mind that your device runs smoothly.</p>
-            <a class="cinema-cta-btn" href="#trial">Request 24h Free Trial &rarr;</a>
-          </div>
-        </article>
-        <article class="cinema-chapter" data-video="1">
-          <div class="cinema-copy">
-            <div class="cinema-kicker-pill"><span class="kicker-icon">📺</span> ALL-IN-ONE VIEWING</div>
-            <h2>Live TV, sport, films, and series in one guide.</h2>
-            <p>Match nights, catch-up, family categories, global packs, and 4K on-demand shelves organized cleanly without navigating through an app maze.</p>
-          </div>
-        </article>
-        <article class="cinema-chapter" data-video="2">
-          <div class="cinema-copy">
-            <div class="cinema-kicker-pill"><span class="kicker-icon">⚡</span> UNIVERSAL SETUP</div>
-            <h2>Works on the screen you already own.</h2>
-            <p>Smart TV, Fire Stick, Android box, iPhone, iPad, Windows, or Mac. Step-by-step guidance from our Sales &amp; Setup team, plus technical support when an active service needs attention.</p>
-            <a class="cinema-cta-btn" href="#setup">View Setup Guides &rarr;</a>
-          </div>
-        </article>
-        <article class="cinema-chapter" data-video="3">
-          <div class="cinema-copy">
-            <div class="cinema-kicker-pill"><span class="kicker-icon">🏆</span> BIG-NIGHT READY</div>
-            <h2>Built for sport nights, films, and family viewing.</h2>
-            <p>Premier football, UFC fight nights, blockbuster cinema, kids' TV, international news, and instant EPG guide catch-up whenever you miss kickoff.</p>
-          </div>
-        </article>
-        <article class="cinema-chapter" data-video="4">
-          <div class="cinema-copy">
-            <div class="cinema-kicker-pill"><span class="kicker-icon">💳</span> TRANSPARENT PLANS</div>
-            <h2>Five clear plans, no hidden renewal surprise.</h2>
-            <p>Choose 1 month, 6 months, 1 year, 2 years, or 3 years. Full pricing transparency and guided activation.</p>
-            <a class="cinema-cta-btn" href="#pricing">Compare Pricing Plans &rarr;</a>
-          </div>
-        </article>
-      </section>
-
-
 
       <div class="lower-site-shell">
       <div class="continuous-orbit-layer" aria-hidden="true">
@@ -220,678 +177,16 @@
       <section class="white-section content-cloud ambient-motion-surface" id="content">
         <div class="shell narrow-center">
           <p class="kicker orange">WATCH</p>
-          <h2>Your telly, box or phone. Live channels, sport, and on-demand content, in one place.</h2>
+          <h2>Explore viewing options on the screen you already own.</h2>
         </div>
-                        <div class="content-board shell" aria-label="Supported Live Channels, Streaming Services & IPTV Players">
-          <!-- ORIGINAL STREAMING NETWORKS & CHANNELS -->
-                    <!-- 1. Premier League -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Premier League">
-                <img src="assets/premier-league-logo.png" alt="Premier League" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Premier League</b>
-                <span>Live now</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 2. Netflix -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Netflix">
-                <img src="assets/netflix-logo.png" alt="Netflix" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Netflix</b>
-                <span>New this week</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 3. Apple TV+ -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Apple TV+">
-                <img src="assets/apple-tv-logo.png" alt="Apple TV+" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Apple TV+</b>
-                <span>New releases</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 4. DAZN -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="DAZN">
-                <img src="assets/dazn-logo.png" alt="DAZN" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>DAZN</b>
-                <span>Live sport</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 5. Virgin Media -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Virgin Media">
-                <img src="assets/virgin-media-logo.png" alt="Virgin Media" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Virgin Media</b>
-                <span>Irish channels</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 6. RTÉ Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="RTÉ Player">
-                <img src="assets/rte-player-logo.png" alt="RTÉ Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>RTÉ Player</b>
-                <span>Live &amp; catch-up</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 7. Sky Sports -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Sky Sports">
-                <img src="assets/sky-sports-logo.png" alt="Sky Sports" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Sky Sports</b>
-                <span>F1 &amp; Football</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 8. Channel 4 -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Channel 4">
-                <img src="assets/channel-4-logo.png" alt="Channel 4" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Channel 4</b>
-                <span>Stream &amp; live</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 9. GAAGO -->
-          <article class="cat-card playing-active">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="GAAGO">
-                <img src="assets/gaago-logo.png" alt="GAAGO" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>GAAGO</b>
-                <span>GAA live</span>
-              </div>
-            </div>
-            <div class="cat-progress-bar">
-              <span class="playing-label">• Playing</span>
-              <div class="progress-line"><div class="fill" style="width: 60%;"></div></div>
-            </div>
-          </article>
-
-                    <!-- 10. HBO Max -->
-          <article class="cat-card playing-active">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="HBO Max">
-                <img src="assets/hbo-max-logo.png" alt="HBO Max" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>HBO Max</b>
-                <span>Box sets</span>
-              </div>
-            </div>
-            <div class="cat-progress-bar">
-              <span class="playing-label">• Playing</span>
-              <div class="progress-line"><div class="fill" style="width: 40%;"></div></div>
-            </div>
-          </article>
-
-                    <!-- 11. Fubo Sports -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Fubo Sports">
-                <img src="assets/fubo-sports-logo.png" alt="Fubo Sports" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Fubo Sports</b>
-                <span>Live sport</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 12. BBC iPlayer -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="BBC iPlayer">
-                <img src="assets/bbc-iplayer-logo.png" alt="BBC iPlayer" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>BBC iPlayer</b>
-                <span>Catch-up</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 13. YouTube -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="YouTube">
-                <img src="assets/youtube-logo.png" alt="YouTube" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>YouTube</b>
-                <span>On demand</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 14. ITVX -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="ITVX">
-                <img src="assets/itvx-logo.png" alt="ITVX" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>ITVX</b>
-                <span>Soaps &amp; drama</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 15. Plex -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Plex">
-                <img src="assets/plex-logo.png" alt="Plex" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Plex</b>
-                <span>Your library</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 16. Disney+ -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Disney+">
-                <img src="assets/disney-plus-logo.png" alt="Disney+" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Disney+</b>
-                <span>Films &amp; box sets</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-
-          <!-- POPULAR IPTV PLAYER APPS -->
-                    <!-- 17. IBO Player -->
-          <article class="cat-card playing-active">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="IBO Player">
-                <img src="assets/ibo-player-logo.png" alt="IBO Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>IBO Player</b>
-                <span>Official App</span>
-              </div>
-            </div>
-            <div class="cat-progress-bar">
-              <span class="playing-label">• Active</span>
-              <div class="progress-line"><div class="fill" style="width: 95%;"></div></div>
-            </div>
-          </article>
-
-                    <!-- 18. IBO Pro -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="IBO Pro">
-                <img src="assets/ibo-pro-logo.png" alt="IBO Pro" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>IBO Pro</b>
-                <span>Pro Edition</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 19. Smart IPTV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Smart IPTV">
-                <img src="assets/smart-iptv-logo.png" alt="Smart IPTV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Smart IPTV</b>
-                <span>LG &amp; Samsung</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 20. SET IPTV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="SET IPTV">
-                <img src="assets/set-iptv-logo.png" alt="SET IPTV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>SET IPTV</b>
-                <span>Smart TV Player</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 21. Smartone -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Smartone">
-                <img src="assets/smartone-logo.png" alt="Smartone" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Smartone</b>
-                <span>Multi-Screen</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 22. ELK Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="ELK Player">
-                <img src="assets/elk-player-logo.png" alt="ELK Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>ELK Player</b>
-                <span>4K &amp; Full HD</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 23. HOT Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="HOT Player">
-                <img src="assets/hot-player-logo.png" alt="HOT Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>HOT Player</b>
-                <span>Ultra Fast</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 24. ARC Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="ARC Player">
-                <img src="assets/arc-player-logo.png" alt="ARC Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>ARC Player</b>
-                <span>Premium Player</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 25. Virginia Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Virginia Player">
-                <img src="assets/virginia-player-logo.png" alt="Virginia Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Virginia Player</b>
-                <span>Smart TV App</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 26. Bob Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Bob Player">
-                <img src="assets/bob-player-logo.png" alt="Bob Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Bob Player</b>
-                <span>Xtream &amp; M3U</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 27. Bay TV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Bay TV">
-                <img src="assets/bay-tv-logo.png" alt="Bay TV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Bay TV</b>
-                <span>Smart TV Media</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 28. King4K Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="King IPTV Pro">
-                <img src="assets/king-player-logo.png" alt="King IPTV Pro" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>King IPTV Pro</b>
-                <span>4K Ultra Player</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 29. Room IPTV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Room IPTV">
-                <img src="assets/room-iptv-logo.png" alt="Room IPTV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Room IPTV</b>
-                <span>Android &amp; Tizen</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 30. Family Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Family Player">
-                <img src="assets/family-player-logo.png" alt="Family Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Family Player</b>
-                <span>Multi-User</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 31. Mac Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Mac Player">
-                <img src="assets/mac-player-logo.png" alt="Mac Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Mac Player</b>
-                <span>Stalker &amp; Xtream</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-                    <!-- 32. Shamel TV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Shamel TV">
-                <img src="assets/shamel-tv-logo.png" alt="Shamel TV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Shamel TV</b>
-                <span>Multi-Device</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 18. IBO Pro -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="IBO Pro">
-                <img src="assets/ibo-pro-logo.png" alt="IBO Pro" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>IBO Pro</b>
-                <span>Pro Edition</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 19. Smart IPTV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Smart IPTV">
-                <img src="assets/smart-iptv-logo.png" alt="Smart IPTV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Smart IPTV</b>
-                <span>LG &amp; Samsung</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 20. SET IPTV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="SET IPTV">
-                <img src="assets/set-iptv-logo.png" alt="SET IPTV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>SET IPTV</b>
-                <span>Smart TV Player</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 21. Smartone -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Smartone">
-                <img src="assets/smartone-logo.png" alt="Smartone" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Smartone</b>
-                <span>Multi-Screen</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 22. ELK Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="ELK Player">
-                <img src="assets/elk-player-logo.png" alt="ELK Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>ELK Player</b>
-                <span>4K &amp; Full HD</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 23. HOT Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="HOT Player">
-                <img src="assets/hot-player-logo.png" alt="HOT Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>HOT Player</b>
-                <span>Ultra Fast</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 24. ARC Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="ARC Player">
-                <img src="assets/arc-player-logo.png" alt="ARC Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>ARC Player</b>
-                <span>Premium Player</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 25. Virginia Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Virginia Player">
-                <img src="assets/virginia-player-logo.png" alt="Virginia Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Virginia Player</b>
-                <span>Smart TV App</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 26. Bob Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Bob Player">
-                <img src="assets/bob-player-logo.png" alt="Bob Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Bob Player</b>
-                <span>Xtream &amp; M3U</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 27. Bay TV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Bay TV">
-                <img src="assets/bay-tv-logo.png" alt="Bay TV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Bay TV</b>
-                <span>Smart TV Media</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 28. King IPTV Pro -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="King IPTV Pro">
-                <img src="assets/king-player-logo.png" alt="King IPTV Pro" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>King IPTV Pro</b>
-                <span>4K Ultra Player</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 29. Room IPTV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Room IPTV">
-                <img src="assets/room-iptv-logo.png" alt="Room IPTV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Room IPTV</b>
-                <span>Android &amp; Tizen</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 30. Family Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Family Player">
-                <img src="assets/family-player-logo.png" alt="Family Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Family Player</b>
-                <span>Multi-User</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 31. Mac Player -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Mac Player">
-                <img src="assets/mac-player-logo.png" alt="Mac Player" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Mac Player</b>
-                <span>Stalker &amp; Xtream</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
-
-          <!-- 32. Shamel TV -->
-          <article class="cat-card">
-            <div class="cat-top">
-              <div class="cat-brand-badge" title="Shamel TV">
-                <img src="assets/shamel-tv-logo.png" alt="Shamel TV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
-              </div>
-              <div class="cat-info">
-                <b>Shamel TV</b>
-                <span>Multi-Device</span>
-              </div>
-            </div>
-            <span class="cat-dot"></span>
-          </article>
+                        <p class="content-note shell">Explore the categories and setup help below. Specific content and features depend on your location, device, and trial.</p>
+        <div class="content-board shell clean-content-board" aria-label="Viewing and setup categories">
+          <article class="clean-content-card"><span aria-hidden="true">⚽</span><h3>Sport</h3><p>Browse available sport categories and test the events that matter to you.</p></article>
+          <article class="clean-content-card"><span aria-hidden="true">🎬</span><h3>Films</h3><p>Find a film for the evening from the options available in your trial.</p></article>
+          <article class="clean-content-card"><span aria-hidden="true">📺</span><h3>Series</h3><p>Keep your viewing organised in familiar on-demand categories.</p></article>
+          <article class="clean-content-card"><span aria-hidden="true">👨‍👩‍👧</span><h3>Family</h3><p>Explore family-friendly categories and player controls where offered.</p></article>
+          <article class="clean-content-card"><span aria-hidden="true">🗓️</span><h3>Guide</h3><p>Check programme information and replay features where available.</p></article>
+          <article class="clean-content-card"><span aria-hidden="true">💬</span><h3>Setup help</h3><p>Tell us your device and get a matching setup route on WhatsApp.</p></article>
         </div>
       </section>
 
@@ -899,7 +194,7 @@
         <div class="shell split">
           <div class="section-title">
             <p class="kicker orange">CONTENT</p>
-            <h2>All the telly people actually look for, sorted.</h2>
+            <h2>Find the viewing that works for you.</h2>
             <div class="feature-tabs" role="tablist" aria-label="Content feature tabs">
               <button class="active" type="button" data-feature="sport">
                 <span class="tab-num">01</span>
@@ -928,63 +223,14 @@
               <span class="live-dot-pulse">●</span>
               <span class="display-kicker">Live sport</span>
             </div>
-            <h3>Match-day shelf with backup categories, replay labels, and clear event grouping.</h3>
+            <h3>Browse the sport categories available in your trial and check the events you want to watch.</h3>
             <div class="mini-grid">
               <span>⚽ Football</span>
-              <span>🥊 UFC</span>
-              <span>🏎️ Formula 1</span>
+              <span>🏎️ Motorsport</span>
+              <span>🥊 Combat sport</span>
               <span>🏀 Basketball</span>
               <span>🥊 Boxing</span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="white-section security-section ambient-motion-surface" hidden>
-        <div class="shell narrow-center">
-          <p class="kicker orange"><span class="kicker-shield">🛡️</span> PRIVATE AND SECURE</p>
-          <h2>Private, secure and above board</h2>
-          <p class="sub-headline">Your viewing is your business. Encrypted, paid for safely, and supported by a real team you can actually reach.</p>
-        </div>
-        <div class="shell trust-showcase">
-          <div class="trust-row top-row">
-            <article class="trust-card">
-              <div class="trust-icon-circle">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              </div>
-              <h3>Encrypted connection</h3>
-              <p>Private and secure</p>
-            </article>
-            <article class="trust-card">
-              <div class="trust-icon-circle">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
-              </div>
-              <h3>Your viewing, private</h3>
-              <p>Nobody else's business</p>
-            </article>
-            <article class="trust-card">
-              <div class="trust-icon-circle">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-              </div>
-              <h3>Secure card & bank payment</h3>
-              <p>Stripe, Revolut, Bank Transfer, Wise</p>
-            </article>
-          </div>
-          <div class="trust-row bottom-row">
-            <article class="trust-card">
-              <div class="trust-icon-circle">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
-              </div>
-              <h3>Risk-free trial & guarantee</h3>
-              <p>On all plans</p>
-            </article>
-            <article class="trust-card">
-              <div class="trust-icon-circle">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
-              </div>
-              <h3>Verified support team</h3>
-              <p>A real business, not a box</p>
-            </article>
           </div>
         </div>
       </section>
@@ -1087,7 +333,7 @@
                   <span class="trial-badge-mint">24–Hour Free Trial 🎁</span>
                 </div>
 
-                <h2>Start Your Free Trial Tonight</h2>
+                <h2>Request Your Free Trial</h2>
                 <p class="trial-card-sub">Open the form and we will send your trial setup on WhatsApp.</p>
 
                 <form class="trial-card-form non-editable-demo" id="step-trial-form" onsubmit="return false;">
@@ -1127,7 +373,7 @@
               <div class="chat-lines">
                 <p>LoopMint: What are you watching on?</p>
                 <p class="user">Customer: Fire Stick in the lounge.</p>
-                <p>LoopMint: Perfect. We'll send the fastest install route.</p>
+                <p>LoopMint: We will send a setup route for that device.</p>
               </div>
             </article>
 
@@ -1149,7 +395,7 @@
               <h3>Set it up your way</h3>
               <div class="setting-list">
                 <label><input type="checkbox" checked /> Subtitles on</label>
-                <label><input type="checkbox" checked /> Kids content behind a code</label>
+                <label><input type="checkbox" checked /> Parental controls where supported</label>
                 <label><input type="checkbox" /> Extra screen requested</label>
               </div>
             </article>
@@ -1158,30 +404,13 @@
               <span class="step-num-badge">05</span>
               <h3>Credentials stay organized</h3>
               <div class="credential-preview">
-                <b>Playlist</b><em>loopmint.tv</em>
-                <b>Username</b><em>unique customer login</em>
+                <b>Setup details</b><em>Provided privately</em>
+                <b>Username</b><em>Your own login</em>
                 <b>Password</b><em>************</em>
-                <b>Guide URL</b><em>EPG attached</em>
+                <b>Programme guide</b><em>Where available</em>
               </div>
             </article>
           </div>
-        </div>
-      </section>
-
-      <section class="stat-band" id="stat-band" aria-label="LoopMint statistics">
-        <div class="shell stats">
-          <article>
-            <strong class="stat-number" data-target="55191" data-start="20000">55,191</strong>
-            <span>live channels</span>
-          </article>
-          <article>
-            <strong class="stat-number" data-target="168854" data-start="100000">168,854</strong>
-            <span>films</span>
-          </article>
-          <article>
-            <strong class="stat-number" data-target="44793" data-start="20000">44,793</strong>
-            <span>box sets and series</span>
-          </article>
         </div>
       </section>
 
@@ -1202,7 +431,7 @@
           <div class="reviews-header-center">
             <p class="kicker orange">CUSTOMER EXPERIENCE</p>
             <h2>The parts of the service that matter every day.</h2>
-            <p class="reviews-sub">Everything is built around a clear setup, reliable viewing, and help when you need it.</p>
+            <p class="reviews-sub">Start with a trial, choose a plan that suits you, and ask for help when you need it.</p>
           </div>
           <div class="feedback-grid" aria-label="LoopMint customer experience highlights">
             <article>
@@ -1230,7 +459,7 @@
             <div>
               <p class="kicker orange">Pricing</p>
               <h2>Five clear plans.<br>One simple decision.</h2>
-              <p class="pricing-sub">Every plan includes a free trial, WhatsApp guidance from Sales &amp; Setup, and technical support after activation. No hidden fees.</p>
+              <p class="pricing-sub">Compare the plan terms and total price before sending an order request. Trial and setup guidance are available through WhatsApp.</p>
             </div>
             <div class="pricing-header-right">
               <div class="currency-switch-wrapper" id="page-currency-switch">
@@ -1291,9 +520,9 @@
               <ul>
                 <li>1 Connection (1 Device)</li>
                 <li>Best balance for most homes</li>
-                <li>Priority setup queue</li>
+                <li>Setup guidance</li>
                 <li>Favorites &amp; App Guidance</li>
-                <li>Referral rewards ready</li>
+                <li>Plan expiry reminders</li>
                 <li>Renewal Reminders</li>
               </ul>
               <button data-plan="1 Year" data-price="€85">Choose 1 year</button>
@@ -1313,7 +542,7 @@
                 <li>Lower long-run rate</li>
                 <li>Expanded Setup Assistance</li>
                 <li>TV &amp; Receiver Compatibility</li>
-                <li>Priority VIP support lane</li>
+                <li>Support during your plan</li>
               </ul>
               <button data-plan="2 Years" data-price="€150">Choose 2 years</button>
             </article>
@@ -1332,7 +561,7 @@
                 <li>Long-term price certainty</li>
                 <li>Expanded Setup Assistance</li>
                 <li>TV &amp; Receiver Compatibility</li>
-                <li>Priority VIP support lane</li>
+                <li>Support during your plan</li>
               </ul>
               <button data-plan="3 Years" data-price="€200">Choose 3 years</button>
             </article>
@@ -1421,7 +650,7 @@
                       <ul class="eco-list keep">
                         <li>Everything in 6 Months</li>
                         <li><strong>€7.08 monthly equivalent</strong></li>
-                        <li>Priority Setup Queue</li>
+                        <li>Setup guidance</li>
                         <li>15% OFF Multi-Screen Perks</li>
                       </ul>
                     </td>
@@ -1429,15 +658,15 @@
                       <ul class="eco-list keep">
                         <li><strong>24 total months</strong></li>
                         <li><strong>€6.25 monthly equivalent</strong></li>
-                        <li>Priority support lane</li>
+                        <li>Support for active plans</li>
                         <li>Price set for 2 years</li>
                       </ul>
                     </td>
                     <td class="highlight-cell">
                       <ul class="eco-list keep">
                         <li><strong>36 total months</strong></li>
-                        <li><strong>€6.11 monthly equivalent</strong></li>
-                        <li>VIP Priority Setup Lane</li>
+                        <li><strong>€5.56 monthly equivalent</strong></li>
+                        <li>Setup guidance</li>
                         <li>Price set for 3 years</li>
                       </ul>
                     </td>
@@ -1448,14 +677,14 @@
                       <ul class="eco-list lose">
                         <li>Returns to €17/month after the introductory month</li>
                         <li>Must renew every month</li>
-                        <li>No Priority Queue status</li>
+                        <li>Monthly renewal needed</li>
                       </ul>
                     </td>
                     <td>
                       <ul class="eco-list lose">
                         <li>Higher rate than 1 Year</li>
                         <li>Must renew twice per year</li>
-                        <li>No VIP setup priority</li>
+                        <li>Shorter price commitment</li>
                       </ul>
                     </td>
                     <td>
@@ -1503,7 +732,7 @@
               </details>
               <details>
                 <summary>Is there a contract?</summary>
-                <p>No long contracts. Choose an upfront plan for 1 month, 6 months, 1 year, 2 years, or 3 years with transparent renewal.</p>
+                <p>Choose an upfront term of 1 month, 6 months, 1 year, 2 years, or 3 years. Confirm the renewal terms before paying.</p>
               </details>
               <details>
                 <summary>Will it keep buffering?</summary>
@@ -1512,6 +741,10 @@
               <details>
                 <summary>Can I try it before paying?</summary>
                 <p>Yes. You can request a free 24-hour trial before choosing a paid plan, and no payment card is needed to submit the request.</p>
+              </details>
+              <details>
+                <summary>Is LoopMint available in my country?</summary>
+                <p>Availability can vary by location, content, app, and device. Tell Sales &amp; Setup your country and device before choosing a plan, and ask them to confirm the options available to you during the trial.</p>
               </details>
             </div>
           </div>
@@ -1572,7 +805,7 @@
 
           <article class="guide-card">
             <div class="guide-img-box">
-              <img class="guide-img" src="assets/guide-dashboard.jpg" alt="Renewal Portal" />
+              <img class="guide-img" src="assets/guide-dashboard.jpg" alt="Plan and renewal guide" />
             </div>
             <div class="guide-card-body">
               <span class="guide-tag">PLANS</span>
@@ -1836,42 +1069,30 @@
               <p>Applied to the total amount when adding more than 1 TV on the same account.</p>
             </div>
 
-            <!-- Priority Same-Day Setup Request -->
+            <!-- Setup assistance request -->
             <div class="option-box-card priority-box">
               <div class="option-box-header">
-                <h3>Priority Same-Day Setup</h3>
-                <button type="button" class="enabled-free-btn active" id="priority-toggle">Enabled (Free)</button>
+                <h3>Setup Assistance Request</h3>
+                <button type="button" class="enabled-free-btn active" id="priority-toggle">Requested</button>
               </div>
-              <p>Included when available. Select this to prioritise your WhatsApp activation lane.</p>
+              <p>Select this if you would like setup help. Timing depends on support availability.</p>
             </div>
 
             <!-- Preferred Payment Route -->
             <div class="form-section-group">
               <label class="section-label">Preferred Payment Route</label>
               <div class="payment-routes-grid">
-                <button type="button" class="payment-opt-card active" data-pm="Link (Stripe)">
-                  <strong>Link (Stripe)</strong>
-                  <span>Fast checkout</span>
+                <button type="button" class="payment-opt-card active" data-pm="Card link">
+                  <strong>Card link</strong>
+                  <span>Confirm on WhatsApp</span>
                 </button>
-                <button type="button" class="payment-opt-card" data-pm="Amazon Pay">
-                  <strong>Amazon Pay</strong>
-                  <span>Pay with Amazon</span>
+                <button type="button" class="payment-opt-card" data-pm="Bank transfer">
+                  <strong>Bank transfer</strong>
+                  <span>Details confirmed privately</span>
                 </button>
-                <button type="button" class="payment-opt-card" data-pm="Stripe">
-                  <strong>Stripe</strong>
-                  <span>Card payment</span>
-                </button>
-                <button type="button" class="payment-opt-card" data-pm="Wise">
-                  <strong>Wise</strong>
-                  <span>Private transfer</span>
-                </button>
-                <button type="button" class="payment-opt-card" data-pm="Revolut">
-                  <strong>Revolut</strong>
-                  <span>Revolut bank transfer</span>
-                </button>
-                <button type="button" class="payment-opt-card" data-pm="Bank Transfer">
-                  <strong>Bank Transfer</strong>
-                  <span>Manual transfer</span>
+                <button type="button" class="payment-opt-card" data-pm="Ask for options">
+                  <strong>Ask for options</strong>
+                  <span>Discuss with our team</span>
                 </button>
               </div>
               <p class="payment-subtext">Choose the payment route you prefer. We confirm the final private checkout on WhatsApp before anything is paid.</p>
@@ -1902,13 +1123,13 @@
             <div class="summary-brand-header">
               <div class="summary-logo-row">
                 <img src="assets/loopmint-mark-transparent.png" alt="LoopMint" />
-                <span>PRIVATE CHECKOUT</span>
+                <span>ORDER REQUEST</span>
               </div>
               <span class="time-badge">Takes ~2 minutes</span>
             </div>
 
             <h3>Order Summary</h3>
-            <p class="summary-desc">Clear order request, confirmed privately on WhatsApp before payment. No card details are stored on this page.</p>
+            <p class="summary-desc">Review your order request with our team on WhatsApp before payment. No card details are stored on this page.</p>
 
             <div class="summary-table-box">
               <div class="summary-row">
@@ -1929,7 +1150,7 @@
               </div>
               <hr class="summary-divider" />
               <div class="summary-row total-row">
-                <span>Total Today</span>
+                <span>Estimated total</span>
                 <strong class="total-price-val" id="sum-total-today">€55</strong>
               </div>
             </div>
@@ -1961,8 +1182,8 @@
             <span class="trial-badge-mint">24–Hour Free Trial 🎁</span>
           </div>
 
-          <h2>Start Your Free Trial Tonight</h2>
-          <p class="trial-card-sub">Enter your details and continue securely on WhatsApp.</p>
+          <h2>Request Your Free Trial</h2>
+          <p class="trial-card-sub">Enter your details and continue the request on WhatsApp.</p>
 
           <form class="trial-card-form" id="trial-modal-form" onsubmit="return false;">
             <div class="form-field">
@@ -2015,36 +1236,6 @@
           </form>
 
           <p class="trial-rating-footer">No payment details needed to request the trial.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- INTERACTIVE SETUP GUIDE MODAL -->
-    <div class="guide-modal-backdrop" id="guide-modal" aria-hidden="true" style="display: none;">
-      <div class="guide-modal-container">
-        <button type="button" class="guide-modal-close" id="btn-close-guide-modal" aria-label="Close guide">✕</button>
-
-        <div class="guide-modal-header">
-          <span class="guide-modal-tag" id="gm-tag">SETUP GUIDE</span>
-          <h2 id="gm-title">Smart TV Setup in 3 Minutes</h2>
-          <p id="gm-sub">Step-by-step instructions for LG WebOS, Samsung Tizen, and Sony Android TVs.</p>
-        </div>
-
-        <!-- Steps Timeline -->
-        <div class="guide-steps-timeline" id="gm-steps-container">
-          <!-- Populated by JS -->
-        </div>
-
-        <!-- Pro Tip Box -->
-        <div class="guide-pro-tip-box" id="gm-tip-box">
-          <!-- Populated by JS -->
-        </div>
-
-        <!-- Footer Actions -->
-        <div class="guide-modal-footer">
-          <a href="https://wa.me/447597648884?text=Hi%20LoopMint%20Sales%20%26%20Setup,%20I%20need%20help%20setting%20up%20my%20device" target="_blank" rel="noreferrer" class="guide-wa-help-btn">
-            Need Setup Assistance? Message Sales &amp; Setup 💬
-          </a>
         </div>
       </div>
     </div>

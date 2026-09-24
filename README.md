@@ -1,6 +1,8 @@
-# LoopMint IPTV Landing Page
+# LoopMint Website
 
-Responsive static website for LoopMint, including a product landing page, device-specific setup instructions, and a customer help centre.
+Responsive static website for LoopMint, including a landing page, device setup instructions, and a customer help centre. The homepage cycles through three original, unbranded sport, film and series images with gentle CSS movement. The motion stops on the football image when the visitor requests reduced motion.
+
+The on-page hero scenes use compressed WebP images. The football PNG remains for social previews.
 
 ## Pages
 
@@ -23,17 +25,15 @@ With the local server running:
 
 ```powershell
 npm run audit:site
-npm run audit:resources
-npm run audit:production
 ```
 
-The automated checks cover desktop and mobile layouts, responsive video playback, fixed navigation, worldwide phone selection, trial and checkout handoffs, pricing calculations, device routes, guide routes, and horizontal overflow.
+The audit checks page metadata, all three hero scenes, generic viewing categories, the guide interaction, checkout payment choices, and mobile horizontal overflow. It runs against the local server on port 5500.
 
 ## Structure
 
 ```text
-assets/             Production images, logos, and video
-playwright-tools/   Browser verification scripts
+assets/             Website images, including the generated football hero
+playwright-tools/   Browser verification script
 guides.html         Help centre
 index.html          Main website
 script.js           Interaction behavior
