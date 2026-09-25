@@ -8,7 +8,8 @@ const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript
 http.createServer(async (request, response) => {
   try {
     const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
-    const file = path.resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
+    const requestedPath = pathname.endsWith('/') ? `${pathname}index.html` : pathname;
+    const file = path.resolve(root, `.${requestedPath}`);
     if (!file.startsWith(root + path.sep)) throw new Error('Outside project');
     if (!(await stat(file)).isFile()) throw new Error('Not a file');
     response.writeHead(200, { 'Content-Type': `${mime[path.extname(file)] || 'application/octet-stream'}; charset=utf-8` });

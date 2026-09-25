@@ -10,6 +10,7 @@ The on-page hero scenes use compressed WebP images. The football PNG remains for
 - `setup.html` - Setup routes for Fire TV, Android, Windows, Smart TV, Apple, and compatible TV boxes
 - `guides.html` - Plain-language service, connection, pricing, and family-viewing guides
 - `trial-checklist.html` - Practical guide to testing a 24-hour trial before choosing a plan
+- `blog/` - IPTV website review policy and buyer's guides; named reviews require documented testing
 
 ## Run locally
 
