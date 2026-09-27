@@ -5,7 +5,11 @@ import assert from 'node:assert/strict';
 const expected = [
   ['/', 'Live TV & On-Demand Viewing | LoopMint'],
   ['/guides.html', 'Viewing & Setup Help Guides | LoopMint'],
-  ['/setup.html', 'Device Setup Guides | LoopMint']
+  ['/setup.html', 'Device Setup Guides | LoopMint'],
+  ['/trial-checklist.html', 'How to Test a 24-Hour Live TV Trial | LoopMint'],
+  ['/blog/', 'Live TV, Films & Series Guides | LoopMint Blog'],
+  ['/blog/how-we-review.html', 'How We Review Live TV Services | LoopMint Blog'],
+  ['/blog/iptv-site-checklist.html', '12 Checks Before Choosing a Live TV Service | LoopMint Blog']
 ];
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 
@@ -17,6 +21,7 @@ try {
     await page.route('**/*', route => route.request().url().startsWith('http://127.0.0.1:5500/') ? route.continue() : route.abort());
     const response = await page.goto(`http://127.0.0.1:5500${pathname}`, { waitUntil: 'domcontentloaded' });
     assert.equal(response.status(), 200, pathname);
+    await page.waitForLoadState('load');
     const seo = await page.evaluate(() => ({
       title: document.title,
       lang: document.documentElement.lang,
@@ -38,6 +43,17 @@ try {
     assert.ok(seo.ogImage.startsWith('https://loopmint.net/assets/'));
     assert.ok(seo.twitterImage.startsWith('https://loopmint.net/assets/'));
     assert.equal(seo.h1Count, 1);
+    const wording = await page.evaluate(() => ({
+      headings: [...document.querySelectorAll('h1, h2, h3')].map(node => node.textContent).join(' '),
+      body: document.body.innerText,
+      brokenImages: [...document.images].filter(image => !image.complete || image.naturalWidth === 0).length
+    }));
+    assert.ok(!/\bIPTV\b|buffering/i.test(wording.headings));
+    assert.ok(!/buffering/i.test(wording.body));
+    assert.equal(wording.brokenImages, 0);
+    if (pathname === '/blog/' || pathname === '/blog/how-we-review.html') {
+      assert.equal((wording.body.match(/\bIPTV\b/g) || []).length, 1);
+    }
     if (pathname === '/') {
       assert.equal(seo.jsonld[0]['@graph'][0].name, 'LoopMint');
       assert.ok(seo.hasCountryFaq);
@@ -82,7 +98,7 @@ try {
   const sitemap = await (await fetch('http://127.0.0.1:5500/sitemap.xml')).text();
   assert.ok(robots.includes('Sitemap: https://loopmint.net/sitemap.xml'));
   for (const [pathname] of expected) assert.ok(sitemap.includes(`<loc>https://loopmint.net${pathname === '/' ? '/' : pathname}</loc>`));
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 3);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, expected.length);
   assert.ok(!(await readFile('index.html', 'utf8')).includes('€6.11 monthly equivalent'));
   console.log('PASS robots.txt, sitemap.xml, corrected source price');
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
