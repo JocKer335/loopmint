@@ -21,6 +21,11 @@
     <meta name="twitter:description" content="Explore viewing options on your own screen with a free trial, clear plans, and personal setup help." />
     <meta name="twitter:image" content="https://loopmint.net/assets/loopmint-football-hero.png" />
     <title>Live TV &amp; On-Demand Viewing | LoopMint</title>
+    <script>
+      if (window.self !== window.top && window.location.hash === "#trial-embed") {
+        document.documentElement.classList.add("trial-popup-embed");
+      }
+    </script>
     <script type="application/ld+json">
       {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://loopmint.net/#organization","name":"LoopMint","url":"https://loopmint.net/","logo":"https://loopmint.net/assets/loopmint-mark-transparent.png"},{"@type":"WebSite","@id":"https://loopmint.net/#website","name":"LoopMint","url":"https://loopmint.net/","publisher":{"@id":"https://loopmint.net/#organization"},"inLanguage":"en"}]}
     </script>
@@ -44,7 +49,7 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init','2107341403150924');
-      fbq('track','PageView');
+      if (!document.documentElement.classList.contains('trial-popup-embed')) fbq('track','PageView');
       window.trackLoopMintWhatsAppContact = function(destination) {
         if (typeof fbq !== 'function') return;
         fbq('track', 'Contact', {

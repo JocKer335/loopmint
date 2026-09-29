@@ -7102,6 +7102,14 @@ footer,
   display: none !important;
 }
 
+/* Show only the existing trial popup when the homepage is embedded by the blog. */
+html.trial-popup-embed body > :not(#trial-modal) {
+  display: none !important;
+}
+html.trial-popup-embed body {
+  background: transparent !important;
+}
+
 /* ==========================================================================
    DIRECT GUIDE CARD WHATSAPP SUPPORT BUTTON STYLING
    ========================================================================== */

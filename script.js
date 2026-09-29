@@ -147,6 +147,10 @@ function navigateToWhatsApp(url) {
     window.__loopmintCaptureWhatsApp(url);
     return;
   }
+  if (window.self !== window.top && window.location.hash === "#trial-embed") {
+    window.parent.postMessage({ type: "loopmint-trial-whatsapp", url }, "*");
+    return;
+  }
   window.location.assign(url);
 }
 
@@ -836,6 +840,13 @@ function closeTrialModal() {
   trialModal.classList.remove("open");
   trialModal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  if (window.self !== window.top && window.location.hash === "#trial-embed") {
+    window.parent.postMessage({ type: "loopmint-trial-close" }, "*");
+  }
+}
+
+if (window.self !== window.top && window.location.hash === "#trial-embed") {
+  openTrialModal();
 }
 
 // Bind all "Free Trial" buttons and links across the site to open the Free Trial Modal
