@@ -2,6 +2,7 @@ node_modules/
 .playwright-profile/
 playwright-report/
 test-results/
+output/
 archive/
 assets/experience/
 assets/frames/*

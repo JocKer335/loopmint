@@ -15,6 +15,7 @@ The setup page and homepage use the [Fire TV press logo](https://press.aboutamaz
 - `guides.html` - Plain-language service, connection, pricing, and family-viewing guides
 - `trial-checklist.html` - Practical guide to testing a 24-hour trial before choosing a plan
 - `blog/` - Live TV review policy and buyer's guides; named reviews require documented testing
+- `blog/live-tv-app-vs-service.html` - Guide to player apps, viewing plans, device checks and total costs
 - `privacy.html`, `terms.html`, `refunds.html` - Customer information and contact routes
 
 Optional Meta Pixel tracking on the homepage, setup and guides loads only after an explicit choice. Visitors can change their choice from the footer on every page.

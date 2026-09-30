@@ -32,7 +32,7 @@ h1{max-width:890px;margin:0;font-size:clamp(38px,5vw,64px);line-height:1.08;lett
 .section-head{max-width:760px;margin-bottom:32px}
 .section-head h2{font-size:clamp(28px,4vw,42px);line-height:1.2;letter-spacing:-.035em;margin:0 0 12px}
 .section-head p{line-height:1.7;color:#536675;margin:0}
-.card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .card{display:flex;flex-direction:column;background:#fff;border:1px solid #dbe7e8;border-radius:15px;padding:28px;box-shadow:0 15px 35px rgba(5,18,32,.05)}
 .card .tag{font-size:12px;font-weight:800;letter-spacing:.08em;color:#127a6d;text-transform:uppercase}
 .card h3{font-size:25px;line-height:1.28;letter-spacing:-.025em;margin:15px 0 10px}
@@ -74,11 +74,12 @@ article a{text-underline-offset:3px}
 .blog-modal-open{overflow:hidden}
 .blog-trial-frame{position:fixed;inset:0;z-index:10001;width:100%;height:100%;border:0;background:transparent}
 .check-table{border-collapse:collapse;width:100%;margin:20px 0;font-size:14px}
+.check-table caption{text-align:left;font-weight:800;line-height:1.5;margin-bottom:12px}
 .check-table th,.check-table td{border:1px solid #dce7e8;text-align:left;vertical-align:top;padding:12px}
 .check-table th{background:#e9f2f0}
 footer{background:#081a2d;color:#fff;padding:30px 0}
 footer .wrap{display:flex;align-items:center;gap:25px;flex-wrap:wrap}
 footer strong{margin-right:auto}
 footer a{font-size:14px;color:#fff}
-@media(max-width:850px){.article-layout{grid-template-columns:1fr;gap:25px}.sidebar{position:static;order:-1}.nav{align-items:flex-start;flex-direction:column;padding-block:17px}.nav-links{gap:15px}.intro-band .wrap{grid-template-columns:1fr}}
+@media(max-width:850px){.card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.article-layout{grid-template-columns:1fr;gap:25px}.sidebar{position:static;order:-1}.nav{align-items:flex-start;flex-direction:column;padding-block:17px}.nav-links{gap:15px}.intro-band .wrap{grid-template-columns:1fr}}
 @media(max-width:620px){.wrap{width:min(100% - 28px,1120px)}.card-grid{grid-template-columns:1fr}.hero{padding-bottom:52px}.eyebrow{margin-top:35px}.section{padding:46px 0}.article-layout{padding-top:36px;padding-bottom:55px}.check-table{display:block;overflow-x:auto}}
