@@ -11,6 +11,9 @@ The on-page hero scenes use compressed WebP images. The football PNG remains for
 - `guides.html` - Plain-language service, connection, pricing, and family-viewing guides
 - `trial-checklist.html` - Practical guide to testing a 24-hour trial before choosing a plan
 - `blog/` - Live TV review policy and buyer's guides; named reviews require documented testing
+- `privacy.html`, `terms.html`, `refunds.html` - Customer information and contact routes
+
+Optional Meta Pixel tracking on the homepage, setup and guides loads only after an explicit choice. Visitors can change their choice from the footer on every page.
 
 ## Run locally
 
@@ -27,6 +30,7 @@ With the local server running:
 
 ```powershell
 npm run audit:site
+npm run audit:privacy
 ```
 
 The audit checks page metadata, all three hero scenes, generic viewing categories, the guide interaction, checkout payment choices, and mobile horizontal overflow. It runs against the local server on port 5500.

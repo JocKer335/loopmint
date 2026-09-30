@@ -9,7 +9,10 @@ const expected = [
   ['/trial-checklist.html', 'How to Test a 24-Hour Live TV Trial | LoopMint'],
   ['/blog/', 'Live TV, Films & Series Guides | LoopMint Blog'],
   ['/blog/how-we-review.html', 'How We Review Live TV Services | LoopMint Blog'],
-  ['/blog/iptv-site-checklist.html', '12 Checks Before Choosing a Live TV Service | LoopMint Blog']
+  ['/blog/iptv-site-checklist.html', '12 Checks Before Choosing a Live TV Service | LoopMint Blog'],
+  ['/privacy.html', 'Privacy Notice | LoopMint'],
+  ['/terms.html', 'Trial and Plan Terms | LoopMint'],
+  ['/refunds.html', 'Refund Policy | LoopMint']
 ];
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 

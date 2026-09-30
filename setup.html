@@ -21,38 +21,11 @@
     <link rel="stylesheet" href="styles.css?v=20260924-hero3" />
     <link rel="stylesheet" href="motion.css?v=20260924-hero3" />
     <link rel="stylesheet" href="setup.css?v=20260814-2" />
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init','2107341403150924');
-      fbq('track','PageView');
-      window.trackLoopMintWhatsAppContact = function(destination) {
-        if (typeof fbq !== 'function') return;
-        fbq('track', 'Contact', {
-          content_name: 'WhatsApp',
-          contact_route: destination
-        });
-      };
-      document.addEventListener('click', function(event) {
-        const link = event.target.closest('a[href*="wa.me/"]');
-        if (!link) return;
-        const destination = link.href.includes('447907504571') ? 'support' : 'sales';
-        window.trackLoopMintWhatsAppContact(destination);
-      }, true);
-    </script>
-    <!-- End Meta Pixel Code -->
+    <meta name="loopmint-meta-pixel" content="2107341403150924" />
+    <link rel="stylesheet" href="consent.css" />
+    <script src="consent.js" defer></script>
   </head>
   <body class="resource-page setup-resource-page">
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2107341403150924&amp;ev=PageView&amp;noscript=1"
-      alt=""
-    /></noscript>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="resource-header">
@@ -189,7 +162,7 @@
 
     <footer class="resource-footer">
       <div class="shell"><span>LoopMint</span><p>Clear setup routes for the screen you already own.</p><a href="index.html">Return home</a></div>
-    </footer>
+    <div class="shell lm-legal-links"><a href="privacy.html">Privacy</a><a href="terms.html">Plan terms</a><a href="refunds.html">Refunds</a><a href="#privacy-choices">Privacy choices</a><a href="mailto:inquiries@officialgnf.com">Email</a></div></footer>
     <script src="setup.js?v=20260814-2"></script>
   </body>
 </html>

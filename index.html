@@ -39,38 +39,11 @@
     <link rel="icon" type="image/png" href="assets/loopmint-mark-transparent.png" />
     <link rel="apple-touch-icon" href="assets/loopmint-mark-transparent.png" />
 
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init','2107341403150924');
-      if (!document.documentElement.classList.contains('trial-popup-embed')) fbq('track','PageView');
-      window.trackLoopMintWhatsAppContact = function(destination) {
-        if (typeof fbq !== 'function') return;
-        fbq('track', 'Contact', {
-          content_name: 'WhatsApp',
-          contact_route: destination
-        });
-      };
-      document.addEventListener('click', function(event) {
-        const link = event.target.closest('a[href*="wa.me/"]');
-        if (!link) return;
-        const destination = link.href.includes('447907504571') ? 'support' : 'sales';
-        window.trackLoopMintWhatsAppContact(destination);
-      }, true);
-    </script>
-    <!-- End Meta Pixel Code -->
+    <meta name="loopmint-meta-pixel" content="2107341403150924" />
+    <link rel="stylesheet" href="consent.css" />
+    <script src="consent.js" defer></script>
   </head>
   <body class="simplified-page">
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2107341403150924&amp;ev=PageView&amp;noscript=1"
-      alt=""
-    /></noscript>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" id="site-header">
@@ -465,7 +438,7 @@
             <div>
               <p class="kicker orange">Pricing</p>
               <h2>Five clear plans.<br>One simple decision.</h2>
-              <p class="pricing-sub">Compare the plan terms and total price before sending an order request. Trial and setup guidance are available through WhatsApp.</p>
+              <p class="pricing-sub">Compare the plan terms and total price before sending an order request. Trial and setup guidance are available through WhatsApp. <a href="terms.html">Plan terms</a> and <a href="refunds.html">refund details</a> are available before payment.</p>
             </div>
             <div class="pricing-header-right">
               <div class="currency-switch-wrapper" id="page-currency-switch">
@@ -738,7 +711,7 @@
               </details>
               <details>
                 <summary>Is there a contract?</summary>
-                <p>Choose an upfront term of 1 month, 6 months, 1 year, 2 years, or 3 years. Confirm the renewal terms before paying.</p>
+                <p>Choose an upfront term of 1 month, 6 months, 1 year, 2 years, or 3 years. Plans renew only when you ask. Read the <a href="terms.html">plan terms</a> and <a href="refunds.html">refund policy</a> before paying.</p>
               </details>
               <details>
                 <summary>What affects picture quality?</summary>
@@ -920,7 +893,7 @@
           <a href="blog/">Blog</a>
         </div>
       </div>
-    </footer>
+    <div class="shell lm-legal-links"><a href="privacy.html">Privacy</a><a href="terms.html">Plan terms</a><a href="refunds.html">Refunds</a><a href="#privacy-choices">Privacy choices</a><a href="mailto:inquiries@officialgnf.com">Email</a></div></footer>
       </div>
     </main>
 
@@ -1115,9 +1088,9 @@
             <!-- Consent Checkbox (Obligatory) -->
             <div class="consent-row" id="consent-row-box">
               <label class="custom-checkbox-container">
-                <input type="checkbox" id="co-consent" required checked />
+                <input type="checkbox" id="co-consent" required />
                 <span class="checkmark"></span>
-                <span class="consent-text">I consent to Loop Mint contacting me on WhatsApp about this order. *</span>
+                <span class="consent-text">I agree to LoopMint contacting me on WhatsApp about this order. Read our <a href="privacy.html">privacy notice</a>, <a href="terms.html">plan terms</a> and <a href="refunds.html">refund policy</a>. *</span>
               </label>
             </div>
 
@@ -1125,6 +1098,7 @@
             <button type="button" class="co-submit-btn" id="btn-submit-whatsapp">
               Send Order Details via WhatsApp 🚀
             </button>
+            <p class="lm-form-legal">Your details are sent only when you continue in WhatsApp. <a href="privacy.html">How we handle your information</a>.</p>
           </div>
 
           <!-- RIGHT SUMMARY COLUMN -->
@@ -1242,6 +1216,7 @@
             <button type="submit" class="trial-green-btn" id="btn-submit-trial">
               Get Free Trial via WhatsApp 💬
             </button>
+            <p class="lm-form-legal">No card needed. <a href="privacy.html">Privacy</a> · <a href="terms.html">Trial terms</a></p>
           </form>
 
           <p class="trial-rating-footer">No payment details needed to request the trial.</p>
@@ -1249,6 +1224,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=20260929-trialpopup"></script>
+    <script src="script.js?v=20260930-privacy"></script>
   </body>
 </html>

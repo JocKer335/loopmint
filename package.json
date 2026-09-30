@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "serve": "node serve.mjs",
-    "audit:site": "node playwright-tools/audit-clean.mjs"
+    "audit:site": "node playwright-tools/audit-clean.mjs",
+    "audit:privacy": "node playwright-tools/audit-privacy.mjs"
   },
   "devDependencies": {
     "playwright": "^1.55.0"

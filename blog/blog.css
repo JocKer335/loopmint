@@ -72,7 +72,7 @@ article a{text-underline-offset:3px}
 .trial-banner-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .trial-banner-actions a:not(.button){font-size:14px;font-weight:800;text-underline-offset:4px}
 .blog-modal-open{overflow:hidden}
-.blog-trial-frame{position:fixed;inset:0;z-index:9999;width:100%;height:100%;border:0;background:transparent}
+.blog-trial-frame{position:fixed;inset:0;z-index:10001;width:100%;height:100%;border:0;background:transparent}
 .check-table{border-collapse:collapse;width:100%;margin:20px 0;font-size:14px}
 .check-table th,.check-table td{border:1px solid #dce7e8;text-align:left;vertical-align:top;padding:12px}
 .check-table th{background:#e9f2f0}
