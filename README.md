@@ -4,6 +4,10 @@ Responsive static website for LoopMint, including a landing page, device setup i
 
 The on-page hero scenes use compressed WebP images. The football PNG remains for social previews.
 
+## Device graphics
+
+The setup page and homepage use the [Fire TV press logo](https://press.aboutamazon.com/logos), the [Android robot](https://developer.android.com/distribute/marketing-tools/brand-guidelines), and the header marks from [Infomir](https://www.infomir.eu/) and [Formuler](https://www.formuler.tv/). The Android attribution appears on both pages. Windows and Apple use local vector marks; Smart TV uses a neutral television icon because it is a device category, not one manufacturer. Brand marks identify setup routes and do not imply an affiliation.
+
 ## Pages
 
 - `index.html` - Main landing page, plans, trial request, reviews, and FAQ

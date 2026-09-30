@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Television">
+  <rect x="7" y="13" width="66" height="46" rx="7" fill="#071424"/>
+  <rect x="12" y="18" width="56" height="36" rx="3" fill="#d8f8ee"/>
+  <path d="M18 44c10-13 21-18 44-19v23H18v-4Z" fill="#53cbb2"/>
+  <path d="M30 59v7m20-7v7M23 67h34" fill="none" stroke="#071424" stroke-linecap="round" stroke-width="4"/>
+</svg>

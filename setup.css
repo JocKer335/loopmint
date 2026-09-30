@@ -207,7 +207,7 @@
   color: #071424;
   display: grid;
   gap: 15px;
-  grid-template-columns: 64px minmax(0, 1fr) 28px;
+  grid-template-columns: 76px minmax(0, 1fr) 28px;
   min-height: 110px;
   padding: 16px;
   text-align: left;
@@ -228,36 +228,68 @@
   border: 1px solid #e2e9eb;
   border-radius: 6px;
   display: flex;
-  height: 64px;
+  height: 72px;
   justify-content: center;
   overflow: hidden;
-  width: 64px;
+  width: 76px;
 }
 
 .setup-resource-page .setup-device-grid .setup-device-icon img {
-  height: 40px;
+  height: 54px;
   object-fit: contain;
-  width: 48px;
+  width: 60px;
 }
 
-.setup-resource-page .setup-device-grid .setup-device-photo img {
-  height: 64px;
-  object-fit: cover;
-  width: 64px;
+.setup-resource-page .setup-device-grid .setup-device-icon--fire img {
+  height: 62px;
+  width: 68px;
 }
 
-.setup-resource-page .setup-device-grid .setup-box-mark {
+.setup-resource-page .setup-device-grid .setup-device-icon--android img {
+  height: 45px;
+  width: 66px;
+}
+
+.setup-resource-page .setup-device-grid .setup-device-icon--symbol img {
+  height: 52px;
+  width: 52px;
+}
+
+.setup-device-icon--brands,
+.setup-guide-logo--brands {
+  background: #ffffff;
+}
+
+.setup-brand-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.setup-brand-stack > span {
   align-items: center;
-  background: #071424;
-  border-radius: 5px;
-  color: #21c9a5;
   display: flex;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 900;
-  height: 40px;
   justify-content: center;
-  width: 48px;
+  min-height: 0;
+}
+
+.setup-brand-stack > span:last-child {
+  background: #071424;
+}
+
+.setup-resource-page .setup-device-grid .setup-device-icon--brands .setup-brand-stack img,
+.setup-guide-logo--brands .setup-brand-stack img {
+  height: auto;
+  max-height: 85%;
+  object-fit: contain;
+  width: 82%;
+}
+
+.setup-resource-page .setup-device-grid .setup-device-icon--brands .setup-brand-stack > span:last-child img,
+.setup-guide-logo--brands .setup-brand-stack > span:last-child img {
+  max-height: 55%;
 }
 
 .setup-device-grid a > span:nth-child(2) {
@@ -434,35 +466,43 @@
   border: 1px solid #dce5e8;
   border-radius: 7px;
   display: flex;
-  flex: 0 0 74px;
-  height: 66px;
+  flex: 0 0 100px;
+  height: 78px;
   justify-content: center;
   overflow: hidden;
 }
 
 .setup-guide-logo img {
-  height: 40px;
+  height: 62px;
   object-fit: contain;
-  width: 54px;
+  width: 76px;
 }
 
-.setup-guide-logo.setup-guide-photo img {
-  height: 66px;
-  object-fit: cover;
-  width: 74px;
+.setup-guide-logo--fire img {
+  height: 68px;
+  width: 88px;
 }
 
-.setup-guide-logo .setup-box-mark {
-  align-items: center;
-  background: #071424;
-  border-radius: 5px;
-  color: #21c9a5;
-  display: flex;
-  font-size: 13px;
-  font-weight: 900;
-  height: 40px;
-  justify-content: center;
-  width: 50px;
+.setup-guide-logo--android img {
+  height: 55px;
+  width: 88px;
+}
+
+.setup-guide-logo--symbol img {
+  height: 60px;
+  width: 60px;
+}
+
+.setup-guide-logo--brands {
+  flex-basis: 126px;
+}
+
+.setup-mark-note {
+  color: #526173;
+  font-size: 11px;
+  line-height: 1.5;
+  padding-bottom: 22px;
+  padding-top: 22px;
 }
 
 .setup-guide-heading > div {
@@ -834,18 +874,32 @@
   }
 
   .setup-guide-logo {
-    flex-basis: 58px;
-    height: 54px;
+    flex-basis: 76px;
+    height: 66px;
   }
 
   .setup-guide-logo img {
-    height: 34px;
-    width: 43px;
+    height: 52px;
+    width: 60px;
   }
 
-  .setup-guide-logo.setup-guide-photo img {
-    height: 54px;
-    width: 58px;
+  .setup-guide-logo--fire img {
+    height: 58px;
+    width: 70px;
+  }
+
+  .setup-guide-logo--android img {
+    height: 43px;
+    width: 70px;
+  }
+
+  .setup-guide-logo--symbol img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .setup-guide-logo--brands {
+    flex-basis: 98px;
   }
 
   .setup-resource-page .setup-guide h2 {
