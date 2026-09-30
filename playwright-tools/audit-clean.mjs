@@ -8,6 +8,7 @@ const expected = [
   ['/setup.html', 'Device Setup Guides | LoopMint'],
   ['/trial-checklist.html', 'How to Test a 24-Hour Live TV Trial | LoopMint'],
   ['/blog/', 'Live TV, Films & Series Guides | LoopMint Blog'],
+  ['/blog/uk-live-tv-trial-guide.html', 'UK Live TV Trial Guide: Devices, Plans & Prices | LoopMint'],
   ['/blog/where-loopmint-is-available.html', 'Where Is LoopMint Available? Worldwide Trial & Plans'],
   ['/blog/live-tv-app-vs-service.html', 'Live TV App vs Viewing Service: What Do You Need? | LoopMint'],
   ['/blog/how-we-review.html', 'How We Review Live TV Services | LoopMint Blog'],

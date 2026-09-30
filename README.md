@@ -17,6 +17,7 @@ The setup page and homepage use the [Fire TV press logo](https://press.aboutamaz
 - `blog/` - Live TV review policy and buyer's guides; named reviews require documented testing
 - `blog/live-tv-app-vs-service.html` - Guide to player apps, viewing plans, device checks and total costs
 - `blog/where-loopmint-is-available.html` - Worldwide trial and plan request guide with examples for the UK, Ireland and United States
+- `blog/uk-live-tv-trial-guide.html` - UK trial checklist and published euro plan prices, with final payment currency confirmed before purchase
 - `privacy.html`, `terms.html`, `refunds.html` - Customer information and contact routes
 
 Optional Meta Pixel tracking on the homepage, setup and guides loads only after an explicit choice. Visitors can change their choice from the footer on every page.
