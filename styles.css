@@ -4289,20 +4289,11 @@ body.theme-dim .feature-tabs .tab-num {
 .hero-copy,
 .hero-actions,
 .hero-video {
-  opacity: 0;
-  transform: translateY(28px);
-}
-
-.is-ready .hero-copy {
-  animation: liftIn .9s cubic-bezier(.2,.8,.2,1) .08s both;
-}
-
-.is-ready .hero-actions {
-  animation: liftIn .9s cubic-bezier(.2,.8,.2,1) .22s both;
+  opacity: 1;
 }
 
 .is-ready .hero-video {
-  animation: stageIn 1s cubic-bezier(.2,.8,.2,1) .36s both, stageFloat 7s ease-in-out 1.4s infinite;
+  animation: stageFloat 7s ease-in-out 1.4s infinite;
 }
 
 .button,

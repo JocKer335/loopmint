@@ -52,7 +52,7 @@ try {
     const wording = await page.evaluate(() => ({
       headings: [...document.querySelectorAll('h1, h2, h3')].map(node => node.textContent).join(' '),
       body: document.body.innerText,
-      brokenImages: [...document.images].filter(image => !image.complete || image.naturalWidth === 0).length
+      brokenImages: [...document.images].filter(image => image.loading !== 'lazy' && (!image.complete || image.naturalWidth === 0)).length
     }));
     assert.ok(!/\bIPTV\b|buffering/i.test(wording.headings));
     assert.ok(!/buffering/i.test(wording.body));
@@ -83,6 +83,12 @@ try {
       assert.ok(Number(await page.locator('.hero-films-image').evaluate(image => getComputedStyle(image).opacity)) > 0.8);
       await page.waitForTimeout(8000);
       assert.ok(Number(await page.locator('.hero-series-image').evaluate(image => getComputedStyle(image).opacity)) > 0.8);
+      assert.equal(await page.locator('.guide-img[loading="lazy"]').count(), 6);
+      await page.locator('.guide-img').first().scrollIntoViewIfNeeded();
+      await page.waitForFunction(() => {
+        const image = document.querySelector('.guide-img');
+        return image.complete && image.naturalWidth > 0;
+      });
       await page.getByRole('button', { name: /Films and box sets/i }).click();
       await page.waitForTimeout(250);
       assert.ok((await page.locator('#feature-display').innerText()).includes('Browse films, series'));
