@@ -30,7 +30,7 @@
       {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://loopmint.net/#organization","name":"LoopMint","url":"https://loopmint.net/","logo":"https://loopmint.net/assets/loopmint-mark-transparent.png"},{"@type":"WebSite","@id":"https://loopmint.net/#website","name":"LoopMint","url":"https://loopmint.net/","publisher":{"@id":"https://loopmint.net/#organization"},"inLanguage":"en"}]}
     </script>
     <link rel="preload" href="assets/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="styles.css?v=20261001-local-font" />
+    <link rel="stylesheet" href="styles.css?v=20261001-a11y-lazy" />
     <link rel="stylesheet" href="motion.css?v=20260924-hero3" />
 
     <!-- FAVICON & BRAND ICON -->
@@ -189,7 +189,7 @@
           <div class="section-title">
             <p class="kicker orange">CONTENT</p>
             <h2>Find the viewing that works for you.</h2>
-            <div class="feature-tabs" role="tablist" aria-label="Content feature tabs">
+            <div class="feature-tabs" role="group" aria-label="Content feature choices">
               <button class="active" type="button" data-feature="sport">
                 <span class="tab-num">01</span>
                 <span class="tab-text">Live sport</span>
@@ -266,37 +266,37 @@
         </div>
         <div class="shell supported-device-grid">
           <a class="supported-device-card" href="setup.html#fire-tv">
-            <div class="device-visual device-visual-fire"><img src="assets/fire-tv-mark.png" alt="" /></div>
+            <div class="device-visual device-visual-fire"><img src="assets/fire-tv-mark.png" alt="" loading="lazy" decoding="async" /></div>
             <h3>Fire TV devices</h3>
             <p>Fire TV Stick, Cube, and compatible Fire TV models</p>
             <span>Open setup guide</span>
           </a>
           <a class="supported-device-card" href="setup.html#android">
-            <div class="device-visual device-visual-android"><img src="assets/logo-android-robot.svg" alt="" /></div>
+            <div class="device-visual device-visual-android"><img src="assets/logo-android-robot.svg" alt="" loading="lazy" decoding="async" /></div>
             <h3>Android devices</h3>
             <p>Android TV, Google TV, phones, tablets, and boxes</p>
             <span>Open setup guide</span>
           </a>
           <a class="supported-device-card" href="setup.html#windows">
-            <div class="device-visual device-visual-symbol"><img src="assets/logo-windows-mark.svg" alt="" /></div>
+            <div class="device-visual device-visual-symbol"><img src="assets/logo-windows-mark.svg" alt="" loading="lazy" decoding="async" /></div>
             <h3>Windows</h3>
             <p>Desktop computers, laptops, and compact PCs</p>
             <span>Open setup guide</span>
           </a>
           <a class="supported-device-card" href="setup.html#smart-tv">
-            <div class="device-visual device-visual-symbol"><img src="assets/icon-smart-tv.svg" alt="" /></div>
+            <div class="device-visual device-visual-symbol"><img src="assets/icon-smart-tv.svg" alt="" loading="lazy" decoding="async" /></div>
             <h3>Smart televisions</h3>
             <p>Check your exact television model and available app store</p>
             <span>Open setup guide</span>
           </a>
           <a class="supported-device-card" href="setup.html#apple">
-            <div class="device-visual device-visual-symbol"><img src="assets/logo-apple.svg?v=20261001-apple" alt="" /></div>
+            <div class="device-visual device-visual-symbol"><img src="assets/logo-apple.svg?v=20261001-apple" alt="" loading="lazy" decoding="async" /></div>
             <h3>Apple devices</h3>
             <p>Apple TV, iPhone, iPad, and Mac computers</p>
             <span>Open setup guide</span>
           </a>
           <a class="supported-device-card" href="setup.html#tv-boxes">
-            <div class="device-visual device-visual-brands"><div class="device-brand-stack" aria-hidden="true"><span><img src="assets/logo-infomir.svg" alt="" /></span><span><img src="assets/formuler-wordmark.png" alt="" /></span></div></div>
+            <div class="device-visual device-visual-brands"><div class="device-brand-stack" aria-hidden="true"><span><img src="assets/logo-infomir.svg" alt="" loading="lazy" decoding="async" /></span><span><img src="assets/formuler-wordmark.png" alt="" loading="lazy" decoding="async" /></span></div></div>
             <h3>TV boxes</h3>
             <p>Compatible MAG, Formuler, and other supported receivers</p>
             <span>Open setup guide</span>
@@ -777,7 +777,7 @@
               <span class="guide-tag">GETTING STARTED</span>
               <h3>How internet television works</h3>
               <p>A plain-language introduction to players, programme guides, and device requirements.</p>
-              <a href="guides.html#how-it-works" class="guide-card-wa-btn">
+              <a href="guides.html#how-it-works" class="guide-card-wa-btn" aria-label="Read guide: How internet television works">
                 Read guide &rarr;
               </a>
             </div>
@@ -791,7 +791,7 @@
               <span class="guide-tag">TRIAL CHECKLIST</span>
               <h3>How to test a 24-hour trial</h3>
               <p>Check availability, your device, picture quality, support, and plan terms before paying.</p>
-              <a href="trial-checklist.html" class="guide-card-wa-btn">
+              <a href="trial-checklist.html" class="guide-card-wa-btn" aria-label="Read guide: How to test a 24-hour trial">
                 Read guide &rarr;
               </a>
             </div>
@@ -805,7 +805,7 @@
               <span class="guide-tag">CONNECTION HELP</span>
               <h3>Check playback step by step</h3>
               <p>Test your own device, check your connection, and compare the viewing options available in your trial.</p>
-              <a href="guides.html#playback-check" class="guide-card-wa-btn">
+              <a href="guides.html#playback-check" class="guide-card-wa-btn" aria-label="Read guide: Check playback step by step">
                 Read guide &rarr;
               </a>
             </div>
@@ -819,7 +819,7 @@
               <span class="guide-tag">PLANS</span>
               <h3>Understand pricing and renewals</h3>
               <p>Compare plan duration, connection limits, trial terms, and the true renewal date.</p>
-              <a href="guides.html#pricing-guide" class="guide-card-wa-btn">
+              <a href="guides.html#pricing-guide" class="guide-card-wa-btn" aria-label="Read guide: Understand pricing and renewals">
                 Read guide &rarr;
               </a>
             </div>
@@ -847,7 +847,7 @@
               <span class="guide-tag">FAMILY VIEWING</span>
               <h3>Build a simpler family setup</h3>
               <p>Organize favourites, subtitles, profiles, and any parental controls offered by your player.</p>
-              <a href="guides.html#family-viewing" class="guide-card-wa-btn">Read guide &rarr;</a>
+              <a href="guides.html#family-viewing" class="guide-card-wa-btn" aria-label="Read guide: Build a simpler family setup">Read guide &rarr;</a>
             </div>
           </article>
         </div>
