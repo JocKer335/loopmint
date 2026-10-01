@@ -123,6 +123,14 @@ try {
     const card = board.querySelector('.clean-content-card');
     return getComputedStyle(board).display === 'grid' && card.getBoundingClientRect().width >= 250;
   }));
+  assert.ok(await mobile.evaluate(() => {
+    const footer = document.querySelector('.site-footer');
+    const legal = footer.querySelector('.lm-legal-links');
+    return getComputedStyle(footer.querySelector('.footer-main-grid')).gridTemplateColumns.split(' ').length === 2
+      && getComputedStyle(legal).display === 'grid'
+      && getComputedStyle(footer.querySelector('.footer-bottom-links')).display === 'none'
+      && footer.querySelectorAll('.footer-contact-item').length === 2;
+  }));
   await mobile.emulateMedia({ reducedMotion: 'reduce' });
   assert.deepEqual(await mobile.locator('.hero-scene').evaluateAll(images => images.map(image => getComputedStyle(image).opacity)), ['1', '0', '0']);
   console.log('PASS mobile hero image and horizontal layout');

@@ -3559,6 +3559,33 @@ body.theme-night .smart-section .map-note {
   color: #26d4a7;
 }
 
+.footer-contact-list {
+  gap: 20px;
+}
+
+.footer-contact-item a,
+.footer-contact-number {
+  display: block;
+}
+
+.footer-contact-number {
+  margin-top: 3px;
+}
+
+.footer-contact-item > span {
+  display: block;
+  margin-top: 7px;
+  line-height: 1.5;
+}
+
+body.theme-bright .lower-site-shell .site-footer .brand-loop {
+  color: #071424;
+}
+
+body.theme-bright .lower-site-shell .site-footer .brand-name {
+  text-shadow: none;
+}
+
 .footer-bottom-bar {
   display: flex;
   justify-content: space-between;
@@ -4095,8 +4122,74 @@ body.theme-night .smart-section .map-note {
 
 @media (max-width: 550px) {
   .footer-main-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 20px;
+    padding-bottom: 30px;
+  }
+
+  .footer-main-grid .brand-col,
+  .footer-main-grid .footer-col:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-col-links {
+    gap: 14px;
+  }
+
+  .footer-col-links li a,
+  .footer-col-links li span {
+    line-height: 1.5;
+  }
+
+  .footer-contact-list {
+    gap: 12px;
+  }
+
+  .footer-contact-item {
+    padding: 16px;
+    border: 1px solid rgba(8, 19, 33, .12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .68);
+  }
+
+  body.theme-dim .footer-contact-item {
+    border-color: rgba(255, 255, 255, .14);
+    background: rgba(255, 255, 255, .06);
+  }
+
+  .footer-bottom-bar {
+    padding-top: 20px;
+  }
+
+  .footer-bottom-links {
+    display: none;
+  }
+
+  .site-footer .lm-legal-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding-top: 20px;
+  }
+
+  .site-footer .lm-legal-links a {
+    display: block;
+    padding: 12px;
+    border: 1px solid rgba(8, 19, 33, .12);
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.35;
+    background: rgba(255, 255, 255, .55);
+  }
+
+  body.theme-dim .site-footer .lm-legal-links a {
+    border-color: rgba(255, 255, 255, .14);
+    background: rgba(255, 255, 255, .06);
+  }
+
+  .site-footer .lm-legal-links a:last-child {
+    grid-column: 1 / -1;
   }
 }
 
