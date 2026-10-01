@@ -757,7 +757,7 @@ window.addEventListener("scroll", () => {
   siteHeader?.classList.remove("is-hidden");
 }, { passive: true });
 
-// Fast Stats Counter Animation - Re-triggers every time scrolled into view
+// Keep the published counts visible until the band enters the viewport.
 const statBand = document.getElementById("stat-band");
 const statNumbers = document.querySelectorAll(".stat-number");
 let activeCounterAnimations = [];
@@ -797,25 +797,16 @@ function startCounterAnimation() {
   });
 }
 
-function resetCounters() {
-  activeCounterAnimations.forEach(cancelAnimationFrame);
-  activeCounterAnimations = [];
-  statNumbers.forEach((el) => {
-    const start = parseInt(el.getAttribute("data-start"), 10) || 0;
-    el.textContent = formatNumber(start);
-  });
-}
-
 if (statBand) {
+  let hasAnimated = false;
   const statObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          startCounterAnimation();
-        } else {
-          resetCounters();
-        }
-      });
+      if (hasAnimated || !entries.some((entry) => entry.isIntersecting)) return;
+      hasAnimated = true;
+      statObserver.disconnect();
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        startCounterAnimation();
+      }
     },
     { threshold: 0.25 }
   );
