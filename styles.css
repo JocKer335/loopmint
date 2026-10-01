@@ -8326,6 +8326,7 @@ body.theme-dim .white-section .supported-device-card p {
 }
 
 .simplified-page .content-board.clean-content-board {
+  display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 18px !important;
 }
@@ -8348,7 +8349,13 @@ body.theme-dim .white-section .supported-device-card p {
 }
 
 @media (max-width: 560px) {
-  .simplified-page .content-board.clean-content-board { grid-template-columns: 1fr !important; }
+  .simplified-page .content-board.clean-content-board {
+    grid-template-columns: 1fr !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin-inline: auto !important;
+    scroll-snap-type: none;
+  }
   .clean-content-card { min-height: 0; }
 }
 

@@ -78,6 +78,7 @@ try {
       assert.equal(visual.heroVideoCount, 0);
       assert.equal(visual.cardCount, 6);
       assert.ok(!/IPTV|Netflix|Premier League|Disney\+|HBO Max|UFC/.test(visual.bodyText));
+      assert.ok(!visual.bodyText.includes('1 Connection (1 Device)'));
       assert.ok(visual.scrollWidth <= visual.viewportWidth);
       await page.waitForTimeout(8000);
       assert.ok(Number(await page.locator('.hero-films-image').evaluate(image => getComputedStyle(image).opacity)) > 0.8);
@@ -118,6 +119,10 @@ try {
   await mobile.goto('http://127.0.0.1:5500/', { waitUntil: 'domcontentloaded' });
   assert.deepEqual(await mobile.locator('.hero-scene').evaluateAll(images => images.map(image => image.complete && image.naturalWidth > 0)), [true, true, true]);
   assert.ok(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  assert.ok(await mobile.locator('.clean-content-board').evaluate(board => {
+    const card = board.querySelector('.clean-content-card');
+    return getComputedStyle(board).display === 'grid' && card.getBoundingClientRect().width >= 250;
+  }));
   await mobile.emulateMedia({ reducedMotion: 'reduce' });
   assert.deepEqual(await mobile.locator('.hero-scene').evaluateAll(images => images.map(image => getComputedStyle(image).opacity)), ['1', '0', '0']);
   console.log('PASS mobile hero image and horizontal layout');
