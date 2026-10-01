@@ -2050,6 +2050,36 @@ body.theme-night .showing-count-text {
   text-align: center;
 }
 
+.player-activation-note {
+  margin-top: 28px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid rgba(13, 161, 143, .32);
+  border-radius: 18px;
+  background: rgba(38, 212, 167, .09);
+  color: var(--lm-theme-ink, #071424);
+}
+
+.player-activation-note strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.player-activation-note p {
+  margin: 0;
+  color: var(--lm-theme-muted, #566575);
+  line-height: 1.65;
+}
+
+.player-activation-note a {
+  color: #087665;
+  font-weight: 800;
+}
+
+body.theme-dim .player-activation-note a {
+  color: #26d4a7;
+}
+
 .pricing-header-right {
   display: flex;
   flex-direction: column;
