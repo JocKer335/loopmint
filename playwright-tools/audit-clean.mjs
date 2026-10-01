@@ -6,7 +6,7 @@ const expected = [
   ['/', 'Live TV & On-Demand Viewing | LoopMint'],
   ['/guides.html', 'Viewing & Setup Help Guides | LoopMint'],
   ['/setup.html', 'Device Setup Guides | LoopMint'],
-  ['/trial-checklist.html', 'How to Test a 24-Hour Live TV Trial | LoopMint'],
+  ['/trial-checklist.html', 'IPTV Free Trial: What to Test in 24 Hours | LoopMint'],
   ['/blog/', 'Live TV, Films & Series Guides | LoopMint Blog'],
   ['/blog/uk-live-tv-trial-guide.html', 'UK Live TV Trial Guide: Devices, Plans & Prices | LoopMint'],
   ['/blog/where-loopmint-is-available.html', 'Where Is LoopMint Available? Worldwide Trial & Plans'],
@@ -54,7 +54,7 @@ try {
       body: document.body.innerText,
       brokenImages: [...document.images].filter(image => image.loading !== 'lazy' && (!image.complete || image.naturalWidth === 0)).length
     }));
-    assert.ok(!/\bIPTV\b|buffering/i.test(wording.headings));
+    assert.ok(!/buffering/i.test(wording.headings));
     assert.ok(!/buffering/i.test(wording.body));
     assert.equal(wording.brokenImages, 0);
     if (pathname === '/blog/' || pathname === '/blog/how-we-review.html') {
