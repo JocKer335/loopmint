@@ -121,6 +121,42 @@ faqDetails.forEach((detail) => {
   });
 });
 
+const dialogReturnFocus = new WeakMap();
+
+function focusDialog(dialog) {
+  dialogReturnFocus.set(dialog, document.activeElement);
+  requestAnimationFrame(() => {
+    if (dialog.getAttribute("aria-hidden") !== "false") return;
+    (dialog.querySelector('button, input:not([type="hidden"]), select') || dialog).focus();
+  });
+}
+
+function restoreDialogFocus(dialog) {
+  const trigger = dialogReturnFocus.get(dialog);
+  dialogReturnFocus.delete(dialog);
+  if (trigger?.isConnected) trigger.focus();
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Tab") return;
+  const dialog = document.querySelector('[role="dialog"][aria-hidden="false"]');
+  if (!dialog) return;
+  const controls = [...dialog.querySelectorAll('a[href], button, input:not([type="hidden"]), select, textarea, [tabindex="0"]')]
+    .filter(element => !element.disabled && element.getClientRects().length && getComputedStyle(element).visibility !== "hidden");
+  const first = controls[0];
+  const last = controls[controls.length - 1];
+  if (!first) {
+    event.preventDefault();
+    dialog.focus();
+  } else if (event.shiftKey && (document.activeElement === first || !dialog.contains(document.activeElement))) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && (document.activeElement === last || !dialog.contains(document.activeElement))) {
+    event.preventDefault();
+    first.focus();
+  }
+});
+
 /* CHECKOUT MODAL LOGIC */
 const checkoutModal = document.getElementById("checkout-modal");
 const checkoutClose = document.getElementById("checkout-close");
@@ -155,6 +191,8 @@ function navigateToWhatsApp(url) {
 }
 
 /* CURRENCY SWITCHER LOGIC */
+const playerActivationByPlan = { "1 Month": "Available separately", "6 Months": "1 year included", "1 Year": "1 year included", "2 Years": "Lifetime included", "3 Years": "Lifetime included" };
+
 let currentCurrency = "EUR"; // "EUR" or "USD"
 
 const currencyConfig = {
@@ -209,7 +247,7 @@ const economizerMatrixData = {
       '<span class="save-badge save-best">Longest fixed term</span>'
     ],
     keep: [
-      '<strong>€12 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
+      '<strong>€12 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>Player activation available separately',
       'Everything in 1 Month</li><li>Lower €9.17/mo rate</li><li>Setup Refresh Help',
       'Everything in 6 Months</li><li><strong>€7.08 monthly equivalent</strong></li><li>Setup guidance</li><li>15% OFF Multi-Screen Perks',
       '<strong>24 total months</strong></li><li><strong>€6.25 monthly equivalent</strong></li><li>Support for active plans</li><li>Price set for 2 years',
@@ -255,7 +293,7 @@ const economizerMatrixData = {
       '<span class="save-badge save-best">Longest fixed term</span>'
     ],
     keep: [
-      '<strong>$14 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>1 Active Connection',
+      '<strong>$14 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>Player activation available separately',
       'Everything in 1 Month</li><li>Lower $10.67/mo rate</li><li>Setup Refresh Help',
       'Everything in 6 Months</li><li><strong>$8.25 monthly equivalent</strong></li><li>Setup guidance</li><li>15% OFF Multi-Screen Perks',
       '<strong>24 total months</strong></li><li><strong>$7.25 monthly equivalent</strong></li><li>Support for active plans</li><li>Price set for 2 years',
@@ -413,13 +451,16 @@ function openCheckoutModal(planName = "6 Months", planPrice = "55") {
   checkoutModal.classList.add("open");
   checkoutModal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  focusDialog(checkoutModal);
 }
 
 function closeCheckoutModal() {
   if (!checkoutModal) return;
+  const wasOpen = checkoutModal.classList.contains("open");
   checkoutModal.classList.remove("open");
   checkoutModal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  if (wasOpen) restoreDialogFocus(checkoutModal);
 }
 
 function selectPlanCard(card) {
@@ -438,6 +479,8 @@ function selectPlanCard(card) {
 function updateOrderSummary() {
   const sym = currencyConfig[currentCurrency].symbol;
   const formatAmount = (value) => Number.isInteger(value) ? String(value) : value.toFixed(2);
+  const activationSummary = document.getElementById("sum-player-activation");
+  if (activationSummary) activationSummary.textContent = playerActivationByPlan[currentPlan.name];
   const totalTVs = 1 + extraDevices; // main TV + extras
   const deviceAddOnPrice = extraDevices * currentPlan.price; // each extra TV = full plan price
   const subtotal = currentPlan.price + deviceAddOnPrice; // plan price × number of TVs
@@ -605,11 +648,12 @@ btnSubmitWhatsapp?.addEventListener("click", () => {
   const message = `Hello LoopMint,\nI would like to place an order.\n\n` +
     `CUSTOMER DETAILS\n` +
     `Name: ${fullName}\n` +
-    `Country: ${countryName} (${countryCode})\n` +
+    `WhatsApp country code: ${countryName} (${countryCode})\n` +
     `WhatsApp: ${fullWhatsAppNumber}\n` +
     `Device: ${device}\n\n` +
     `ORDER DETAILS\n` +
     `Plan: ${currentPlan.name}\n` + introOfferLine +
+    `Player-app activation: ${playerActivationByPlan[currentPlan.name]} (compatible app; licence terms apply)\n` +
     `Screens: ${1 + extraDevices}\n` +
     `Total shown: ${totalStr}\n` +
     `Payment preference: ${selectedPaymentMethod}\n` +
@@ -824,13 +868,16 @@ function openTrialModal() {
   trialModal.classList.add("open");
   trialModal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  focusDialog(trialModal);
 }
 
 function closeTrialModal() {
   if (!trialModal) return;
+  const wasOpen = trialModal.classList.contains("open");
   trialModal.classList.remove("open");
   trialModal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  if (wasOpen) restoreDialogFocus(trialModal);
   if (window.self !== window.top && window.location.hash === "#trial-embed") {
     window.parent.postMessage({ type: "loopmint-trial-close" }, "*");
   }
@@ -884,7 +931,7 @@ function sendTrialWhatsApp(nameId, countryId, phoneId) {
   const message = `Hello LoopMint,\nI would like to request a free 24-hour trial.\n\n` +
     `TRIAL DETAILS\n` +
     `Name: ${name}\n` +
-    `Country: ${countryName} (${country})\n` +
+    `WhatsApp country code: ${countryName} (${country})\n` +
     `WhatsApp: ${fullWhatsAppNumber}\n` +
     `Device: ${device}\n\n` +
     `Please send the matching setup steps and trial details.`;

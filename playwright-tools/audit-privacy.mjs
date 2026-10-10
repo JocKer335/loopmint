@@ -18,7 +18,7 @@ try {
   assert.equal(metaRequests.length, 0, 'Meta must not load before a choice');
   assert.equal(await page.getByRole('button', { name: 'Reject optional tracking' }).count(), 1);
   assert.equal(await page.getByRole('button', { name: 'Accept optional tracking' }).count(), 1);
-  await page.getByRole('link', { name: 'Start Free Trial' }).click();
+  await page.locator('.hero-primary-btn').click();
   assert.equal(await page.locator('#trial-modal').getAttribute('aria-hidden'), 'false');
   assert.equal(await page.locator('.lm-consent-banner').isVisible(), false, 'Banner must not cover the trial form');
   await page.locator('#trial-close').click();

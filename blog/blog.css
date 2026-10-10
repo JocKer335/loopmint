@@ -84,3 +84,7 @@ footer strong{margin-right:auto}
 footer a{font-size:14px;color:#fff}
 @media(max-width:850px){.card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.article-layout{grid-template-columns:1fr;gap:25px}.sidebar{position:static;order:-1}.nav{align-items:flex-start;flex-direction:column;padding-block:17px}.nav-links{gap:15px}.intro-band .wrap{grid-template-columns:1fr}}
 @media(max-width:620px){.wrap{width:min(100% - 28px,1120px)}.card-grid,.card-grid-four{grid-template-columns:1fr}.hero{padding-bottom:52px}.eyebrow{margin-top:35px}.section{padding:46px 0}.article-layout{padding-top:36px;padding-bottom:55px}.check-table{display:block;overflow-x:auto}}
+
+.hero .byline a { color: inherit; text-underline-offset: 3px; }
+.related-guides { border-top: 1px solid #dbe7e8; margin-top: 22px; padding-top: 20px; }
+.worked-example { border-left: 4px solid #147a69; padding: 5px 20px; background: #f0f8f5; margin: 24px 0; }

@@ -992,7 +992,6 @@ body.theme-night .content-cloud .kicker {
   margin-top: 3px;
   color: rgba(255, 255, 255, 0.72);
   font-size: 0.82rem;
-};
   font-weight: 600;
 }
 
@@ -1030,11 +1029,6 @@ body.theme-night .content-cloud .kicker {
   height: 100%;
   background: linear-gradient(90deg, #26d4a7, #22c55e);
   border-radius: 999px;
-}
-  background: rgba(7, 20, 36, 0.06);
-  padding: 3px 9px;
-  border-radius: 999px;
-  letter-spacing: 0.02em;
 }
 
 .cat-dot {

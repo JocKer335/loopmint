@@ -3,6 +3,10 @@ node_modules/
 playwright-report/
 test-results/
 output/
+HANDOFF-*.md
+UPDATE-*.md
+EDITORIAL-REVIEW-*.md
+DEPLOYMENT-*.md
 archive/
 assets/experience/
 assets/frames/*

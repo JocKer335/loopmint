@@ -3,11 +3,19 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "node tools/build-assets.mjs",
     "serve": "node serve.mjs",
     "audit:site": "node playwright-tools/audit-clean.mjs",
-    "audit:privacy": "node playwright-tools/audit-privacy.mjs"
+    "audit:privacy": "node playwright-tools/audit-privacy.mjs",
+    "audit:content": "node playwright-tools/audit-content.mjs"
+  },
+  "overrides": {
+    "postcss-selector-parser": "^7.1.6"
   },
   "devDependencies": {
-    "playwright": "^1.55.0"
+    "lightningcss": "^1.33.0",
+    "playwright": "^1.55.0",
+    "purgecss": "^7.0.2",
+    "terser": "^5.51.2"
   }
 }

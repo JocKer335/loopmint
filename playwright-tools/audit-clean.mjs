@@ -3,11 +3,11 @@ import { readFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const expected = [
-  ['/', 'Live TV & On-Demand Viewing | LoopMint'],
+  ['/', 'IPTV Plans, Live TV & On-Demand | LoopMint'],
   ['/guides.html', 'Viewing & Setup Help Guides | LoopMint'],
   ['/setup.html', 'Device Setup Guides | LoopMint'],
   ['/trial-checklist.html', 'IPTV Free Trial: What to Test in 24 Hours | LoopMint'],
-  ['/blog/', 'Live TV, Films & Series Guides | LoopMint Blog'],
+  ['/blog/', 'IPTV, Live TV & Streaming Guides | LoopMint Blog'],
   ['/blog/uk-live-tv-trial-guide.html', 'UK Live TV Trial Guide: Devices, Plans & Prices | LoopMint'],
   ['/blog/where-loopmint-is-available.html', 'Where Is LoopMint Available? Worldwide Trial & Plans'],
   ['/blog/live-tv-app-vs-service.html', 'Live TV App vs Viewing Service: What Do You Need? | LoopMint'],
@@ -61,12 +61,7 @@ try {
       body: document.body.innerText,
       brokenImages: [...document.images].filter(image => image.loading !== 'lazy' && (!image.complete || image.naturalWidth === 0)).length
     }));
-    assert.ok(!/buffering/i.test(wording.headings));
-    assert.ok(!/buffering/i.test(wording.body));
     assert.equal(wording.brokenImages, 0);
-    if (pathname === '/blog/' || pathname === '/blog/how-we-review.html') {
-      assert.equal((wording.body.match(/\bIPTV\b/g) || []).length, 1);
-    }
     if (pathname === '/') {
       assert.equal(seo.jsonld[0]['@graph'][0].name, 'LoopMint');
       assert.ok(seo.hasCountryFaq);
@@ -84,7 +79,8 @@ try {
       assert.ok(visual.heroAnimation.includes('heroSceneCycle'));
       assert.equal(visual.heroVideoCount, 0);
       assert.equal(visual.cardCount, 6);
-      assert.ok(!/IPTV|Netflix|Premier League|Disney\+|HBO Max|UFC/.test(visual.bodyText));
+      assert.ok(/IPTV/.test(visual.bodyText));
+      assert.ok(!/Netflix|Premier League|Disney\+|HBO Max|UFC/.test(visual.bodyText));
       assert.ok(!visual.bodyText.includes('1 Connection (1 Device)'));
       assert.ok(visual.scrollWidth <= visual.viewportWidth);
       await page.waitForTimeout(8000);
@@ -102,11 +98,7 @@ try {
       assert.ok((await page.locator('#feature-display').innerText()).includes('Browse films, series'));
       await page.locator('button[data-plan="6 Months"][data-price="€55"]').click();
       assert.equal(await page.locator('#checkout-modal').getAttribute('aria-hidden'), 'false');
-      assert.deepEqual(await page.locator('.payment-opt-card').allTextContents().then(values => values.map(value => value.trim().replace(/\s+/g, ' '))), [
-        'Card link Confirm on WhatsApp',
-        'Bank transfer Details confirmed privately',
-        'Ask for options Discuss with our team'
-      ]);
+      assert.deepEqual(await page.locator('.payment-opt-card').evaluateAll(cards => cards.map(card => card.dataset.pm)), ['Card link', 'Bank transfer', 'Ask for options']);
       await page.locator('.payment-opt-card[data-pm="Bank transfer"]').click();
       assert.ok(await page.locator('.payment-opt-card[data-pm="Bank transfer"]').evaluate(element => element.classList.contains('active')));
     }

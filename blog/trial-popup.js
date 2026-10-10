@@ -1,4 +1,4 @@
-const trialLinks = document.querySelectorAll('a[href="../index.html#trial"]');
+const trialLinks = document.querySelectorAll('a[href="../#trial"]');
 let trialFrame = null;
 let lastTrialTrigger = null;
 
@@ -17,7 +17,7 @@ trialLinks.forEach((link) => {
     trialFrame = document.createElement("iframe");
     trialFrame.className = "blog-trial-frame";
     trialFrame.title = "Request your free 24-hour trial";
-    trialFrame.src = "../index.html#trial-embed";
+    trialFrame.src = "../#trial-embed";
     document.body.classList.add("blog-modal-open");
     document.body.append(trialFrame);
   });
