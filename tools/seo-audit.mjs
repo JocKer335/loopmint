@@ -27,7 +27,7 @@ files.forEach(f => {
   const canonicalMatch = /<link\s+rel=["']canonical["']\s+href=["']([^"']*)["']/i.exec(content);
   const h1Matches = [...content.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
   const imgMatches = [...content.matchAll(/<img\b([^>]*)>/gi)];
-  
+
   let emptyAlt = 0;
   let missingAlt = 0;
   imgMatches.forEach(m => {
