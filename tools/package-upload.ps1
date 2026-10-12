@@ -6,6 +6,7 @@ $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $outputRoot = Join-Path $projectRoot 'output'
 $stageRoot = Join-Path $outputRoot ('upload-' + $ReleaseDate + '-' + [guid]::NewGuid().ToString('N'))
 $zipPath = Join-Path $outputRoot ('loopmint-ready-to-upload-' + $ReleaseDate + '.zip')
+$expectedPages = [regex]::Matches([IO.File]::ReadAllText((Join-Path $projectRoot 'sitemap.xml')), '<loc>').Count
 New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 
 $rootFiles = Get-ChildItem -LiteralPath $projectRoot -File | Where-Object {
@@ -32,7 +33,7 @@ try {
     if ($relativePath.Replace('\', '/') -notin $entries) { throw "Missing bundled file: $relativePath" }
   }
   $htmlCount = @($entries | Where-Object { $_ -match '\.html$' }).Count
-  if ($htmlCount -ne 20) { throw "Expected 20 HTML pages, found $htmlCount." }
+  if ($htmlCount -ne $expectedPages) { throw "Expected $expectedPages sitemap pages, found $htmlCount." }
   foreach ($requiredFile in 'index.html', 'blog/index.html', 'styles.min.css', 'script.min.js', 'sitemap.xml', 'robots.txt', 'CNAME', 'assets/plus-jakarta-sans-latin.woff2') {
     if ($requiredFile -notin $entries) { throw "Missing required file: $requiredFile" }
   }

@@ -16,6 +16,8 @@ The setup page and homepage use the [Fire TV press logo](https://press.aboutamaz
 - `trial-checklist.html` - Practical guide to testing a 24-hour trial before choosing a plan
 - `blog/` - Live TV review policy and buyer's guides; named reviews require documented testing
 - `blog/live-tv-app-vs-service.html` - Guide to player apps, viewing plans, device checks and total costs
+- `blog/iptv-mag-box-setup.html` - Supported MAG activation, MAC address, portal setup and support routes
+- `blog/iptv-fire-tv-setup.html` - Existing Fire TV and Fire Stick setup article
 - `blog/where-loopmint-is-available.html` - Worldwide trial and plan request guide with examples for the UK, Ireland and United States
 - `blog/uk-live-tv-trial-guide.html` - UK trial checklist and published euro plan prices, with final payment currency confirmed before purchase
 - `privacy.html`, `terms.html`, `refunds.html` - Customer information and contact routes
@@ -72,7 +74,7 @@ After building and auditing future changes, regenerate the public bundle in Powe
 ./tools/package-upload.ps1 -ReleaseDate YYYY-MM-DD
 ```
 
-The packager includes the public pages, styles/scripts and approved tracked assets, then checks the ZIP's required files and 20-page count. It also writes a SHA-256 manifest beside the ZIP.
+The packager includes the public pages, styles/scripts and approved tracked assets, then checks the ZIP's required files and page count against the sitemap. It also writes a SHA-256 manifest beside the ZIP.
 
 ## Structure
 

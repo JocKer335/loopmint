@@ -17,6 +17,7 @@ const expected = [
   ['/blog/iptv-subscription-cost.html', 'IPTV Subscription Cost: Compare the Full Price | LoopMint'],
   ['/blog/live-sports-without-cable.html', 'Watch Live Sports Without Cable: A Practical Checklist | LoopMint'],
   ['/blog/iptv-fire-tv-setup.html', 'How to Set Up IPTV on Fire TV or Fire Stick | LoopMint'],
+  ['/blog/iptv-mag-box-setup.html', 'MAG IPTV Activation: MAC Address & Portal Setup | LoopMint'],
   ['/blog/iptv-smart-tv-setup.html', 'How to Set Up IPTV on a Smart TV | LoopMint'],
   ['/blog/movies-series-streaming.html', 'How to Choose Movies and Series Streaming | LoopMint'],
   ['/blog/iptv-vs-sling-tv.html', 'IPTV vs Sling TV: How to Compare Your Options | LoopMint'],

@@ -8,7 +8,9 @@ const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
 const snapshots = new Map();
 const resourcePaths = new Set();
 const errors = [];
-const output = 'output/review-2026-10-09';
+const auditDate = process.env.AUDIT_DATE || new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Casablanca', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+assert.match(auditDate, /^\d{4}-\d{2}-\d{2}$/);
+const output = `output/review-${auditDate}`;
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 
@@ -38,7 +40,9 @@ try {
         jsonld: [...document.querySelectorAll('script[type="application/ld+json"]')].map(e => JSON.parse(e.textContent)),
         times: [...document.querySelectorAll('.byline time')].map(e => e.dateTime),
         text: document.querySelector('main')?.innerText || '',
-        articleText: document.querySelector('.article-layout article')?.innerText || ''
+        articleText: document.querySelector('.article-layout article')?.innerText || '',
+        supportLinks: [...document.querySelectorAll('.trial-banner a')].map(e => e.getAttribute('href')),
+        supportText: document.querySelector('.trial-banner')?.innerText || ''
       };
     });
     assert.equal(data.h1Count, 1, `${pathname}: one H1`);
@@ -54,19 +58,25 @@ try {
         assert.equal(entity.headline, data.h1, `${pathname}: schema matches heading`);
         assert.equal(entity.mainEntityOfPage, url);
         assert.deepEqual(data.times, [entity.datePublished, entity.dateModified], `${pathname}: displayed dates`);
-        assert.ok(entity.datePublished <= entity.dateModified && entity.dateModified <= '2026-10-09');
+        assert.ok(entity.datePublished <= entity.dateModified && entity.dateModified <= auditDate);
       }
     }
-    if (data.articleText) assert.ok(!/€(?:10|20)\b/.test(data.articleText), `${pathname}: separate player fees omitted`);
+    if (data.articleText) {
+      assert.ok(!/€(?:10|20)\b/.test(data.articleText), `${pathname}: separate player fees omitted`);
+      if (pathname.startsWith('/blog/')) {
+        assert.ok(data.supportText.includes('setup support for compatible devices'), `${pathname}: setup support stated`);
+        assert.ok(data.supportLinks.includes('../') && data.supportLinks.includes('../setup.html') && data.supportLinks.includes('../#trial'), `${pathname}: support and website routes`);
+      }
+    }
     for (const width of [320, 390, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.evaluate(() => new Promise(requestAnimationFrame));
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       assert.ok(overflow <= 1, `${pathname}: overflow ${overflow}px at ${width}px`);
     }
-    if (pathname === '/' || pathname === '/blog/iptv-subscription-cost.html') {
+    if (pathname === '/' || pathname === '/blog/iptv-subscription-cost.html' || pathname === '/blog/iptv-mag-box-setup.html') {
       await page.setViewportSize({ width: 390, height: 844 });
-      await page.screenshot({ path: `${output}/${pathname === '/' ? 'home' : 'article'}-mobile.png`, fullPage: true });
+      await page.screenshot({ path: `${output}/${pathname === '/' ? 'home' : pathname.endsWith('iptv-mag-box-setup.html') ? 'mag' : 'article'}-mobile.png`, fullPage: true });
     }
     snapshots.set(pathname, data);
     console.log(`PASS ${pathname}: metadata, schema, accessibility basics, mobile widths`);
@@ -128,7 +138,7 @@ try {
   await page.keyboard.press('Escape');
   assert.ok(await page.locator('.hero-primary-btn').evaluate(e => e === document.activeElement));
   assert.deepEqual(errors, [], 'No browser script errors');
-  const report = { date: '2026-10-09', pages: snapshots.size, assets: resourcePaths.size, widths: [320, 390, 1440], plans: offers.length, links: 'passed', scripts: 'passed', result: 'passed' };
+  const report = { date: auditDate, pages: snapshots.size, assets: resourcePaths.size, widths: [320, 390, 1440], plans: offers.length, links: 'passed', scripts: 'passed', supportLinks: 'passed', result: 'passed' };
   await writeFile(`${output}/results.json`, JSON.stringify(report, null, 2));
   console.log(JSON.stringify(report));
 } finally {
