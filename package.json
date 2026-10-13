@@ -7,6 +7,7 @@
     "serve": "node serve.mjs",
     "audit:site": "node playwright-tools/audit-clean.mjs",
     "audit:privacy": "node playwright-tools/audit-privacy.mjs",
+    "audit:countries": "node playwright-tools/audit-country-picker.mjs",
     "audit:content": "node playwright-tools/audit-content.mjs"
   },
   "overrides": {

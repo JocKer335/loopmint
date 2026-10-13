@@ -1011,9 +1011,13 @@ document.querySelectorAll(".custom-country-picker").forEach((picker) => {
   searchInput.setAttribute("aria-label", "Search countries");
   dropdown.insertBefore(searchInput, menu);
 
-  const countryEntries = countryDialOptions
-    .map(([code, dial]) => ({ code, dial, name: getCountryName(code) }))
-    .sort((a, b) => {
+  let menuBuilt = false;
+  const populateCountryMenu = () => {
+    if (menuBuilt) return;
+    const selectedCode = currCode?.textContent.trim() || "IE";
+    const countryEntries = countryDialOptions
+      .map(([code, dial]) => ({ code, dial, name: getCountryName(code) }))
+      .sort((a, b) => {
       const aPriority = preferredCountryCodes.indexOf(a.code);
       const bPriority = preferredCountryCodes.indexOf(b.code);
       if (aPriority !== -1 || bPriority !== -1) {
@@ -1022,20 +1026,23 @@ document.querySelectorAll(".custom-country-picker").forEach((picker) => {
         return aPriority - bPriority;
       }
       return a.name.localeCompare(b.name);
-    });
+      });
 
-  menu.replaceChildren(...countryEntries.map(({ code, dial, name }) => {
-    const item = document.createElement("button");
-    item.type = "button";
-    item.className = `country-item${code === "IE" ? " active" : ""}`;
-    item.dataset.code = code;
-    item.dataset.name = name;
-    item.dataset.dial = dial;
-    item.setAttribute("role", "option");
-    item.setAttribute("aria-selected", code === "IE" ? "true" : "false");
-    item.innerHTML = `<span class="c-code">${code}</span><strong class="c-name">${name}</strong><span class="c-dial">${dial}</span>`;
-    return item;
-  }));
+    menu.replaceChildren(...countryEntries.map(({ code, dial, name }) => {
+      const item = document.createElement("button");
+      item.type = "button";
+      item.className = `country-item${code === selectedCode ? " active" : ""}`;
+      item.dataset.code = code;
+      item.dataset.name = name;
+      item.dataset.dial = dial;
+      item.setAttribute("role", "option");
+      item.setAttribute("aria-selected", String(code === selectedCode));
+      item.innerHTML = `<span class="c-code">${code}</span><strong class="c-name">${name}</strong><span class="c-dial">${dial}</span>`;
+      return item;
+    }));
+    menuBuilt = true;
+  };
+  picker._loopmintEnsureCountries = populateCountryMenu;
 
   const closePicker = () => {
     picker.classList.remove("open");
@@ -1065,6 +1072,7 @@ document.querySelectorAll(".custom-country-picker").forEach((picker) => {
         p.querySelector(".country-trigger-btn")?.setAttribute("aria-expanded", "false");
       }
     });
+    populateCountryMenu();
     const open = picker.classList.toggle("open");
     btn.setAttribute("aria-expanded", String(open));
     if (open) {
@@ -1116,6 +1124,7 @@ document.addEventListener("click", () => {
     const currentDial = picker.querySelector("input[type='hidden']")?.value.replace(/\D/g, "") || "";
     if (currentDial && numberDigits.startsWith(currentDial)) return;
 
+    picker._loopmintEnsureCountries?.();
     const matches = [...picker.querySelectorAll(".country-item")]
       .filter((item) => numberDigits.startsWith(item.dataset.dial.replace(/\D/g, "")))
       .sort((a, b) => {

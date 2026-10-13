@@ -48,11 +48,14 @@ With the local server running:
 npm run audit:site
 npm run audit:privacy
 npm run audit:content
+npm run audit:countries
 ```
 
 The audit checks page metadata, all three hero scenes, generic viewing categories, the guide interaction, checkout payment choices, and mobile horizontal overflow. It runs against the local server on port 5500.
 
 The content audit checks all sitemap pages and their internal links, fragments, local assets, article dates and schema. It checks widths of 320, 390 and 1440 pixels, all five plan totals and included player activation, currency changes, extra-screen pricing, and keyboard focus in the trial and order dialogs. It does not submit an order or send a WhatsApp message.
+
+The country-picker audit checks search, selection, international-number paste and keyboard opening. Country lists are populated when used to reduce the initial page layout. Set `AUDIT_ORIGIN` to `https://loopmint.net` to run this check against the published site; external requests and form submissions are not sent.
 
 ## Canonical URLs and search indexing
 
