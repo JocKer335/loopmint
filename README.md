@@ -65,6 +65,20 @@ The live GitHub Pages host redirects HTTP and the www host to the HTTPS apex hos
 
 Successful page requests and a sitemap do not confirm Google indexing. Check URL Inspection for the individual canonical article URLs after publishing. Publishing and Search Console indexing requests are separate steps.
 
+### Bing and IndexNow
+
+LoopMint was imported into Bing Webmaster Tools from Google Search Console on 14 October 2026. The screenshot confirmed that `https://loopmint.net/sitemap.xml` was submitted and processing; it did not confirm page indexing.
+
+`indexnow-key.txt` is the public domain verification file for [IndexNow](https://www.indexnow.org/documentation). Keep it in the website root, including manual uploads. The GitHub workflow `Notify IndexNow after publishing` sends notifications for added, edited and removed canonical sitemap pages on main-branch pushes. It first checks that the key, sitemap and selected pages match the live deployment. It stops without submitting if deployment verification fails. A 200 response confirms receipt; a 202 response means receipt with key validation pending. Neither guarantees crawling, indexing or rankings.
+
+Preview selected URLs without submitting:
+
+```powershell
+node tools/submit-indexnow.mjs --since FULL_PREVIOUS_COMMIT_SHA --dry-run
+```
+
+For an initial submission or a deliberate full resubmission, use the workflow's manual Run workflow action or `node tools/submit-indexnow.mjs --all`. Routine publishing uses changed pages only; do not repeatedly resubmit unchanged URLs. The script needs Node 22 or later and no installed packages or account token.
+
 ## Manual upload
 
 Review and chat handoff documents are local working notes excluded from Git. They are available in the working folder used for this review. The public site is published from the website files on the GitHub Pages branch.

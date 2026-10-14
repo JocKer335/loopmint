@@ -10,7 +10,7 @@ $expectedPages = [regex]::Matches([IO.File]::ReadAllText((Join-Path $projectRoot
 New-Item -ItemType Directory -Path $stageRoot -Force | Out-Null
 
 $rootFiles = Get-ChildItem -LiteralPath $projectRoot -File | Where-Object {
-  $_.Extension -in '.html', '.css', '.js', '.xml' -or $_.Name -in 'robots.txt', 'CNAME'
+  $_.Extension -in '.html', '.css', '.js', '.xml' -or $_.Name -in 'robots.txt', 'indexnow-key.txt', 'CNAME'
 } | ForEach-Object { $_.Name }
 $blogFiles = Get-ChildItem -LiteralPath (Join-Path $projectRoot 'blog') -File -Recurse |
   Where-Object { $_.Extension -in '.html', '.css', '.js' } |
@@ -34,7 +34,7 @@ try {
   }
   $htmlCount = @($entries | Where-Object { $_ -match '\.html$' }).Count
   if ($htmlCount -ne $expectedPages) { throw "Expected $expectedPages sitemap pages, found $htmlCount." }
-  foreach ($requiredFile in 'index.html', 'blog/index.html', 'styles.min.css', 'script.min.js', 'sitemap.xml', 'robots.txt', 'CNAME', 'assets/plus-jakarta-sans-latin.woff2') {
+  foreach ($requiredFile in 'index.html', 'blog/index.html', 'styles.min.css', 'script.min.js', 'sitemap.xml', 'robots.txt', 'indexnow-key.txt', 'CNAME', 'assets/plus-jakarta-sans-latin.woff2') {
     if ($requiredFile -notin $entries) { throw "Missing required file: $requiredFile" }
   }
 } finally { $archive.Dispose() }

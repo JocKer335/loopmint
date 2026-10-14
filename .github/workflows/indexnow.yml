@@ -1,0 +1,40 @@
+name: Notify IndexNow after publishing
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - sitemap.xml
+      - indexnow-key.txt
+      - tools/submit-indexnow.mjs
+      - tools/submit-indexnow.test.mjs
+      - .github/workflows/indexnow.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Check submission and deployment safeguards
+        run: node --test tools/submit-indexnow.test.mjs
+      - name: Notify changed pages after the live deployment matches
+        if: github.event_name == 'push'
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: node tools/submit-indexnow.mjs --since "$BEFORE_SHA"
+      - name: Submit all canonical pages after verifying the live site
+        if: github.event_name == 'workflow_dispatch'
+        run: node tools/submit-indexnow.mjs --all
