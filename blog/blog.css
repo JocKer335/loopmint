@@ -88,3 +88,6 @@ footer a{font-size:14px;color:#fff}
 .hero .byline a { color: inherit; text-underline-offset: 3px; }
 .related-guides { border-top: 1px solid #dbe7e8; margin-top: 22px; padding-top: 20px; }
 .worked-example { border-left: 4px solid #147a69; padding: 5px 20px; background: #f0f8f5; margin: 24px 0; }
+.player-directory { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 0; list-style: none; }
+article .player-directory li { min-width: 0; margin: 0; padding: 12px; border: 1px solid #dce7e8; border-radius: 8px; background: #f0f8f5; font-size: 14px; overflow-wrap: break-word; }
+@media (max-width: 620px) { .player-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

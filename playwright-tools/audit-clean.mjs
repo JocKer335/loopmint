@@ -10,7 +10,7 @@ const expected = [
   ['/blog/', 'IPTV, Live TV & Streaming Guides | LoopMint Blog'],
   ['/blog/uk-live-tv-trial-guide.html', 'UK Live TV Trial Guide: Devices, Plans & Prices | LoopMint'],
   ['/blog/where-loopmint-is-available.html', 'Where Is LoopMint Available? Worldwide Trial & Plans'],
-  ['/blog/live-tv-app-vs-service.html', 'Live TV App vs Viewing Service: What Do You Need? | LoopMint'],
+  ['/blog/live-tv-app-vs-service.html', 'IPTV Player Activation: IBO, BOB & Setup Help | LoopMint'],
   ['/blog/how-we-review.html', 'How We Review Live TV Services | LoopMint Blog'],
   ['/blog/iptv-site-checklist.html', 'Best IPTV Service? 12 Checks Before You Choose | LoopMint'],
   ['/blog/what-is-iptv.html', 'What Is IPTV and How Does It Work? | LoopMint'],
