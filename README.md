@@ -16,6 +16,7 @@ The setup page and homepage use the [Fire TV press logo](https://press.aboutamaz
 - `trial-checklist.html` - Practical guide to testing a 24-hour trial before choosing a plan
 - `blog/` - Live TV review policy and buyer's guides; named reviews require documented testing
 - `blog/live-tv-app-vs-service.html` - IPTV player activation and setup guide with 26 named player activation enquiries, included licence terms, device checks and app-versus-viewing costs
+- `blog/ibo-player-setup-activation.html` - Publisher-specific IBO Player download, playlist, login and activation help, with source links and separate app/viewing terms
 - `blog/iptv-mag-box-setup.html` - Supported MAG activation, MAC address, portal setup and support routes
 - `blog/iptv-fire-tv-setup.html` - Existing Fire TV and Fire Stick setup article
 - `blog/where-loopmint-is-available.html` - Worldwide trial and plan request guide with examples for the UK, Ireland and United States
