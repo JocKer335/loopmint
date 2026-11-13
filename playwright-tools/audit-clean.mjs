@@ -3,6 +3,11 @@ import { readFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const expected = [
+  ["/blog/iptv-smarters-pro-setup.html","IPTV Smarters Pro Setup: Download & Login Help | LoopMint"],
+  ["/blog/tivimate-setup.html","TiviMate Setup: Playlists, Login & Premium | LoopMint"],
+  ["/blog/smartone-iptv-setup-activation.html","SmartOne IPTV Setup & Activation: Playlist Help | LoopMint"],
+  ["/blog/bob-player-setup-activation.html","BOB Player Setup & Activation: Playlist Help | LoopMint"],
+  ["/blog/set-iptv-setup-activation.html","SET IPTV Setup & Activation: Add Your Playlist | LoopMint"],
   ['/', 'IPTV Plans, Live TV & On-Demand | LoopMint'],
   ['/guides.html', 'Viewing & Setup Help Guides | LoopMint'],
   ['/setup.html', 'Device Setup Guides | LoopMint'],
