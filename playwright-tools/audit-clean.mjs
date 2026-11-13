@@ -19,8 +19,9 @@ const expected = [
   ['/blog/iptv-fire-tv-setup.html', 'How to Set Up IPTV on Fire TV or Fire Stick | LoopMint'],
   ['/blog/iptv-mag-box-setup.html', 'MAG IPTV Activation: MAC Address & Portal Setup | LoopMint'],
   ['/blog/iptv-smart-tv-setup.html', 'How to Set Up IPTV on a Smart TV | LoopMint'],
-  ['/blog/movies-series-streaming.html', 'How to Choose Movies and Series Streaming | LoopMint'],
-  ['/blog/iptv-vs-sling-tv.html', 'IPTV vs Sling TV: How to Compare Your Options | LoopMint'],
+  ['/blog/movies-series-streaming.html', 'Movies & Series Streaming: Titles, Subtitles & Playback | LoopMint'],
+  ['/blog/iptv-vs-sling-tv.html', 'IPTV vs Sling TV: Channels, Screens & Plan Terms | LoopMint'],
+  ['/blog/ibo-player-setup-activation.html', 'IBO Player Setup & Activation: Playlist Help | LoopMint'],
   ['/privacy.html', 'Privacy Notice | LoopMint'],
   ['/terms.html', 'Trial and Plan Terms | LoopMint'],
   ['/refunds.html', 'Refund Policy | LoopMint']
