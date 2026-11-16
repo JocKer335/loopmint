@@ -19,7 +19,7 @@ const expected = [
   ['/blog/how-we-review.html', 'How We Review Live TV Services | LoopMint Blog'],
   ['/blog/iptv-site-checklist.html', 'Best IPTV Service? 12 Checks Before You Choose | LoopMint'],
   ['/blog/what-is-iptv.html', 'What Is IPTV and How Does It Work? | LoopMint'],
-  ['/blog/iptv-subscription-cost.html', 'IPTV Subscription Cost: Compare the Full Price | LoopMint'],
+  ['/blog/iptv-subscription-cost.html', 'How Much Is IPTV per Month? Prices & Renewals | LoopMint'],
   ['/blog/live-sports-without-cable.html', 'Watch Live Sports Without Cable: A Practical Checklist | LoopMint'],
   ['/blog/iptv-fire-tv-setup.html', 'How to Set Up IPTV on Fire TV or Fire Stick | LoopMint'],
   ['/blog/iptv-mag-box-setup.html', 'MAG IPTV Activation: MAC Address & Portal Setup | LoopMint'],
