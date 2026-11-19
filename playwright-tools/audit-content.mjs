@@ -106,11 +106,11 @@ try {
 
   await page.goto(origin, { waitUntil: 'load' });
   const offers = [
-    ['1 Month', 'Available separately', '€12'],
-    ['6 Months', '1 year included', '€55'],
-    ['1 Year', '1 year included', '€85'],
-    ['2 Years', 'Lifetime included', '€150'],
-    ['3 Years', 'Lifetime included', '€200']
+    ['1 Month', 'Sold separately', '€12'],
+    ['6 Months', 'Free for 1 year', '€55'],
+    ['1 Year', 'Free for 1 year', '€85'],
+    ['2 Years', 'Free lifetime activation', '€150'],
+    ['3 Years', 'Free lifetime activation', '€200']
   ];
   for (const [plan, activation, price] of offers) {
     const trigger = page.locator(`.price-card button[data-plan="${plan}"]`);
@@ -127,7 +127,7 @@ try {
   assert.equal(await page.locator('#sum-total-today').innerText(), '€255');
   await page.locator('#checkout-modal .currency-toggle-btn[data-curr="USD"]').click();
   assert.equal(await page.locator('#sum-total-today').innerText(), '$295.80');
-  assert.equal(await page.locator('#sum-player-activation').innerText(), 'Lifetime included');
+  assert.equal(await page.locator('#sum-player-activation').innerText(), 'Free lifetime activation');
   await page.keyboard.press('Escape');
   await page.locator('.hero-primary-btn').click();
   await page.waitForFunction(() => document.querySelector('#trial-modal').contains(document.activeElement));

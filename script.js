@@ -191,7 +191,13 @@ function navigateToWhatsApp(url) {
 }
 
 /* CURRENCY SWITCHER LOGIC */
-const playerActivationByPlan = { "1 Month": "Available separately", "6 Months": "1 year included", "1 Year": "1 year included", "2 Years": "Lifetime included", "3 Years": "Lifetime included" };
+const playerActivationByPlan = {
+  "1 Month": "Sold separately",
+  "6 Months": "Free for 1 year",
+  "1 Year": "Free for 1 year",
+  "2 Years": "Free lifetime activation",
+  "3 Years": "Free lifetime activation"
+};
 
 let currentCurrency = "EUR"; // "EUR" or "USD"
 
@@ -247,7 +253,7 @@ const economizerMatrixData = {
       '<span class="save-badge save-best">Longest fixed term</span>'
     ],
     keep: [
-      '<strong>€12 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>Player activation available separately',
+      '<strong>€12 first month for new clients</strong></li><li>Live & on-demand content</li><li>Setup help on WhatsApp</li><li>Player activation available separately',
       'Everything in 1 Month</li><li>Lower €9.17/mo rate</li><li>Setup Refresh Help',
       'Everything in 6 Months</li><li><strong>€7.08 monthly equivalent</strong></li><li>Setup guidance</li><li>15% OFF Multi-Screen Perks',
       '<strong>24 total months</strong></li><li><strong>€6.25 monthly equivalent</strong></li><li>Support for active plans</li><li>Price set for 2 years',
@@ -293,7 +299,7 @@ const economizerMatrixData = {
       '<span class="save-badge save-best">Longest fixed term</span>'
     ],
     keep: [
-      '<strong>$14 first month for new clients</strong></li><li>Live & on-demand content</li><li>WhatsApp Activation</li><li>Player activation available separately',
+      '<strong>$14 first month for new clients</strong></li><li>Live & on-demand content</li><li>Setup help on WhatsApp</li><li>Player activation available separately',
       'Everything in 1 Month</li><li>Lower $10.67/mo rate</li><li>Setup Refresh Help',
       'Everything in 6 Months</li><li><strong>$8.25 monthly equivalent</strong></li><li>Setup guidance</li><li>15% OFF Multi-Screen Perks',
       '<strong>24 total months</strong></li><li><strong>$7.25 monthly equivalent</strong></li><li>Support for active plans</li><li>Price set for 2 years',
