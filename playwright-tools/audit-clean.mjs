@@ -3,6 +3,10 @@ import { readFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const expected = [
+  ['/blog/iptv-buffering.html', "IPTV Buffering? Checks for Fire TV & Smart TVs | LoopMint"],
+  ['/blog/iptv-epg-not-working.html', "IPTV EPG Not Working? Missing TV Guide Checks | LoopMint"],
+  ['/blog/m3u-vs-xtream-codes.html', "M3U vs Xtream Codes: IPTV Setup Details Explained | LoopMint"],
+  ['/blog/renew-iptv-subscription.html', 'Renew Your IPTV Subscription: Steps & Expiry Help | LoopMint'],
   ["/blog/iptv-smarters-pro-setup.html","IPTV Smarters Pro Setup: Download & Login Help | LoopMint"],
   ["/blog/tivimate-setup.html","TiviMate Setup: Playlists, Login & Premium | LoopMint"],
   ["/blog/smartone-iptv-setup-activation.html","SmartOne IPTV Setup & Activation: Playlist Help | LoopMint"],
