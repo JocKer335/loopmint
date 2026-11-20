@@ -31,7 +31,7 @@ window.addEventListener("message", (event) => {
     closeBlogTrial();
   } else if (event.data?.type === "loopmint-trial-whatsapp" &&
              typeof event.data.url === "string" &&
-             event.data.url.startsWith("https://wa.me/447597648884?text=")) {
+             event.data.url.startsWith("https://wa.me/447907504571?text=")) {
     const url = event.data.url;
     closeBlogTrial();
     window.location.assign(url);

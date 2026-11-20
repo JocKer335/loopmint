@@ -215,7 +215,7 @@ for (const [viewportName, viewport] of viewports) {
         "Total shown: $76.50",
         "Payment preference: Revolut"
       ];
-      if (!openedUrl.startsWith("https://wa.me/447597648884?text=") || expectedOrderDetails.some((detail) => !decodedOrder.includes(detail))) {
+      if (!openedUrl.startsWith("https://wa.me/447907504571?text=") || expectedOrderDetails.some((detail) => !decodedOrder.includes(detail))) {
         issues.push("checkout WhatsApp handoff failed");
       }
       await page.keyboard.press("Escape");

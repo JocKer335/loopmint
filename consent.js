@@ -36,7 +36,7 @@
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[href*="wa.me/"]');
     if (!link) return;
-    const destination = link.href.includes('447907504571') ? 'support' : 'sales';
+    const destination = link.dataset.whatsappDestination || 'sales';
     window.trackLoopMintWhatsAppContact(destination);
   }, true);
 

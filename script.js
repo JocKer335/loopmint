@@ -176,8 +176,7 @@ const btnInquireWhatsapp = document.getElementById("btn-inquire-whatsapp");
 let selectedPaymentMethod = document.querySelector(".payment-opt-card.active")?.dataset.pm || "Card link";
 function navigateToWhatsApp(url) {
   if (typeof window.trackLoopMintWhatsAppContact === "function") {
-    const destination = url.includes("447907504571") ? "support" : "sales";
-    window.trackLoopMintWhatsAppContact(destination);
+    window.trackLoopMintWhatsAppContact("sales");
   }
   if (typeof window.__loopmintCaptureWhatsApp === "function") {
     window.__loopmintCaptureWhatsApp(url);
@@ -667,7 +666,7 @@ btnSubmitWhatsapp?.addEventListener("click", () => {
     `Please confirm availability and send the next steps on WhatsApp.`;
 
   const encodedMsg = encodeURIComponent(message);
-  navigateToWhatsApp(`https://wa.me/447597648884?text=${encodedMsg}`);
+  navigateToWhatsApp(`https://wa.me/447907504571?text=${encodedMsg}`);
 });
 
 // Inquire via WhatsApp (Pre-filled Auto Message with Selected Plan Details)
@@ -678,7 +677,7 @@ btnInquireWhatsapp?.addEventListener("click", () => {
     ? ` first-month offer for new clients (${planPrice}, then ${currencyConfig[currentCurrency].symbol}${planDataMap[planName].renewal[currentCurrency]}/month)`
     : ` plan (${planPrice})`;
   const inquireMsg = `Hello LoopMint Sales & Setup! 🟢 I'm interested in the ${planName}${introText} and have a question before completing my order. Can you help me?`;
-  navigateToWhatsApp(`https://wa.me/447597648884?text=${encodeURIComponent(inquireMsg)}`);
+  navigateToWhatsApp(`https://wa.me/447907504571?text=${encodeURIComponent(inquireMsg)}`);
 });
 
 // Modal close handlers
@@ -942,7 +941,7 @@ function sendTrialWhatsApp(nameId, countryId, phoneId) {
     `Device: ${device}\n\n` +
     `Please send the matching setup steps and trial details.`;
 
-  navigateToWhatsApp(`https://wa.me/447597648884?text=${encodeURIComponent(message)}`);
+  navigateToWhatsApp(`https://wa.me/447907504571?text=${encodeURIComponent(message)}`);
   return true;
 }
 
