@@ -18,7 +18,7 @@ const expected = [
   ['/trial-checklist.html', 'IPTV Free Trial: What to Test in 24 Hours | LoopMint'],
   ['/blog/', 'IPTV, Live TV & Streaming Guides | LoopMint Blog'],
   ['/blog/uk-live-tv-trial-guide.html', 'UK Live TV Trial Guide: Devices, Plans & Prices | LoopMint'],
-  ['/blog/where-loopmint-is-available.html', 'Where Is LoopMint Available? Worldwide Trial & Plans'],
+  ['/blog/where-loopmint-is-available.html', 'LoopMint IPTV in Ireland and Worldwide | Trials & Plans'],
   ['/blog/live-tv-app-vs-service.html', 'IPTV Player Activation: IBO, BOB & Setup Help | LoopMint'],
   ['/blog/how-we-review.html', 'How We Review Live TV Services | LoopMint Blog'],
   ['/blog/iptv-site-checklist.html', 'Best IPTV Service? 12 Checks Before You Choose | LoopMint'],
