@@ -21,7 +21,7 @@ const expected = [
   ['/blog/where-loopmint-is-available.html', 'LoopMint IPTV in Ireland and Worldwide | Trials & Plans'],
   ['/blog/live-tv-app-vs-service.html', 'IPTV Player Activation: IBO, BOB & Setup Help | LoopMint'],
   ['/blog/how-we-review.html', 'How We Review Live TV Services | LoopMint Blog'],
-  ['/blog/iptv-site-checklist.html', 'Best IPTV Service? 12 Checks Before You Choose | LoopMint'],
+  ['/best-iptv-service-in-ireland/', 'Best IPTV Service in Ireland? 12 Buyer Checks | LoopMint'],
   ['/blog/what-is-iptv.html', 'What Is IPTV and How Does It Work? | LoopMint'],
   ['/blog/iptv-subscription-cost.html', 'How Much Is IPTV per Month? Prices & Renewals | LoopMint'],
   ['/blog/live-sports-without-cable.html', 'Watch Live Sports Without Cable: A Practical Checklist | LoopMint'],
@@ -46,6 +46,8 @@ try {
     const response = await page.goto(`http://127.0.0.1:5500${pathname}`, { waitUntil: 'domcontentloaded' });
     assert.equal(response.status(), 200, pathname);
     await page.waitForLoadState('load');
+    const offerClose = page.getByRole('button', { name: 'Close year-end offer' });
+    if (await offerClose.isVisible()) await offerClose.click();
     const seo = await page.evaluate(() => ({
       title: document.title,
       lang: document.documentElement.lang,

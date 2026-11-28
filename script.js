@@ -189,6 +189,15 @@ function navigateToWhatsApp(url) {
   window.location.assign(url);
 }
 
+// Ireland is on GMT at midnight after 31 December 2026.
+const yearEndCutoff = Date.parse("2027-01-01T00:00:00Z");
+function yearEndOfferActive() {
+  return Date.now() < yearEndCutoff;
+}
+function viewingPlanLabel(plan) {
+  return plan === "1 Year" && yearEndOfferActive() ? "1 Year + 1 free month" : plan;
+}
+
 /* CURRENCY SWITCHER LOGIC */
 const playerActivationByPlan = {
   "1 Month": "Sold separately",
@@ -327,6 +336,11 @@ function setCurrency(curr) {
     }
   });
 
+  const matrix = economizerMatrixData[curr];
+  const annualPrice = planDataMap["1 Year"][curr];
+  const bonus = yearEndOfferActive();
+  const annualRate = sym + (annualPrice / 13).toFixed(2);
+
   // Update Page Pricing Cards & Breakdown Chips
   const priceCards = document.querySelectorAll(".price-card");
   const pricesEUR = [12, 55, 85, 150, 200];
@@ -345,12 +359,13 @@ function setCurrency(curr) {
     if (originalAmountEl && originalVal !== null) originalAmountEl.textContent = `${sym}${originalVal}`;
     if (buttonEl) buttonEl.dataset.price = `${sym}${val}`;
     if (chipEl && economizerMatrixData[curr]) {
-      chipEl.textContent = economizerMatrixData[curr].chips[index];
+      chipEl.textContent = index === 2 && bonus
+        ? `13 months · ${annualRate} / mo`
+        : matrix.chips[index];
     }
   });
 
   // Update Economizer Table Matrix
-  const matrix = economizerMatrixData[curr];
   if (matrix) {
     const updateRow = (rowId, dataArray, isList = false, listClass = "") => {
       const row = document.getElementById(rowId);
@@ -377,6 +392,19 @@ function setCurrency(curr) {
     updateRow("eco-savings-row", matrix.savings);
     updateRow("eco-keep-row", matrix.keep, true, "keep");
     updateRow("eco-lose-row", matrix.lose, true, "lose");
+    if (bonus) {
+      const annualCell = row => document.getElementById(row)?.querySelectorAll("td")[3];
+      const annualValues = {
+        "eco-total3yr-row": "13 months (1 free)",
+        "eco-monthly-row": annualRate + " / mo",
+        "eco-daily-row": sym + (annualPrice / (365.25 * 13 / 12)).toFixed(2) + " / day",
+        "eco-keep-row": "One extra month of viewing, setup guidance and multi-screen options"
+      };
+      for (const [row, value] of Object.entries(annualValues)) {
+        const cell = annualCell(row);
+        if (cell) cell.textContent = value;
+      }
+    }
   }
 
   // Update Modal Plan Cards
@@ -509,7 +537,7 @@ function updateOrderSummary() {
     }
   }
 
-  if (sumPlanName) sumPlanName.textContent = currentPlan.name;
+  if (sumPlanName) sumPlanName.textContent = viewingPlanLabel(currentPlan.name);
   if (sumPlanPrice) {
     const selectedPlanData = planDataMap[currentPlan.name];
     const originalPrice = selectedPlanData?.original?.[currentCurrency];
@@ -657,7 +685,7 @@ btnSubmitWhatsapp?.addEventListener("click", () => {
     `WhatsApp: ${fullWhatsAppNumber}\n` +
     `Device: ${device}\n\n` +
     `ORDER DETAILS\n` +
-    `Plan: ${currentPlan.name}\n` + introOfferLine +
+    `Plan: ${viewingPlanLabel(currentPlan.name)}\n` + introOfferLine +
     `Player-app activation: ${playerActivationByPlan[currentPlan.name]} (compatible app; licence terms apply)\n` +
     `Screens: ${1 + extraDevices}\n` +
     `Total shown: ${totalStr}\n` +
@@ -676,7 +704,7 @@ btnInquireWhatsapp?.addEventListener("click", () => {
   const introText = planDataMap[planName]?.intro
     ? ` first-month offer for new clients (${planPrice}, then ${currencyConfig[currentCurrency].symbol}${planDataMap[planName].renewal[currentCurrency]}/month)`
     : ` plan (${planPrice})`;
-  const inquireMsg = `Hello LoopMint Sales & Setup! 🟢 I'm interested in the ${planName}${introText} and have a question before completing my order. Can you help me?`;
+  const inquireMsg = `Hello LoopMint Sales & Setup! 🟢 I'm interested in the ${viewingPlanLabel(planName)}${introText} and have a question before completing my order. Can you help me?`;
   navigateToWhatsApp(`https://wa.me/447907504571?text=${encodeURIComponent(inquireMsg)}`);
 });
 
@@ -1220,3 +1248,39 @@ function highlightNavOnScroll() {
 }
 window.addEventListener("scroll", highlightNavOnScroll);
 window.addEventListener("load", highlightNavOnScroll);
+
+function initialiseYearEndOffer() {
+  const dialog = document.getElementById("year-end-offer");
+  if (!dialog || window.self !== window.top || !yearEndOfferActive()) return;
+
+  const sessionKey = "loopmint_annual_offer_2026_seen";
+  let seen = false;
+  try { seen = sessionStorage.getItem(sessionKey) === "1"; } catch { /* Storage is optional. */ }
+  if (!seen && !location.hash && typeof dialog.showModal === "function") {
+    dialog.showModal();
+    try { sessionStorage.setItem(sessionKey, "1"); } catch { /* Storage is optional. */ }
+  }
+  dialog.querySelector(".year-end-claim").addEventListener("click", event => {
+    if (!yearEndOfferActive()) event.preventDefault();
+    dialog.close();
+  });
+
+  function refreshOffer() {
+    setCurrency(currentCurrency);
+    if (!yearEndOfferActive()) {
+      if (dialog.open) dialog.close();
+      window.removeEventListener("pageshow", refreshOffer);
+      return;
+    }
+  }
+  refreshOffer();
+  window.addEventListener("pageshow", refreshOffer);
+  // Use bounded timeouts because this offer can run longer than one JS timer.
+  function waitForExpiry() {
+    const remaining = yearEndCutoff - Date.now();
+    if (remaining <= 0) refreshOffer();
+    else window.setTimeout(waitForExpiry, Math.min(remaining, 2147483647));
+  }
+  waitForExpiry();
+}
+initialiseYearEndOffer();

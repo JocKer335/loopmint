@@ -8838,3 +8838,34 @@ main > section[id] {
 .lm-help-route:focus-visible{outline:3px solid #fff;outline-offset:4px}
 .lm-help-route-note{max-width:780px;color:#d3e1e8;font-size:14px;line-height:1.7;margin:20px 0 0}
 @media(max-width:700px){.lm-help-route-grid{grid-template-columns:1fr}.lm-help-routes{padding:36px 0}.lm-help-route{padding:20px}}
+
+/* Year-end annual viewing offer */
+#year-end-offer {
+  box-sizing: border-box;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(430px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  padding: 36px clamp(18px, 5vw, 28px) 28px;
+  border: 1px solid #12635e;
+  border-radius: 20px;
+  background: linear-gradient(150deg, #0b1020, #151c30);
+  color: #f8fafc;
+  text-align: center;
+  box-shadow: 0 24px 80px #0008;
+}
+#year-end-offer::backdrop { background: rgb(3 6 13 / 86%); backdrop-filter: blur(3px); }
+html:has(#year-end-offer[open]) { overflow: hidden; }
+.year-end-close { position: absolute; inset: 12px 12px auto auto; width: 44px; height: 44px; border: 0; background: transparent; color: #adb7ca; font-size: 28px; cursor: pointer; }
+.year-end-badge { display: inline-block; padding: 8px 16px; border-radius: 24px; background: #0b3339; color: #32e9b0; font-size: 12px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+#year-end-title { margin: 16px 0 12px; color: #fff; font-size: clamp(24px, 6.5vw, 34px); line-height: 1.15; letter-spacing: -.025em; }
+#year-end-title strong, .year-end-deadline time { color: #25e6a7; font-weight: 750; }
+#year-end-offer #year-end-title:focus { outline: none; }
+#year-end-details { text-wrap: balance; margin: 0; color: #d5dbea; font-size: 16px; line-height: 1.5; }
+.year-end-deadline { margin: 16px 0 5px; color: #c4cddd; font-size: 14px; }
+.year-end-claim { display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 54px; border-radius: 12px; background: #25cf69; color: #07160e; font-weight: 750; text-decoration: none; }
+.year-end-claim:hover { background: #49de83; }
+#year-end-offer :focus-visible { outline: 2px solid #f8fafc; outline-offset: 2px; }
+#year-end-offer small { display: block; margin-top: 12px; color: #a6b1c9; font-size: 13px; }

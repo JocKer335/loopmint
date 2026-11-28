@@ -21,6 +21,8 @@ try {
   for (const url of urls) {
     const pathname = new URL(url).pathname;
     const response = await page.goto(origin + pathname, { waitUntil: 'load' });
+    const offerClose = page.getByRole('button', { name: 'Close year-end offer' });
+    if (await offerClose.isVisible()) await offerClose.click();
     assert.equal(response.status(), 200, pathname);
     const data = await page.evaluate(() => {
       const meta = selector => document.querySelector(selector)?.content;
@@ -63,7 +65,7 @@ try {
     }
     if (data.articleText) {
       assert.ok(!/€(?:10|20)\b/.test(data.articleText), `${pathname}: separate player fees omitted`);
-      if (pathname.startsWith('/blog/')) {
+      if (pathname.startsWith('/blog/') || pathname === '/best-iptv-service-in-ireland/') {
         assert.ok(data.supportText.includes('setup support for compatible devices'), `${pathname}: setup support stated`);
         assert.ok(data.supportLinks.includes('../') && data.supportLinks.includes('../setup.html') && data.supportLinks.includes('../#trial'), `${pathname}: support and website routes`);
       }
@@ -116,7 +118,8 @@ try {
     const trigger = page.locator(`.price-card button[data-plan="${plan}"]`);
     await trigger.click();
     await page.waitForFunction(() => document.querySelector('#checkout-modal').contains(document.activeElement));
-    assert.equal(await page.locator('#sum-plan-name').innerText(), plan);
+    const annualBonus = plan === '1 Year' && Date.now() < Date.parse('2027-01-01T00:00:00Z');
+    assert.equal(await page.locator('#sum-plan-name').innerText(), annualBonus ? '1 Year + 1 free month' : plan);
     assert.equal(await page.locator('#sum-player-activation').innerText(), activation);
     assert.equal(await page.locator('#sum-total-today').innerText(), price);
     await page.keyboard.press('Escape');

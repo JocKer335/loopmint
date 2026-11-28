@@ -5,7 +5,7 @@ import { transform } from 'lightningcss';
 import { minify } from 'terser';
 import { PurgeCSS } from 'purgecss';
 
-const folders = ['.', 'blog'];
+const folders = ['.', 'blog', 'best-iptv-service-in-ireland'];
 const files = folders.flatMap(folder => fs.readdirSync(folder).map(name => path.join(folder, name).replaceAll('\\', '/')))
   .filter(file => fs.statSync(file).isFile());
 const content = files.filter(file => /\.(html|js)$/.test(file) && !file.includes('.min.'));

@@ -9,6 +9,8 @@ try {
   page.on('pageerror', error => errors.push(error.message));
   await page.route('**/*', route => route.request().url().startsWith(origin) ? route.continue() : route.abort());
   await page.goto(origin, { waitUntil: 'load' });
+  const offerClose = page.getByRole('button', { name: 'Close year-end offer' });
+  if (await offerClose.isVisible()) await offerClose.click();
   const initialElements = await page.locator('*').count();
   assert.ok(initialElements < 1500, `Country menus should not inflate initial layout: ${initialElements} elements`);
 

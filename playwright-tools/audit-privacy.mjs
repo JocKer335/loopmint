@@ -14,6 +14,8 @@ try {
   await page.route('**/*', route => route.request().url().startsWith(origin) ? route.continue() : route.abort());
 
   const response = await page.goto(origin, { waitUntil: 'load' });
+  const offerClose = page.getByRole('button', { name: 'Close year-end offer' });
+  if (await offerClose.isVisible()) await offerClose.click();
   assert.equal(response.status(), 200);
   assert.equal(metaRequests.length, 0, 'Meta must not load before a choice');
   assert.equal(await page.getByRole('button', { name: 'Reject optional tracking' }).count(), 1);
